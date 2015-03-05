@@ -1,0 +1,29 @@
+imports:
+    - { resource: config.yml }
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      grouped
+        grouped:
+            type:    group
+            members: [nested, swift]
+        nested:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: error
+        swift:
+            type:       swift_mailer
+            from_email: %mailer_error_from%
+            to_email:   %mailer_error_to%
+            subject:    "[AIFSHE][EXCEPTION][%kernel.environment%]: An Error Occurred!"
+            level:      error
+
+assetic:
+    use_controller: true
+    filters:
+        cssrewrite: ~
+        uglifyjs2: null
+        uglifycss: null

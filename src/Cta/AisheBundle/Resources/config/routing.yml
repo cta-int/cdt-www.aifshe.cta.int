@@ -1,0 +1,99 @@
+# HOME
+cta_aishe_homepage:
+    pattern:  /
+    defaults: { _controller: CtaAisheBundle:Default:index }
+
+# PAGE
+cta_aishe_info:
+    pattern:  /info
+    defaults: { _controller: CtaAisheBundle:Page:view, identifier: info }
+cta_aishe_help:
+    pattern:  /help
+    defaults: { _controller: CtaAisheBundle:Page:view, identifier: help }
+
+# REPORT
+cta_aishe_report_overview:
+    pattern:  /reports/{page}
+    defaults: { _controller: CtaAisheBundle:Report:overview, page:1 }
+cta_aishe_report_status:
+    pattern:  /report/{id}/status/{action}
+    defaults: { _controller: CtaAisheBundle:Report:changeStatus }
+    requirements:
+        id:     \d+
+        action: \w+
+cta_aishe_report_data:
+    pattern:  /report/{id}/data
+    defaults: { _controller: CtaAisheBundle:Report:data }
+    requirements:
+        id:  \d+
+cta_aishe_report_data_new:
+    pattern:  /report/data/new
+    defaults: { _controller: CtaAisheBundle:Report:data, id: 0 }
+    requirements:
+        id:  \d+
+cta_aishe_report_edit:
+    pattern:  /report/{id}/edit/{chapter}/{paragraph}
+    defaults: { _controller: CtaAisheBundle:Report:edit, chapter: 1, paragraph: 1 }
+    requirements:
+        id:  \d+
+        chapter:  \d+
+        paragraph:  \d+
+cta_aishe_report_delete:
+    pattern:  /report/{id}/delete
+    defaults: { _controller: CtaAisheBundle:Report:delete }
+    requirements:
+        id:  \d+
+cta_aishe_report_show:
+    pattern:  /report/{id}/show
+    defaults: { _controller: CtaAisheBundle:Report:show, print: false }
+    requirements:
+        id:  \d+
+cta_aishe_report_show_print:
+    pattern:  /report/{id}/show/print
+    defaults: { _controller: CtaAisheBundle:Report:show, print: true }
+    requirements:
+        id:  \d+
+cta_aishe_report_users:
+    pattern:  /report/{id}/users
+    defaults: { _controller: CtaAisheBundle:Report:users }
+    requirements:
+        id:  \d+
+cta_aishe_report_export:
+    pattern:  /report/{id}/export/{type}
+    defaults: { _controller: CtaAisheBundle:Export:index }
+    requirements:
+        id:  \w+
+cta_aishe_report_import_offline:
+    pattern:  /report/import/offline
+    defaults: { _controller: CtaAisheBundle:Import:offline }
+cta_aishe_report_import:
+    pattern:  /report/import
+    defaults: { _controller: CtaAisheBundle:Import:index }
+cta_aishe_report_view:
+    pattern:  /report/{id}
+    defaults: { _controller: CtaAisheBundle:Report:view }
+    requirements:
+        id:  \d+
+
+# INSTITUTION
+cta_aishe_institution_overview:
+    pattern:  /institutions/{page}
+    defaults: { _controller: CtaAisheBundle:Institution:overview, page:1 }
+cta_aishe_institution_delete:
+    pattern:  /institution/delete/{id}
+    defaults: { _controller: CtaAisheBundle:Institution:delete, id: 0 }
+    requirements:
+        id:  \d+
+cta_aishe_institution_edit:
+    pattern:  /institution/{id}
+    defaults: { _controller: CtaAisheBundle:Institution:edit, id: 0 }
+    requirements:
+        id:  \d+
+
+# OFFLINE TOOL
+cta_aishe_offlinetool_version:
+    pattern:  /version
+    defaults: { _controller: CtaAisheBundle:OfflineTool:version }
+cta_aishe_offlinetool_download:
+    pattern:  /download
+    defaults: { _controller: CtaAisheBundle:OfflineTool:download }

@@ -1,0 +1,25 @@
+Cta\AisheBundle\Entity\Criterion:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\Criterion
+    table: criterion
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        chapterNr:
+            type: smallint
+            nullable: false
+            column: chapter_nr
+        type:
+            type: smallint
+            nullable: false
+    oneToMany:
+        criterionItems:
+            targetEntity: CriterionItem
+            mappedBy: criterion
+        criterionTranslations:
+            targetEntity: CriterionTranslation
+            mappedBy: criterion

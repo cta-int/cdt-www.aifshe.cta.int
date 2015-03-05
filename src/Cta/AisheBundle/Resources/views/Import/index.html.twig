@@ -1,0 +1,6 @@
+{% extends "CtaAisheBundle:Report:base.html.twig" %}
+
+{% block report %}
+    <h2 class="smallTitle">{{ 'report.new'|trans() }}</h2>
+    {{ form(form, { 'attr': {'class': 'smallForm'} } )}}
+{% endblock %}

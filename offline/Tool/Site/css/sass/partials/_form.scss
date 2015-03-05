@@ -1,0 +1,115 @@
+form {
+  clear: both;
+  margin: 0 auto;
+  padding: 0;
+  height: auto;
+  display: block;
+
+  h2 {
+    float: left;
+    margin: 0;
+    padding: 0 0 0 20px;
+    height: 42px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 41px;
+    background: $blue;
+    display: block;
+    text-transform: capitalize;
+    border-radius: 5px 5px 0 0;
+
+    &.largeTitle {
+      width: 300px !important;
+    }
+  }
+
+  div.formContent {
+    float: left;
+    padding: 44px 0;
+    height: auto;
+    border: 1px solid $blue;
+    border-top: none;
+    display: table;
+
+    p {
+      margin: 0 auto 10px auto;
+      width: 92%;
+      height: auto;
+      text-align: justify;
+      display: block;
+    }
+
+    label {
+      clear: left;
+      float: left;
+      margin: 8px 0 15px 0;
+      padding: 0 2% 0 0;
+      width: 28%;
+      height: 34px;
+      text-align: right;
+      line-height: 18px;
+      display: block;
+    }
+
+    div {
+      display: block;
+
+      &.smallForm {
+        width: 100%;
+        display: table;
+        clear: both;
+      }
+    }
+    div.error {
+      float: left;
+      display: table;
+      ul {
+        li {
+          margin: 0 5px 0 0;
+          padding: 1px 5px;
+          width: auto;
+          color: #fff;
+          border: none;
+          background: $red;
+        }
+      }
+    }
+
+  }
+
+  &.smallForm {
+    width: 446px;
+    h2 {width: 426px !important;}
+    div.formContent {width: 444px;}
+  }
+
+  &.largeForm {
+    width: 990px;
+    h2 {width: 970px !important;}
+    div.formContent {width: 988px;}
+  }
+
+  h5 {
+    float: right;
+    margin: 0 -2px 35px 0;
+    padding: 0 12px;
+    width: auto;
+    height: 27px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 27px;
+    background: $blue;
+    display: block;
+    border-radius: 0 0 5px 5px;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {text-decoration: underline;}
+    }
+  }
+
+  input {background: transparent !important; backgorund-color: transparent !important;}
+
+}

@@ -1,0 +1,16 @@
+{% extends '::mail.html.twig' %}
+
+{% block subject 'Aanvraag auditor door ' ~ user.getUsername() %}
+
+    {% block body_html %}
+        {{ parent() }}
+        {% block content %}
+            Beste Administrator, <br/><br/>
+
+            Een nieuwe gebruiker <strong>({{ user.getUsername|capitalize }})</strong> heeft een aanvraag ingedient om auditor te worden.<br/>
+            Klik <a href="#" style="color: #e74739; text-decoration: underline;">hier</a> om deze rechten aan de gebruiker toe te kennen.
+
+            <br/><br/>
+            <em>AIFSHE</em>
+        {% endblock %}
+    {% endblock %}

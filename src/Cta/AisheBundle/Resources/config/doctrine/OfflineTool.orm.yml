@@ -1,0 +1,29 @@
+Cta\AisheBundle\Entity\OfflineTool:
+    type: entity
+    table: offline_tool
+    repositoryClass: Cta\AisheBundle\Entity\Repository\OfflineTool
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fileName:
+            type: string
+            length: '64'
+            column: FileName
+        fileToken:
+            type: string
+            length: '32'
+            column: FileToken
+        latestVersion:
+            type: boolean
+            column: latestVersion
+        outdated:
+            type: boolean
+            column: outdated
+            default: 0
+    oneToMany:
+        offlinetools:
+            targetEntity: OfflineTool
+            mappedBy: OfflineTool

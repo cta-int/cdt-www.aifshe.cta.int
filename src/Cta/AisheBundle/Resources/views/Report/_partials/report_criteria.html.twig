@@ -1,0 +1,66 @@
+{% set types_shown = [] %}
+{% for criterion in criteria %}
+    {% if criterion.type not in types_shown %}
+        {% set types_shown = types_shown|merge([criterion.type]) %}
+        <h1>{{ criterion.type|toCriterionType() }}</h1>
+    {% endif %}
+
+
+    <h2>{{ criterion.chapterNr }}
+        . {% if criterion.criterionTranslations|length > 0 %}{{ criterion.criterionTranslations.0.value }}{% endif %}</h2>
+
+    <div class="report-item">
+        {% for criterionItem in criterion.criterionItems %}
+            <div class="top-show-report">
+                <h3>{{ 'report.item.criterion'|trans() }} {{ criterion.chapterNr }}
+                    .{{ criterionItem.paragraphNr }}
+                    . {% if criterionItem.criterionItemTranslations|length > 0 %}{{ criterionItem.criterionItemTranslations.0.value }}{% endif %}</h3>
+
+                {% for reportItem in report.reportItems %}
+                    {% if reportItem.criterionItem.id == criterionItem.id %}
+
+                        {% if reportItem.hasHighPriority %}
+                            <h3 class="priority">{{ 'report.item.hasHighPriority'|trans() }}</h3>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% set reportItemFound = false %}
+            {% for reportItem in report.reportItems %}
+                {% if reportItem.criterionItem.id == criterionItem.id %}
+                    {% set reportItemFound = true %}
+
+                    <p>
+                        <strong>{{ 'report.item.currentSituation'|trans() }}:</strong>
+                        {% if reportItem.currentSituationRating %}
+                            <strong>{{ ('report.item.stage.' ~ reportItem.currentSituationRating)|trans() }}</strong>
+                        {% else %}
+                            {{ 'report.item.stage.0.0'|trans() }}
+                        {% endif %}
+                    </p>
+                    {% if reportItem.currentSituationComment %}
+                        <p>{{ reportItem.currentSituationComment }}</p>
+                    {% endif %}
+
+                    <p>
+                        <strong>{{ 'report.item.desiredSituation'|trans() }}:</strong>
+                        {% if reportItem.desiredSituationRating %}
+                            <strong>{{ ('report.item.stage.' ~ reportItem.desiredSituationRating)|trans() }}</strong>
+                        {% else %}
+                            {{ 'report.item.stage.0.0'|trans() }}
+                        {% endif %}
+                    </p>
+                    {% if reportItem.desiredSituationComment %}
+                        <p>{{ reportItem.desiredSituationComment }}</p>
+                    {% endif %}
+                {% endif %}
+
+            {% endfor %}
+
+            {% if reportItemFound != true %}
+                <p>{{ 'report.item.stage.0.0'|trans() }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}

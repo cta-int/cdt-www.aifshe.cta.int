@@ -1,0 +1,26 @@
+Cta\AisheBundle\Entity\CriterionTranslation:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\CriterionTranslation
+    table: criterion_translation
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        lang:
+            type: smallint
+            nullable: false
+        value:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+    manyToOne:
+        criterion:
+            targetEntity: Criterion
+            inversedBy: criterionTranslations
+            joinColumn:
+                name: criterion_id
+                referencedColumnName: id

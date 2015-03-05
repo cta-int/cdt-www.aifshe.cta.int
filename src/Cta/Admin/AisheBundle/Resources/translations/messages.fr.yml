@@ -1,0 +1,95 @@
+base:
+    criteria:     Critères
+    pages:        Pages
+    users:        Utilisateurs
+    groups:       Groupes
+    pending:      Les utilisateurs en attente d'approbation l'auteur
+    window:
+        pending:
+            title:  Demander du vérificateur
+            text:   Utilisateur (s) en attente d'approbation vous.
+            over:   Cliquez pour aller de vérificatrice de la gestion.
+
+page:
+    identifier: Identification
+    content:    Content
+    edit:       Modifier la page
+    translation:
+        addOrEdit:  Nouveau / Modifier la traduction de la page
+
+criterion:
+    chapterNr:  Chapitre
+    addOrEdit:  Nouveau / Modifier Criterion
+    type:       Type
+    name:       Nom
+    add:        Nouveau Criterion
+    manage:     Gestion
+    delete:     Supprimer Criterion
+    items:      Gestion Criterion Articles
+    deleted:    Le critère est supprimé.
+    dialog:
+        title:  Supprimer Criterion
+        text:   Etes-vous sûr de vouloir supprimer ce critère?
+    item:
+        paragraphNr:  Partie
+        for:          Criterion Items pour
+        add:          Nouveau Criterion Item
+        name:         Nom
+        delete:       Supprimer cet Item
+        dialog:
+            title:  Supprimer Criterion Item
+            text:   Etes-vous sûr de vouloir supprimer ce Criterion Itemn?
+        deleted:      L'item critère est supprimé
+        addOrEdit:    Nouveau / Editer Criterion Item
+        translation:
+            addOrEdit:  Nouveau / Modifier la traduction de Criterion chapitre
+            name:       nom
+            infoStage1: Phase 1 Infos
+            infoStage2: Phase 2 Infos
+            infoStage3: Phase 3 Infos
+            infoStage4: Phase 4 Infos
+            infoStage5: Phase 5 Infos
+
+group:
+    name:       Nom
+    add:        Nouveau groupe
+    roles:      Rouleau
+    addOrEdit:  Nouveau / Modifier groupe
+    role:
+        label:    Rôle
+        remove:   Supprimer rôle
+    dialog:
+        title:  Supprimer le groupe
+        text:   Etes-vous sûr de vouloir supprimer ce groupe?
+
+user:
+    name:           Nom d'usager
+    email:          Email
+    loggedIn:       Dernière connecté
+    isEnabled:      Est activé
+    groups:         Groupes
+    password:       Mot de passe
+    passwordRepeat: Répéter mot de passe
+    add:            Nouvel utilisateur
+    addOrEdit:      Nouvel / Modifier utilisateur
+    institution:    Institut
+    manage:     Gestion
+    pending:
+        dialog:
+            title:  Les droits des vérificateurs d'utilisateurs
+            text:
+                accept: Etes-vous sûr que vous voulez donner cet utilisateur des droits de l'vérificateurs?
+                decline: Etes-vous sûr que vous voulez donner à un utilisateur aucun droits de l'vérificateurs?
+
+tool:
+    offlineTool:  l'outil en ligne
+    update:       mettre à jour
+    filename:     Nom du fichier
+    filesize:     taille du fichier
+    createdby:    créée par
+    datetime:     créé à
+    download:     télécharger
+    update:       réviser
+    edit:         Modifier
+    delete:       Supprimer Criterion
+    manage:       Gestion

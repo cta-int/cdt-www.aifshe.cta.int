@@ -1,0 +1,10 @@
+{% extends "CtaAisheBundle:Report:base.html.twig" %}
+
+{% block report %}
+    {% if report is defined and report.id and report.name %}
+        <h2>{{ 'report.edit'|trans() }}</h2>
+    {% else %}
+        <h2>{{ 'report.new'|trans() }}</h2>
+    {% endif %}
+    {{ form(form, {'attr': {'class': 'largeForm'} } )}}
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{ include('CtaAisheBundle:Report:_partials/overview_menu.html.twig') }}
+
+    <h1>{{ 'institution.overview'|trans() }}</h1>
+    <a href="{{ path('cta_aishe_institution_edit') }}" class="button"><img src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"/>{{ 'institution.add'|trans() }}</a>
+    <ul name="institutions">
+        <li class="top">
+            <span class="institutions-name">{{ 'institution.name'|trans() }}</span>
+            <span class="create-author">{{ 'base.modifiedBy'|trans() }}</span>
+            <span class="create-date">{{ 'base.modifiedAt'|trans() }}</span>
+            <span class="empty-row">&nbsp;</span>
+        </li>
+
+        {% for institution in institutions %}
+            <li>
+                <a href="{{ path('cta_aishe_institution_edit', {'id': institution.id}) }}">
+                    <span class="institutions-name">{{ institution.name }}</span>
+                    <span class="create-author">{% if institution.modifiedBy is not null %}{{ institution.modifiedBy.username }}{% else %}{% if institution.createdBy is not null %}{{ institution.createdBy.username }}{% else %}&nbsp;{%  endif %}{%  endif %}</span>
+                    <span class="create-date">{% if institution.modifiedAt is not null %}{{ institution.modifiedAt|date('Y-m-d') }}{% else %}{% if institution.createdAt is not null %}{{ institution.createdAt|date('Y-m-d') }}{% else %}&nbsp;{%  endif %}{%  endif %}</span>
+                </a>
+                <span name="actions" class="delete">
+                    <a title="{{ 'institution.delete'|trans() }}" href="{{ path('cta_aishe_institution_delete', {'id': institution.id}) }}" onclick="javascript:showConfirm(this,event,'{{ 'institution.dialog.title'|trans() }}','{{ 'institution.dialog.text'|trans() }}');"><img src="{{ asset('bundles/ctaaishe/css/img/icon-delete-black.png') }}" style="padding: 3px 0 0 0;"/></a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ include('DevartCommonBundle:_partials:_pagination.html.twig', {
+        currentFilters: app.request.attributes.get('_route_params') ? app.request.attributes.get('_route_params') : {},
+        currentPage: page,
+        paginationPath: "cta_aishe_institution_overview",
+        lastPage: lastPage,
+        showAlwaysFirstAndLast: false
+    }) }}
+
+    <div id="dialog" title="Confirmation title"></div>
+{% endblock %}
+
+{% block javascript_code %}
+    {{ parent() }}
+    jQuery(document).ready(function() {
+        jQuery("#dialog").dialog({
+            autoOpen: false,
+            modal: true
+        });
+    });
+
+    function showConfirm(obj, e, title, text) {
+        e.preventDefault();
+        url = obj.href;
+
+        $("#dialog").html(text);
+            $("#dialog").dialog({
+            title : title,
+            buttons : [
+                {
+                    text: '{{ 'base.dialog.confirm'|trans() }}',
+                    click: function() {
+                        window.location.replace(url);
+                    }
+                },
+                {
+                    text: '{{ 'base.dialog.cancel'|trans() }}',
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+        });
+
+        $("#dialog").dialog("open");
+    }
+
+{% endblock %}

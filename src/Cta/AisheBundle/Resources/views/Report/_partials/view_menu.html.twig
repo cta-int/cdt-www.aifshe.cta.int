@@ -1,0 +1,94 @@
+{% set privilegedUser = false %}
+{% if not is_granted('ROLE_ADMIN') %}
+    {% for pUser in report.users %}
+        {% if pUser.id == app.security.getToken().getUser().getId() %}
+            {% set privilegedUser = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<div id="side-menu" class="icons-menu">
+    <a href="{{ path('cta_aishe_report_view', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-quick.png') }}"/><span class="text"><p>{{ 'security.menu.quickReport'|trans() }}</p></span></a>
+    {% if is_granted('ROLE_ADMIN') or privilegedUser or app.security.getToken().getUser().getId() == report.createdBy.id %}
+        <a href="{{ path('cta_aishe_report_data', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-editreport.png') }}"/><span class="text"><p>{{ 'security.menu.editReport'|trans() }}</p></span></a>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') or privilegedUser or app.security.getToken().getUser().getId() == report.createdBy.id %}
+        <a href="{{ path('cta_aishe_report_edit', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-edit.png') }}"/><span class="text"><p>{{ 'security.menu.editCriteria'|trans() }}</p></span></a>
+    {% endif %}
+    <a href="{{ path('cta_aishe_report_show', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-showreport.png') }}"/><span class="text"><p>{{ 'security.menu.showReport'|trans() }}</p></span></a>
+    {# chart disabled
+    {% if is_granted('ROLE_ADMIN') or privilegedUser or app.security.getToken().getUser().getId() == report.createdBy.id %}#}
+        {#<a href="{{ path('cta_aishe_report_chart', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-chart.png') }}"/><span class="text"><p>{{ 'security.menu.editCharts'|trans() }}</p></span></a>#}
+    {#{% endif %}#}
+    {% if is_granted('ROLE_AUDITOR') %}
+        <a href="{{ path('cta_aishe_report_users', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-users.png') }}"/><span class="text"><p>{{ 'security.menu.allowUsers'|trans() }}</p></span></a>
+    {% endif %}
+    <a href="{{ path('cta_aishe_report_show_print', {'id': report.id}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-print.png') }}"/><span class="text"><p>{{ 'security.base.print'|trans() }}</p></span></a>
+    <a href="#" id="export_button"><img src="{{ asset('bundles/ctaaishe/css/img/icon-export.png') }}"/><span class="text"><p>{{ 'security.base.export'|trans() }}</p></span></a>
+    <a href="{{ path('cta_aishe_report_delete', {'id': report.id}) }}" onclick="javascript:showConfirm(this,event,'{{ 'report.dialog.title'|trans() }}','{{ 'report.dialog.text'|trans() }}');">
+        <img src="{{ asset('bundles/ctaaishe/css/img/icon-delete.png') }}"/><span class="text"><p>{{ 'security.base.delete'|trans() }}</p></span>
+    </a>
+    <a href="javascript:history.go(-1);"><img src="{{ asset('bundles/ctaaishe/css/img/icon-back.png') }}"/><span class="text"><p>{{ 'security.base.back'|trans() }}</p></span></a>
+
+    {% if report.isOfficial %}
+        <div id="icons">
+            {% if report.status == 8 %}
+                <div class="request-accepted"><img src="{{ asset('bundles/ctaaishe/css/img/icon-allowed.png') }}"/><span class="text"><p>{{ 'report.status.8'|trans() }}</p></span></div>
+            {% elseif report.status != 0 %}
+                {% if is_granted('ROLE_ADMIN') or app.security.getToken().getUser().getId() == report.createdBy.id %}
+                    <a href="{{ path('cta_aishe_report_status', {'id': report.id, 'action': 'approve'}) }}" class="approve-approval"><img src="{{ asset('bundles/ctaaishe/css/img/icon-approve.png') }}"/><span class="text"><p>{{ 'security.menu.requestApprove'|trans() }}</p></span></a>
+                    {% if report.status == 6 %}
+                        <a href="{{ path('cta_aishe_report_status', {'id': report.id, 'action': 'deny'}) }}" class="deny-approval"><img src="{{ asset('bundles/ctaaishe/css/img/icon-deny.png') }}"/><span class="text"><p>{{ 'security.menu.requestDeny'|trans() }}</p></span></a>
+                    {% endif %}
+                {% else %}
+                    {% if report.status == 6 %}
+                        <div class="request-pending"><img src="{{ asset('bundles/ctaaishe/css/img/icon-request.png') }}"/><span class="text"><p>{{ 'report.status.6'|trans() }}</p></span></div>
+                    {% else %}
+                        <a href="{{ path('cta_aishe_report_status', {'id': report.id, 'action': 'request'}) }}" class="request-approval"><img src="{{ asset('bundles/ctaaishe/css/img/icon-request.png') }}"/><span class="text"><p>{{ 'security.menu.requestApproval'|trans() }}</p></span></a>
+                        {% if report.status == 7 %}
+                            <div class="request-denied"><img src="{{ asset('bundles/ctaaishe/css/img/icon-denied.png') }}"/><span class="text"><p>{{ 'report.status.7'|trans() }}</p></span></div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    jQuery(document).ready(function() {
+        jQuery("#export_button").on('click', function(e){
+            e.preventDefault();
+
+            $("#dialog").html('{{ 'report.export.dialog.text'|trans() }}');
+            $("#dialog").dialog({
+                title : '{{ 'report.export.dialog.title'|trans() }}',
+                buttons : [
+                    {
+                        text: 'PDF',
+                        width: '100%',
+                        click: function() {
+                            window.location.replace('{{ path('cta_aishe_report_export', {'id': report.id, 'type': 'pdf'}) }}');
+                        }
+                    },
+                    {# disable DOCX export {#}
+                        {#text: 'DOCX',#}
+                        {#width: '100%',#}
+                        {#click: function() {#}
+                            {#window.location.replace('{{ path('cta_aishe_report_export', {'id': report.id, 'type': 'docx'}) }}');#}
+                        {#}#}
+                    {#},#}
+                    {
+                        text: '{{ 'base.dialog.close'|trans() }}',
+                        width: '100%',
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+            $("#dialog").dialog("open");
+        });
+    });
+    //]]>
+</script>

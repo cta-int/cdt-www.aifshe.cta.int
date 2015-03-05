@@ -1,0 +1,38 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_AUDITOR:     ROLE_USER
+        ROLE_ADMIN:       ROLE_AUDITOR
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        resources:
+            pattern:  ^/css|images|js|_wdt/
+            security: false
+        main:
+            pattern: ^/
+            form_login:
+                provider:                       fos_userbundle
+                csrf_provider:                  form.csrf_provider
+            logout:
+                path: fos_user_security_logout
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/report/import/offline, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/download, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/version, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/devart, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/offlinetool, role: ROLE_ADMIN }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/institutions, role: ROLE_AUDITOR }
+        - { path: ^/, role: ROLE_USER }

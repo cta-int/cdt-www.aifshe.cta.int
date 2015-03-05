@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>AIFSHE</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico'"/>
+
+    <!-- css files-->
+    <link rel="stylesheet" href="../../css/stylesheets/screen.css"/>
+    <link rel="stylesheet" href="../../css/jqtransform.css"/>
+
+    <!-- jQuery -->
+    <link rel="stylesheet" href="../../js/lib/jQuery/ui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css"/>
+
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery.jqtransform.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <!-- stores -->
+    <script type="text/javascript" src="../../app/Resources/store/settings.store.js"></script>
+    <script type="text/javascript" src="../../app/Resources/store/sideMenu.store.js"></script>
+
+    <!-- model -->
+    <script type="text/javascript" src="../../app/Resources/model/report.model.js"></script>
+
+    <!-- translations -->
+    <script type="text/javascript">var languages = {};</script>
+    <script type="text/javascript" src="../../app/Resources/translations/en.js"></script>
+    <script type="text/javascript" src="../../app/Resources/translations/nl.js"></script>
+    <script type="text/javascript" src="../../app/Resources/translations/fr.js"></script>
+
+    <!-- global js file -->
+    <script type="text/javascript" src="../js/global.js"></script>
+
+    <!-- page specific js file -->
+    <script type="text/javascript" src="../js/editReport.js"></script>
+</head>
+<body>
+<div id="content">
+    <header>
+        <div id="header-box">
+            <div id="logo">
+                <a href="#"><img src="../../img/logo-text.png" alt="AIFSHE"/></a>
+            </div>
+            <div id="language"></div>
+
+        </div>
+    </header>
+
+    <nav id="navbar">
+        <div id="menu">
+
+        </div>
+    </nav>
+
+    <section id="main-content">
+
+        <div id="flash-messages">
+            <div class="flash-notice"></div>
+            <div class="flash-error"></div>
+        </div>
+
+        <h1>
+            <script type="text/javascript">document.write(reportModel.data.name);</script>
+        </h1>
+
+        <div id="side-menu" class="icons-menu">
+            <script type="text/javascript">
+                renderSideMenu();
+            </script>
+            <div id="icons">
+                <a class="online-offline" href="">
+                    <img src="../../css/img/icon-offline.png"/>
+                    <span class="text">
+                        <p class="translate">security.base.online</p>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div id="block-content">
+            <h2 class="translate">security.menu.editReport</h2>
+
+            <form method="post" class="largeForm">
+                <div class="formContent">
+                    <div id="report" class="largeForm">
+
+                        <label for="report_name" class="required translate">report.name</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_name" name="name" required="required">
+
+                        <label for="report_institution" class="required translate">report.institution</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_institution" class="translate"
+                               value="offline.onlyOnlineField" disabled>
+
+                        <label for="report_department" class="translate">report.department</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_department" name="department">
+
+                        <label for="report_coordinator" class="translate">report.coordinator</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_coordinator" name="coordinator">
+
+                        <label for="report_secretary" class="translate">report.secretary</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_secretary" name="secretary">
+
+                        <label for="report_nrOfParticipants" class="translate">report.nrOfParticipants</label>
+
+                        <div class="error"></div>
+                        <input type="number" id="report_nrOfParticipants" name="nrOfParticipants">
+
+                        <label for="report_dateAssessment" class="translate">report.dateAssessment</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_dateAssessment" name="dateAssessment" required="required"
+                               class="datepicker">
+
+                        <label for="report_dateLatestAssessment" class="translate">report.dateLatestAssessment</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_dateLatestAssessment" name="dateLatestAssessment"
+                               class="datepicker">
+
+                        <label for="report_dateDesiredSituation" class="translate">report.dateDesiredSituation</label>
+
+                        <div class="error"></div>
+                        <input type="text" id="report_dateDesiredSituation" name="dateDesiredSituation"
+                               class="datepicker">
+
+                        <label for="report_comment" class="translate">report.comment</label>
+
+                        <div class="error"></div>
+                        <textarea id="report_comment" name="comment"></textarea>
+
+                        <div>
+                            <button type="submit" id="report_save" class="translate" name="save">form.save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+    </section>
+</div>
+
+<footer>
+    &nbsp;
+</footer>
+
+</body>
+</html>

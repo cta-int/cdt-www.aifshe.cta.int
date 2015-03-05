@@ -1,0 +1,14 @@
+Cta\AisheBundle\Entity\Base:
+    type: mappedSuperclass
+    repositoryClass: Cta\AisheBundle\Entity\Repository\Base
+    manyToOne:
+        createdBy:
+            targetEntity: User
+            joinColumn:
+                name: created_by
+                referencedColumnName: id
+        modifiedBy:
+            targetEntity: User
+            joinColumn:
+                name: modified_by
+                referencedColumnName: id

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>AIFSHE</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico'"/>
+
+    <!-- css files-->
+    <link rel="stylesheet" href="../../css/stylesheets/screen.css"/>
+    <link rel="stylesheet" href="../../css/jqtransform.css"/>
+
+    <!-- jQuery -->
+    <link rel="stylesheet" href="../../js/lib/jQuery/ui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css"/>
+
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery.jqtransform.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <!-- stores -->
+    <script type="text/javascript" src="../../app/Resources/store/settings.store.js"></script>
+    <script type="text/javascript" src="../../app/Resources/store/sideMenu.store.js"></script>
+    <script type="text/javascript" src="../../app/Resources/store/criterion.store.js"></script>
+
+    <!-- model -->
+    <script type="text/javascript" src="../../app/Resources/model/report.model.js"></script>
+
+    <!-- translations -->
+    <script type="text/javascript">var languages = {};</script>
+    <script type="text/javascript" src="../../app/Resources/translations/en.js"></script>
+    <script type="text/javascript" src="../../app/Resources/translations/nl.js"></script>
+    <script type="text/javascript" src="../../app/Resources/translations/fr.js"></script>
+
+    <!-- global js file -->
+    <script type="text/javascript" src="../js/global.js"></script>
+
+    <!-- page specific js file -->
+    <script type="text/javascript" src="../js/show.js"></script>
+</head>
+<body>
+<div id="content">
+<header>
+    <div id="header-box">
+        <div id="logo">
+            <a href="#"><img src="../../img/logo-text.png" alt="AIFSHE"/></a>
+        </div>
+        <div id="language"></div>
+    </div>
+</header>
+
+<nav id="navbar">
+    <div id="menu">
+
+    </div>
+</nav>
+
+<section id="main-content">
+
+<div id="flash-messages">
+    <div class="flash-notice"></div>
+    <div class="flash-error"></div>
+</div>
+
+<h1>
+    <script type="text/javascript">document.write(reportModel.data.name);</script>
+</h1>
+
+    <div id="side-menu" class="icons-menu">
+    <script type="text/javascript">
+        renderSideMenu();
+    </script>
+        <div id="icons">
+            <a class="online-offline" href="">
+                <img src="../../css/img/icon-offline.png"/>
+                    <span class="text">
+                        <p class="translate">security.base.online</p>
+                    </span>
+            </a>
+        </div>
+</div>
+
+<table>
+    <tbody>
+    <tr>
+        <td class="translate">report.institution</td>
+        <td class="translate">report.onlyOnlineField</td>
+    </tr>
+    <tr>
+        <td class="translate">report.department</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.department)</script>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="translate">report.auditor</td>
+        <td class="translate">report.onlyOnlineField</td>
+    </tr>
+
+    <tr>
+        <td class="translate">report.coordinator</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.coordinator)</script>
+        </td>
+    </tr>
+    <tr>
+        <td class="translate">report.nrOfParticipants</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.nrOfParticipants)</script>
+        </td>
+    </tr>
+    <tr>
+        <td class="translate">report.secretary</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.secretary)</script>
+        </td>
+    </tr>
+    <tr>
+        <td class="translate">report.dateAssessment</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.dateAssessment)</script>
+        </td>
+    </tr>
+    <tr>
+        <td class="translate">report.dateLatestAssessment</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.dateLatestAssessment)</script>
+        </td>
+    </tr>
+    <tr>
+        <td class="translate">report.dateDesiredSituation</td>
+        <td>
+            <script type="text/javascript">document.write(reportModel.data.dateDesiredSituation)</script>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<ul name="report-view" id="flags">
+    <li class="top" style="cursor:auto;">
+        <span class="title translate">report.item.criterion</span>
+        <span style="cursor:auto;" class="number first-number">0</span>
+        <span style="cursor:auto;" class="number">1</span>
+        <span style="cursor:auto;" class="number">2</span>
+        <span style="cursor:auto;" class="number">3</span>
+        <span style="cursor:auto;" class="number">4</span>
+        <span style="cursor:auto;" class="number last-number">5</span>
+        <span class="priority translate">report.priority</span>
+    </li>
+    <li class="criterion-row" style="cursor:auto;">&nbsp;</li>
+    <script type="text/javascript">
+        renderFlagGrid();
+    </script>
+</ul>
+    <div style="height:20px;clear:both;"></div>
+<h2 class="translate">report.stages.title</h2>
+<div class="report-item">
+    <p class="translate">report.stages.fiveStages</p>
+    <ul>
+        <li class="translate">report.stage.1</li>
+        <li class="translate">report.stage.2</li>
+        <li class="translate">report.stage.3</li>
+        <li class="translate">report.stage.4</li>
+        <li class="translate">report.stage.5</li>
+    </ul>
+    <p class="translate">report.stages.moreInfo</p>
+</div>
+<script type="text/javascript">
+    renderCriterionDetails();
+</script>
+
+<h1 class="translate">base.generalData</h1>
+<script type="text/javascript">
+    renderGeneralData();
+</script>
+</section>
+</div>
+
+<footer>
+    &nbsp;
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h3>{{ 'base.explanation'|trans() }}</h3>
+
+<table>
+    <tr class="toprow">
+        <td>{{ 'report.item.criterion'|trans() }}</td>
+        <td>{{ 'base.certification.1'|trans() }}</td>
+        <td>{{ 'base.certification.2'|trans() }}</td>
+        <td>{{ 'base.certification.3'|trans() }}</td>
+        <td>{{ 'base.certification.4'|trans() }}</td>
+    </tr>
+
+    {% for criterion in criteria %}
+        {% for criterionItem in criterion.criterionItems %}
+            <tr>
+                <td>{{ criterion.chapterNr }}.{{ criterionItem.paragraphNr }}.</td>
+                {% for req in criterionItem.certificationRequirements %}
+                    <td>{{ req.stage }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endfor %}
+
+</table>

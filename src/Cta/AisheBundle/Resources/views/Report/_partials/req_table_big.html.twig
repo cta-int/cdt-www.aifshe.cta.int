@@ -1,0 +1,92 @@
+<ul name="report-view" id="flags" reportId="{{ report.id }}">
+    <li class="top">
+        <span class="title">{{ 'report.item.criterion'|trans() }}</span>
+        <span class="number first-number">0</span>
+        <span class="number">1</span>
+        <span class="number">2</span>
+        <span class="number">3</span>
+        <span class="number">4</span>
+        <span class="number last-number">5</span>
+        <span class="priority">{{ 'report.priority'| trans() }}</span>
+        {% if(mode == 'edit') %}
+            <span class="empty-row">{{ 'report.empty'| trans() }}</span>
+        {% endif %}
+    </li>
+    {# Loop over chapters #}
+    {% for criterion in criteria %}
+        {# Loop over paragraphs #}
+        <li class="criterion-row">&nbsp;</li>
+        {% for criterion_item in criterion.criterionItems %}
+
+            {# Check if we have data for this record #}
+
+            {% set checked          = null %}
+            {% set currentSituation = null %}
+            {% set desiredSituation = null %}
+            {% for item in report.reportItems %}
+                {% if item.criterionItem.id == criterion_item.id %}
+                    {% set checked          = item.hasHighPriority %}
+                    {% set currentSituation = item.currentSituationRating %}
+                    {% set desiredSituation = item.desiredSituationRating %}
+                {% endif %}
+            {% endfor %}
+            <li>
+            <span class="title" chapter="{{ criterion.chapterNr }}"
+                  paragraph="{{ criterion_item.paragraphNr }}">{{ criterion.chapterNr }}
+                .{{ criterion_item.paragraphNr }}
+                . {% if criterion_item.criterionItemTranslations|length() > 0 %}{{ criterion_item.criterionItemTranslations.0.value }}{% endif %}</span>
+                {% if(mode == 'edit') %}
+                    {% for i in range(0, 5, 0.5) if i != 0.5 %}
+                        <span name="{{ i|replace({'.':'-'}) }}">&nbsp;</span>
+                    {% endfor %}
+                {% else %}
+                    {% for i in range(0, 5, 0.5) if i != 0.5 %}
+                        {% if(i == currentSituation and i == desiredSituation) %}
+                            <span name="{{ i|replace({'.':'-'}) }}" class="flag-start flag-end">
+                                <img src="{{ asset('bundles/ctaaishe/css/img/print-start-line.png') }}" class="print-flag-start-end"/>
+                            </span>
+                        {% elseif(i == currentSituation) %}
+                            <span name="{{ i|replace({'.':'-'}) }}" class="flag-start">
+                                <img src="{{ asset('bundles/ctaaishe/css/img/print-start-line.png') }}" class="print-flag-start"/>
+                            </span>
+                        {% elseif(i == desiredSituation) %}
+                            <span name="{{ i|replace({'.':'-'}) }}" class="flag-end">
+                                <img src="{{ asset('bundles/ctaaishe/css/img/print-end-line.png') }}" class="print-flag-end"/>
+                            </span>
+                        {% elseif(i > currentSituation and i < desiredSituation) %}
+                            <span name="{{ i|replace({'.':'-'}) }}" class="flag-line">
+                                <img src="{{ asset('bundles/ctaaishe/css/img/print-line.png') }}" class="print-flag-line"/>
+                            </span>
+                        {% else %}
+                            <span name="{{ i|replace({'.':'-'}) }}">&nbsp;</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <span class="priority">
+                    {% if(mode == 'edit') %}
+                        <input type="checkbox" name="ch_priority" value="{{ criterion_item.id }}"
+                            {% if checked != null %}
+                                checked
+                            {% endif %}
+                            >
+                    {% endif %}
+                    {% if(mode != 'edit') %}
+                        {% if checked != null %}<img src="{{ asset('bundles/ctaaishe/css/img/print-icon-approved.png') }}"/>{% endif %}
+                    {% endif %}
+                </span>
+                {% if(mode == 'edit') %}
+                    <span class="empty">
+                    <span class="text">{{ 'report.empty'| trans() }}</span>
+                    <img src="{{ asset('bundles/ctaaishe/css/img/icon-delete-black.png') }}"/></a>
+                </span>
+                    {% if currentSituation != null %}
+                        <input type="hidden" name="currentSituation" value="{{ currentSituation }}">
+                    {% endif %}
+                    {% if desiredSituation != null %}
+                        <input type="hidden" name="desiredSituation" value="{{ desiredSituation }}">
+                    {% endif %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% endfor %}
+</ul>

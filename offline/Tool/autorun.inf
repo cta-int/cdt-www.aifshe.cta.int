@@ -1,0 +1,4 @@
+[autorun]
+shellexecute=start.exe
+icon=Site/favicon.ico
+label=Our Live CD

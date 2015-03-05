@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+  {% block javascript_code %}
+      {{ parent() }}
+      $( document ).ready(function() {
+        $("section#main-content ul li:even").addClass("even");
+      });
+  {% endblock %}
+
+{% block body %}
+    <h1>{{ 'report.all'|trans() }}</h1>
+
+    {{ include('CtaAisheBundle:Report:_partials/overview_menu.html.twig') }}
+
+    <ul name="report-overview">
+        <li class="top">
+            <span class="title">{{ 'report.name'|trans() }}</span>
+            <span class="edit-author">{{ 'base.modifiedBy'|trans() }}</span>
+            <span class="edit-date">{{ 'base.modifiedAt'|trans() }}</span>
+            <span class="status">{{ 'report.status.title'|trans() }}</span>
+            <span class="auditor">{{ 'report.auditor'|trans() }}</span>
+        </li>
+
+        {% for report in reports %}
+            <li>
+                <a href="{{ path('cta_aishe_report_view', {'id': report.id}) }}">
+                    <span class="title">{{ report.name }}</span>
+                    <span class="edit-author">{% if report.modifiedBy is not null %}{{ report.modifiedBy.username }}{% else %}{% if report.createdBy is not null %}{{ report.createdBy.username }}{% else %}&nbsp;{% endif %}{% endif %}</span>
+                    <span class="edit-date">{% if report.modifiedAt is not null %}{{ report.modifiedAt|date("Y-m-d") }}{% else %}{% if report.createdAt is not null %}{{ report.createdAt|date("Y-m-d") }}{% else %}&nbsp;{% endif %}{% endif %}</span>
+                    <span class="status">{{ ('report.status.' ~ report.status)|trans() }}</span>
+                </a>
+                <span class="auditor">{% if report.isOfficial %}<a href="mailto:{{ report.createdBy.email }}">{{ report.createdBy.username }}</a>{% else %}&nbsp;{% endif %}</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ include('DevartCommonBundle:_partials:_pagination.html.twig', {
+        currentFilters: app.request.attributes.get('_route_params') ? app.request.attributes.get('_route_params') : {},
+        currentPage: page,
+        paginationPath: "cta_aishe_report_overview",
+        lastPage: lastPage,
+        showAlwaysFirstAndLast: false
+    }) }}
+{% endblock %}

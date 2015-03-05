@@ -1,0 +1,18 @@
+<div id="side-menu" class="side-menu">
+    {% if not is_granted('ROLE_ADMIN') %}
+        <span><a href="{{ path('cta_aishe_report_data_new') }}" title="{{ 'report.new'|trans() }}">{{ 'report.new'|trans() }}</a></span>
+        <span><a href="{{ path('cta_aishe_report_import') }}" title="{{ 'report.import'|trans() }}">{{ 'report.import'|trans() }}</a></span>
+    {% endif %}
+
+    {% if is_granted('ROLE_AUDITOR') %}
+        <span><a href="{{ path('cta_aishe_institution_overview') }}" title="{{ 'institution.overview'|trans() }}">{{ 'institution.overview'|trans() }}</a></span>
+    {% endif %}
+
+    <span><a href="{{ path('cta_aishe_info') }}" title="{{ 'base.moreInformation'|trans() }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-info.png') }}" alt="{{ 'base.moreInformation'|trans() }}"/></a></span>
+    <span><a href="{{ path('cta_aishe_help') }}" title="{{ 'base.help'|trans() }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-help.png') }}" alt="{{ 'base.help'|trans() }}"/></a></span>
+
+    {% if app.request.attributes.get('_route') and app.request.attributes.get('_route') != 'cta_aishe_report_overview' %}
+       <span><a href="javascript:history.go(-1);" title="{{ 'security.base.back'|trans() }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-back.png') }}"/></a></span>
+    {% endif %}
+
+</div>

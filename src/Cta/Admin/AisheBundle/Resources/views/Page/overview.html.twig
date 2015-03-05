@@ -1,0 +1,40 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h1>{{ 'base.pages'|trans() }}</h1>
+    <ul class="pages">
+        <li class="top">
+            <span class="title">{{ 'page.identifier'|trans() }}</span>
+            <span class="create-date">{{ 'base.modifiedAt'|trans() }}</span>
+            <span class="edit-date">{{ 'base.modifiedBy'|trans() }}</span>
+
+            {% for language in languages %}
+                <span class="language">{{ ('base.languages.' ~ language)|trans() }}</span>
+            {% endfor %}
+        </li>
+    {% for page in pages %}
+        <li>
+            <a href="{{ path('cta_admin_aishe_page_edit', {'id': page.id}) }}">
+             <span class="title">{{ page.identifier }}</span>
+             <span class="edit-date">{% if page.modifiedBy is not null %}{{ page.modifiedBy.username }}{% else %}
+                     {% if page.createdBy is defined %}
+                         {% if page.createdBy is not null %}
+                             {{ page.createdBy.username }}
+                         {% else %}
+                             &nbsp;
+                         {% endif %}
+                         {% else %}
+                         &nbsp;
+                     {% endif %}
+                 {% endif %}</span>
+             <span class="create-date">{% if page.modifiedAt is not null %}{{ page.modifiedAt|date("Y-m-d") }}{% else %}{% if page.createdAt is not null %}{{ page.createdAt|date("Y-m-d") }}{% else %}&nbsp;{% endif %}{% endif %}</span>
+            </a>
+
+            {% for language in languages %}
+                <span class="language"><span class="text">{{ ('base.languages.' ~ language)|trans() }}:</span><a href="{{ path('cta_admin_aishe_page_edit_translation', {'id': page.id, 'lang': language}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-edit-dark.png') }}"/></a></span>
+            {% endfor %}
+        </li>
+    {% endfor %}
+
+    </ul>
+{% endblock %}

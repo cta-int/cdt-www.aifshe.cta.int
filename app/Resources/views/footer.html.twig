@@ -1,0 +1,40 @@
+{% if is_granted('ROLE_ADMIN') %}
+    <script type="text/javascript">
+        //<![CDATA[
+        jQuery(document).ready(function () {
+            var outdated = 0;
+            {% if app.request.attributes.get('_route') != 'cta_admin_aishe_offline_tool_update' %}
+            jQuery.get("{{ path('cta_admin_aishe_offline_tool_outdated') }}", function (response) {
+                outdated = response;
+                if (outdated) {
+                    jQuery('#admin-message-holder').html('' +
+                            '<a href="{{ path('cta_admin_aishe_offline_tool_update') }}" title="{{ 'base.window.updateOfflineTool.over'|trans() }}">' +
+                            '   <div id="admin-message">' +
+                            '       <h2>{{ 'base.window.updateOfflineTool.title'|trans() }}</h2>' +
+                            '       <p>{{ 'base.window.updateOfflineTool.text'|trans() }}</p>' +
+                            '   </div>' +
+                            '</a>');
+                }
+            });
+            {% endif %}
+            {% if app.request.attributes.get('_route') != 'cta_admin_aishe_security_user_pending' %}
+            jQuery.get("{{ path('cta_admin_aishe_security_user_pending') }}", function (nrWaiting) {
+                if (nrWaiting > 0 && !outdated) {
+                    jQuery('#admin-message-holder').html('' +
+                            '<a href="{{ path('cta_admin_aishe_security_user_pending') }}" title="{{ 'base.window.pending.over'|trans() }}">' +
+                            '   <div id="admin-message">' +
+                            '       <h2>{{ 'base.window.pending.title'|trans() }}</h2>' +
+                            '       <p>' + nrWaiting + ' {{ 'base.window.pending.text'|trans() }}</p>' +
+                            '   </div>' +
+                            '</a>');
+                }
+            });
+            {% endif %}
+        });
+        //]]>
+    </script>
+{% endif %}
+<div id="admin-message-holder"></div>
+<footer>
+    &nbsp;
+</footer>

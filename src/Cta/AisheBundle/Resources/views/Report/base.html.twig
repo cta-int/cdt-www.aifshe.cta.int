@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# don't use this for remote resources #}
+    {#{% stylesheets 'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css' %}<link rel="stylesheet" href="{{ asset_url }}" />{% endstylesheets %}#}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" />
+{% endblock %}
+
+{% block body %}
+    {% if report is defined and report and report.id and report.name %}
+        <h1>{{ report.name }}{% if report.createdBy is not null %} [{{ report.createdBy.username }}]{% endif %}</h1>
+        {{ include('CtaAisheBundle:Report:_partials/view_menu.html.twig') }}
+    {% else %}
+        {{ include('CtaAisheBundle:Report:_partials/overview_menu.html.twig') }}
+    {% endif %}
+
+    {% block report %}{% endblock %}
+
+    <div id="dialog" title="Confirmation title"></div>
+{% endblock %}
+
+{% block javascript_code %}
+    {{ parent() }}
+    jQuery(document).ready(function() {
+        jQuery("#dialog").dialog({
+            autoOpen: false,
+            modal: true
+        });
+    });
+
+    function showConfirm(obj, e, title, text) {
+        e.preventDefault();
+        url = obj.href;
+
+        $("#dialog").html(text);
+        $("#dialog").dialog({
+            title : title,
+            buttons : [
+                {
+                    text: '{{ 'base.dialog.confirm'|trans() }}',
+                    click: function() {
+                        window.location.replace(url);
+                    }
+                },
+                {
+                    text: '{{ 'base.dialog.cancel'|trans() }}',
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+        });
+
+        $("#dialog").dialog("open");
+    }
+
+{% endblock %}

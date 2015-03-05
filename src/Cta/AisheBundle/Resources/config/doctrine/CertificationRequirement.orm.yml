@@ -1,0 +1,27 @@
+Cta\AisheBundle\Entity\CertificationRequirement:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\CertificationRequirement
+    table: certification_requirement
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        stage:
+            type: smallint
+            nullable: true
+    manyToOne:
+        certification:
+            targetEntity: Certification
+            inversedBy: CertificationRequirements
+            joinColumn:
+                name: certification_requirement_id
+                referencedColumnName: id
+        criterionItem:
+            targetEntity: CriterionItem
+            inversedBy: certificationRequirements
+            joinColumn:
+                name: criterion_item_id
+                referencedColumnName: id

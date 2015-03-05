@@ -1,0 +1,39 @@
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_css.html.twig',
+{  }
+) }}
+
+{% if report.status == 8 %}
+    <img src="{{ asset('bundles/ctaaishe/css/img/print-text.png') }}" alt="AIFSHE" class="print-logo"/><br/><br/>
+{% endif %}
+
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_info.html.twig',
+{  }
+) }}
+
+{{ include(
+'CtaAisheBundle:Export:_pdf/req_htmltable_big.html.twig',
+{ 'mode': 'view' }
+) }}
+
+
+{#<h2>&nbsp; AISHE Stages</h2>#}
+{#<div class="report-item">#}
+    {#<table cellpadding="0" cellspacing="0" border="0"><tr><td colspan="2" height="2pt">&nbsp;</td></tr><tr><td width="8pt">&nbsp;</td><td width="17.5cm">{% if info.pageTranslations|length > 0 %}{{ info.pageTranslations.0.value|raw }}{% endif %}</td></tr></table>#}
+{#</div>#}
+
+{#{{ include(#}
+{#'CtaAisheBundle:Export:_pdf/report_criteria.html.twig',#}
+{#{  }#}
+{#) }}#}
+
+{#{{ include(#}
+{#'CtaAisheBundle:Export:_pdf/report_general.html.twig',#}
+{#{  }#}
+{#) }}#}
+
+{#{{ include(#}
+{#'CtaAisheBundle:Export:_pdf/report_explanation.html.twig',#}
+{#{  }#}
+{#) }}#}

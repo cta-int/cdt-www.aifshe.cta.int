@@ -1,0 +1,11 @@
+{% extends '::mail.html.twig' %}
+
+{% block subject 'Welcome to newsletter, ' ~ name %}
+
+{% block body_html %}
+    {{ parent() }}
+    {% block content %}
+        {{ parent() }}
+        testfwfwe
+    {% endblock %}
+{% endblock %}

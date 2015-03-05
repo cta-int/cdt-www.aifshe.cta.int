@@ -1,0 +1,31 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('jsLibs/tinymce/tinymce.min.js') }}"></script>
+{% endblock %}
+
+{% block javascript_code %}
+    {{ parent() }}
+
+    jQuery(document).ready(function() {
+        tinymce.init({
+            selector: "textarea",
+            theme : "modern",
+            menubar: false,
+            image_advtab: true,
+            plugins: "link, table, hr, image, paste, charmap",
+            toolbar: "undo redo | paste | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image link | table | charmap",
+            setup : function(ed) {
+                ed.on("change", function(ed) {
+                    ed.target.save();
+                });
+            }
+        });
+    });
+{% endblock %}
+
+{% block bodyAdmin %}
+    <h2>{{ 'page.translation.addOrEdit'|trans() }} [{{ page.identifier }}]</h2>
+    {{ form(form, { 'attr': {'class': 'largeForm'} } )}}
+{% endblock %}

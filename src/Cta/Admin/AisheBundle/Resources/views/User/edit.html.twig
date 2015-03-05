@@ -1,0 +1,17 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+{% block bodyAdmin %}
+    <h2>{{ 'user.addOrEdit'|trans() }}</h2>
+
+    {{ form_start(form, {'attr': {'class': 'largeForm'} } ) }}
+        <div class="formContent admin">
+            {{ form_row(form.username, {'label': 'user.name'}) }}
+            {{ form_row(form.email, {'label': 'user.email'}) }}
+            {{ form_row(form.institution, {'label': 'user.institution'}) }}
+            {{ form_row(form.enabled, {'label': 'user.isEnabled'}) }}
+            {{ form_row(form.plainPassword.first, {'label': 'user.password'}) }}
+            {{ form_row(form.plainPassword.second, {'label': 'user.passwordRepeat'}) }}
+            {{ form_row(form.groups, {'label': 'user.groups'}) }}
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

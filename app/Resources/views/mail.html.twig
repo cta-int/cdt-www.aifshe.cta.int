@@ -1,0 +1,77 @@
+{% block subject 'subject is empty' %}
+
+    {% block body_text %}
+        this is the plain text version of the mail body
+    {% endblock %}
+
+    {#this is the html version of the mail#}
+    {% block body_html %}
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <title>AIFSHE</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
+        <body style="margin: 0; padding: 0;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>
+                    <table align="center" cellpadding="0" cellspacing="0" width="600" border="0" style="color: #393939; border: 1px solid #393939; font-family: arial, verdana, trebuchet ms; font-size: 13px; line-height: 20px;">
+                        <tr>
+                            <td valign="top" align="left" background="{{asset('bundles/ctaaishe/css/img/logo-bg.png')}}" bgcolor="#393939" style="padding: 15px 0 50px 0; background-repeat: no-repeat; background-position: left top; border-bottom: 8px solid #cfcfcf;">
+                                <img alt="AISHE" src="http://local.cta.aishe.com{{ asset('bundles/ctaaishe/css/img/logo-text.png') }}" style="float: left; margin: 0 0 0 15px; padding: 0;">
+                                <img alt="AISHE" src="http://local.cta.aishe.com{{ asset('bundles/ctaaishe/css/img/header-bg.png') }}" style="float: left; margin: 5px 0 0 35px; padding: 0;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                                {#this will be the place where you can change the content for each mail#}
+                                {% block content %}
+                                    <table border="1" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+                                            <td>
+                                                Lorem ipsum dolor sit amet!
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 20px 0 30px 0;">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus
+                                                adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor,
+                                                eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris
+                                                neque at erat.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table border="1" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td width="260" valign="top">
+                                                            Column 1
+                                                        </td>
+                                                        <td style="font-size: 0; line-height: 0;" width="20">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="260" valign="top">
+                                                            Column 2
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                {% endblock %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#393939" style="padding: 10px;">
+                                {% block footer %}
+                                {% endblock %}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        </body>
+        </html>
+    {% endblock %}

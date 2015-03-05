@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>AIFSHE</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico'" />
+
+    <!-- css files-->
+    <link rel="stylesheet" href="../../css/stylesheets/screen.css" />
+    <link rel="stylesheet" href="../../css/jqtransform.css" />
+
+    <!-- jQuery -->
+    <link rel="stylesheet" href="../../js/lib/jQuery/ui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css"/>
+
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/jquery.jqtransform.js"></script>
+    <script type="text/javascript" src="../../js/lib/jQuery/ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <!-- stores -->
+    <script type="text/javascript" src="../../app/Resources/store/sideMenu.store.js"></script>
+
+    <!-- model -->
+    <script type="text/javascript" src="../../app/Resources/model/report.model.js"></script>
+
+    <!-- translations -->
+    <script type="text/javascript">var languages = {};</script>
+    <script type="text/javascript" src="../../app/Resources/translations/en.js"></script>
+    <script type="text/javascript" src="../../app/Resources/translations/nl.js"></script>
+    <script type="text/javascript" src="../../app/Resources/translations/fr.js"></script>
+
+    <!-- global js file -->
+    <script type="text/javascript" src="../../app/Resources/store/settings.store.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+
+    <!-- page specific js file -->
+    <script type="text/javascript" src="../js/online.js"></script>
+</head>
+<body>
+<div id="content">
+    <header>
+        <div id="header-box">
+            <div id="logo">
+                <a href="#"><img src="../../img/logo-text.png" alt="AIFSHE"/></a>
+            </div>
+            <div id="language"></div>
+        </div>
+    </header>
+
+    <nav id="navbar">
+        <div id="menu">
+
+        </div>
+    </nav>
+
+    <section id="main-content">
+
+        <div id="flash-messages">
+            <div class="flash-notice"></div>
+            <div class="flash-error"></div>
+        </div>
+
+        <h1><script type="text/javascript">document.write(reportModel.data.name);</script></h1>
+
+        <div id="side-menu" class="icons-menu">
+            <script type="text/javascript">
+                renderSideMenu();
+            </script>
+            <div id="icons">
+                <a class="online-offline" href="">
+                    <img src="../../css/img/icon-offline.png"/>
+                    <span class="text">
+                        <p class="translate">security.base.online</p>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div id="block-content">
+            <h2>security.base.online</h2>
+            <div id="flash-messages">
+                <div class="flash-notice">offline.sendingToOnline</div>
+            </div>
+            <form method="post" action="" style="display:none">
+                <textarea name="report"></textarea>
+            </form>
+        </div>
+    </section>
+</div>
+
+<footer>
+    &nbsp;
+</footer>
+
+</body>
+</html>

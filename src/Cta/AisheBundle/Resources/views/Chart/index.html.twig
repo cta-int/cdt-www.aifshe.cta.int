@@ -1,0 +1,172 @@
+{% extends "CtaAisheBundle:Report:base.html.twig" %}
+    {% block javascripts %}
+        {{ parent() }}
+        {# don't use this for remote resources #}
+        {#{% javascripts#}
+        {#'http://code.highcharts.com/highcharts.js'#}
+        {#'http://code.highcharts.com/highcharts-more.js' %}#}
+        {#<script type="text/javascript" src="{{ asset_url }}"></script>{% endjavascripts %}#}
+        <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+        <script type="text/javascript" src="http://code.highcharts.com/highcharts-more.js"></script>
+    {% endblock %}
+    {% block javascript_code %}
+        {% if 0 == 1 %}
+        <script>
+            {% endif %}
+            var hiddenSeries = {{ hiddenSeries|raw }};
+            renderSpiderChart = function () {
+                var options = {{ charts.spider|raw }};
+                options['chart']['width'] = ($('body').innerWidth() > 990 ? 990 : ($('body').innerWidth() < 300 ? 300 : $('body').innerWidth()));
+                options['chart']['height'] = ($('body').innerHeight() > 990 ? 990 : ($('body').innerHeight() < 300 ? 300 : $('body').innerHeight()));
+                options['plotOptions'] = {
+                    line: {
+                        events: {
+                            legendItemClick: function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "chart/toggleLegendItem",
+                                    data: { name: $(this).attr('name')}
+                                });
+                            }
+                        }
+                    },
+                    series: {
+                        animation: false
+                    }
+                }
+                options['chart']['renderTo'] = 'chart';
+                return new Highcharts.Chart(options);
+            }
+
+            renderInvertedAxisChart = function () {
+                var options = {{ charts.invertedAxis|raw }}, chart;
+                options['chart']['width'] = ($('body').innerWidth() > 990 ? 990 : ($('body').innerWidth() < 300 ? 300 : $('body').innerWidth()));
+                options['chart']['height'] = ($('body').innerHeight() > 990 ? 990 : ($('body').innerHeight() < 300 ? 300 : $('body').innerHeight()));
+                options['plotOptions'] = {
+                    area: {
+                        events: {
+                            legendItemClick: function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "chart/toggleLegendItem",
+                                    data: { name: $(this).attr('name')}
+                                });
+                            }
+                        }
+                    },
+                    series: {
+                        animation: false
+                    }
+                }
+                options['chart']['renderTo'] = 'chart';
+//                options['xAxis']['labels'] = {
+//                    useHTML: true
+//                }
+                chart = new Highcharts.Chart(options);
+                $('#chart').find('.highcharts-container').find('svg').find('.highcharts-legend').children('g').children('g').each(function () {
+                    var legend = $(this);
+                    var length = legend.children().length;
+                    var legendChild, legendChildText;
+                    for (var i = 0; i < length; i++) {
+                        legendChild = legend.children().eq(i);
+                        legendChildText = legendChild.find('tspan');
+                        if (legendChildText[0].textContent == '{{ 'report.item.hasHighPriority'|trans() }}') {
+                            var legendChildSymbol = legendChild.find('rect').remove();
+                            var img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                            img.setAttributeNS(null, 'height', '19');
+                            img.setAttributeNS(null, 'width', '19');
+                            img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/bundles/ctaaishe/img/priority.png');
+                            img.setAttributeNS(null, 'x', '-3');
+                            img.setAttributeNS(null, 'y', '-1');
+                            img.setAttributeNS(null, 'visibility', 'visible');
+                            legendChild.append(img);
+                        }
+                    }
+                });
+                return chart;
+            }
+
+            function renderChart(type) {
+                var chart, hiddenSeries;
+                switch (parseInt(type)) {
+                    case {{ constant('CTA\\AisheBundle\\Entity\\chart::TYPE_SPIDER') }}:
+                        chart = renderSpiderChart();
+                        break;
+                    case {{ constant('CTA\\AisheBundle\\Entity\\chart::TYPE_AREA') }}:
+                        chart = renderInvertedAxisChart();
+                        break;
+                    default:
+                        chart = renderInvertedAxisChart();
+                }
+                $.ajax({
+                    url: "chart/getHiddenSeries",
+                    type: 'post',
+                    async: false,
+                    success: function (data) {
+                        hiddenSeries = data;
+                    }
+                });
+                for (var i = 0; i < chart.series.length; i++) {
+                    for (var ii = 0; ii < hiddenSeries.length; ii++) {
+                        if (chart.series[i].name === hiddenSeries[ii]) {
+                            chart.series[i].hide();
+                        }
+                    }
+                }
+            }
+            $(function () {
+                var chart = renderChart({{ chartSettings.type }});
+
+                $('input[name="toggleChartType"]').on('click', function () {
+                    if ($(this).is(':checked')) {
+                        return false;
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: "chart/toggleChartType",
+                        data: { type: $(this).attr('value')}
+                    }).success(function () {
+                                $('#chart').html('');
+                                renderChart($('input[name="toggleChartType"]:checked').attr('value'));
+                            });
+                });
+            });
+            $(document).ready(function () {
+                $('span.radio').jqTransform();
+            });
+            {% if 0 == 1 %}
+        </script>
+        {% endif %}
+    {% endblock %}
+{% block report %}
+    <div>
+        <ul>
+            <li class="top">
+                <span class="title">{{ 'report.chart' | trans() }}</span>
+                <span class="radio">show in report</span>
+            </li>
+            <li>
+                <span class="title"> lineChart </span>
+                    <span class="radio">
+                        <span class="text">{{ 'report.priority'| trans() }}</span>
+                        <input type="radio" name="toggleChartType"
+                               value="{{ constant('CTA\\AisheBundle\\Entity\\chart::TYPE_AREA') }}"
+                               {% if chartSettings.type == constant('CTA\\AisheBundle\\Entity\\chart::TYPE_AREA') %}checked{% endif %}
+                                />
+                    </span>
+            </li>
+            <li>
+                <span class="title"> radialChart </span>
+                    <span class="radio">
+                        <span class="text">{{ 'report.priority'| trans() }}</span>
+                        <input type="radio" name="toggleChartType"
+                               value="{{ constant('CTA\\AisheBundle\\Entity\\chart::TYPE_SPIDER') }}"
+                               {% if chartSettings.type == constant('CTA\\AisheBundle\\Entity\\chart::TYPE_SPIDER') %}checked{% endif %}
+                                />
+                    </span>
+            </li>
+        </ul>
+    </div>
+    <div id="chart" style="position:relative;float:left;"></div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+Cta\AisheBundle\Entity\Page:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\Page
+    table: page
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        identifier:
+            type: string
+            length: 32
+            fixed: false
+            nullable: false
+        javascript:
+            type: text
+            nullable: true
+    oneToMany:
+        pageTranslations:
+            targetEntity: PageTranslation
+            mappedBy: page

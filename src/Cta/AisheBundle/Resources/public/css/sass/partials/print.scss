@@ -1,0 +1,291 @@
+@media print {
+  body {
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: Georgia, Times New Roman, serif;
+    background: #fff;
+
+    header {display: none;
+      &:after{content:"AISHE - Auditing Instrument for Sustainable Development in Higher Education"; display: table;}
+    }
+    nav {display: none;}
+
+    img.print-logo {
+      clear: right;
+      float: right;
+      width: 150px;
+      display: block !important;
+      padding: 0 0 20px 0 !important;
+    }
+
+    section#main-content {
+      h1 {
+        color: #000;
+        background: transparent;
+        border: none !important;
+      }
+      h2 {
+        color: #000;
+        background: transparent;
+        border: none !important;
+      }
+      h3 {
+        color: #000;
+        background: transparent;
+        border: none !important;
+        &.current {color: #000;}
+        &.desired {color: #000;}
+        &.priority {color: #000;}
+      }
+      h4 {
+        color: #000;
+        background: transparent;
+        border: none !important;
+      }
+      h5 {
+        color: #000;
+        background: transparent;
+        border: none !important;
+      }
+      p {
+        color: #000;
+        background: transparent;
+        border: none !important;
+      }
+      div#side-menu {
+
+        &.icons-menu {
+          float: left;
+          clear: left;
+          padding: 0;
+          margin: 0;
+          a {display: none;}
+        }
+        div#icons {
+          float: left;
+          width: auto !important;
+          display: table !important;
+
+          .request-accepted {
+            img { display: none; }
+          }
+          div {
+            padding: 0 !important;
+            margin: 0 !important;
+            width: auto !important;
+            border: none;
+            background-image: none !important;
+            background: transparent !important;
+            display: table !important;
+
+//            img {display: none;}
+            span.text {
+              margin-top: 0 !important;
+              display: table;
+              p {
+                display: table;
+                color: #000;
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+            }
+          }
+        }
+      }
+
+      ul[name=report-view] {
+        width: 780px !important;
+        li{
+          background: #fff;
+          border-left: 1px solid #000;
+          border-right: 1px solid #000;
+          border-bottom: 1px solid #000;
+          span {color: #000;
+            &.empty {display: none;}
+          }
+
+          &.top {
+            background: transparent;
+            color: #000;
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+            border-top: 1px solid #000;
+            border-radius: 0px;
+            -moz-border-radius: 0px;
+            -webkit-border-radius: 0px;
+            span {color: #000;
+              &.empty {display: none;}
+
+            }
+          }
+        }
+      }
+
+      div.show-report {
+        ul[name=report-view] {
+          float: left;
+          height: auto;
+          width: 990px !important;
+          display: table;
+
+          li {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 990px;
+            height: 32px;
+            display: table;
+            background: #fff;
+            &.top {
+              background: transparent;
+              color: #000;
+              border-left: 1px solid #000;
+              border-right: 1px solid #000;
+              border-top: 1px solid #000;
+            }
+
+            &.criterion-row {
+              float: left;
+              position: fixed;
+              width: 990px;
+              height: 3px;
+              border-top: 1px solid #000;
+              border-bottom: 1px solid #000;
+              display: block !important;
+            }
+
+            span {
+              position: relative;
+              top: 0;
+              margin: 0;
+              padding: 0;
+              height: 32px !important;
+              border-color: #000 !important;
+              display: table;
+              &.priority {
+                margin: 0;
+                padding: 0;
+                height: 22px;
+                display: block;
+                background: transparent;
+
+                img {
+                  float: left;
+                  margin: 0 0 0 20px;
+                  display: block !important;
+                }
+              }
+
+              &.title {
+                margin: 0 0 0 10px;
+                height: 32px !important;
+                display: block !important;
+                overflow: none !important;
+              }
+
+              &.flag-start {
+                background-image: none !important;
+                img {
+                  float: right;
+                  margin: 7px 0;
+                  width: 17px;
+                  height: 18px;
+                  display: block !important;
+                }
+              }
+              &.flag-line {
+                display: block !important;
+                background-image: none !important;
+                img {
+                  float: left;
+                  margin: 13px 0 12px 0;
+                  height: 7px;
+                  width: 100%;
+                  display: block !important;
+                }
+              }
+              &.flag-end {
+                background-image: none !important;
+
+                img {
+                  float: left;
+                  margin: 5px 0;
+                  height: 22px;
+                  width: 17px;
+                  display: block !important;
+                }
+              }
+              &.flag-start.flag-end {
+                background-image: none !important;
+                text-align: center;
+
+                img {
+                  float: none;
+                  margin: 7px auto;
+                  width: 17px;
+                  height: 18px;
+                  display: block !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      div.top-show-report {border-bottom: 1px solid #000 !important;}
+    }
+
+    footer {display: none;}
+    div#sf-toolbar {display: none !important;}
+    div#sf-minitoolbar {display: none !important;}
+    div#sf-toolbarreset {display: none !important;}
+    div[id^=sfToolbarClearer] {display: none !important;}
+
+    div.report-item {
+      float: left;
+      margin: 0 0 20px 0;
+      padding: 20px;
+      width: 948px;
+      height: auto;
+      display: block;
+      border: 1px solid #000;
+
+      ul {
+        margin: 15px auto;
+        width: 100%;
+        height: auto;
+        display: table;
+
+        li {
+          float: left;
+          clear: both;
+          width: 98%;
+          padding: 0 1%;
+          line-height: 28px;
+          border-bottom: 1px solid #000;
+          border-left: 0px !important;
+          border-right: 0px !important;
+          display: block;
+
+          &:hover {background: transparent;}
+        }
+      }
+    }
+
+    table {
+      clear: left;
+      margin: 0 0 20px 0;
+      width: 990px;
+      line-height: 28px;
+      border: 1px solid #000;
+
+      tr {
+        border-bottom: 1px solid #000;
+        &.toprow {
+          td {font-weight: bold;}
+        }
+        td {padding: 0 5px;}
+      }
+    }
+  }
+}
