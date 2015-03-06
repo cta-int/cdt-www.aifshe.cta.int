@@ -5,15 +5,33 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
 // get environment
-$env = array_key_exists('APPLICATION_ENV', $_SERVER) ? $_SERVER['APPLICATION_ENV'] : 'production';
-$env = 'production';
+switch ($_SERVER['HTTP_HOST']) {
+    case 'dev.aifshe.cta.int':
+        $env = 'dev';
+        $debug = true;
+        break;
+    case 'staging.aifshe.cta.int':
+        $env = 'staging';
+        $debug = false;
+        break;
+    case 'preview.aifshe.cta.int':
+        $env = 'preview';
+        $debug = false;
+        break;
+    case 'aifshe.cta.int':
+    case 'www.aifshe.cta.int':
+    default:
+        $env = 'prod';
+        $debug = false;
+        break;
+}
 
 // get BOOTSTRAP
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 
 // enable debugging if environment is development
-if ($env == 'development') {
-//    Debug::enable();
+if ($debug) {
+    Debug::enable();
 }
 
 // enable APC if environment is production
@@ -22,25 +40,9 @@ if ($env == 'production') {
     //$loader->register(true);
 }
 
-// get KERNEL
-require_once __DIR__.'/../app/AppKernel.php';
-
-// get APPCACHE if environment is production
-if ($env == 'production') {
-}
-
 // start up the kernel depending on the kernel
-switch ($env) {
-    case 'development':
-        $kernel = new AppKernel('dev', true);
-        break;
-    case 'staging':
-        $kernel = new AppKernel('staging', false);
-        break;
-    default: // production
-        $kernel = new AppKernel('prod', false);
-        break;
-}
+require_once __DIR__.'/../app/AppKernel.php';
+$kernel = new AppKernel($env, false);
 $kernel->loadClassCache();
 
 // enable APPCACHE if environment is production
