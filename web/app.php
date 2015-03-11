@@ -12,11 +12,11 @@ switch ($_SERVER['HTTP_HOST']) {
         break;
     case 'staging.aifshe.cta.int':
         $env = 'staging';
-        $debug = false;
+        $debug = true;
         break;
     case 'preview.aifshe.cta.int':
         $env = 'preview';
-        $debug = false;
+        $debug = true;
         break;
     case 'aifshe.cta.int':
     case 'www.aifshe.cta.int':
@@ -29,7 +29,7 @@ switch ($_SERVER['HTTP_HOST']) {
 // get BOOTSTRAP
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 
-// enable debugging if environment is development
+// enable debugging if needed
 if ($debug) {
     Debug::enable();
 }
