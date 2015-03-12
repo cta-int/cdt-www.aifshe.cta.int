@@ -1,6 +1,6 @@
 imports:
     - { resource: config.yml }
-    - { resource: parameters_staging.yml }
+    - { resource: parameters_preview.yml }
 
 framework:
     router:
