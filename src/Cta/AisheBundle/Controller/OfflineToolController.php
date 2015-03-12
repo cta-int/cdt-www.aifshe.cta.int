@@ -22,7 +22,7 @@
          */
         public function downloadAction()
         {
-            $path          = $this->get('kernel')->getRootDir() . "/../offline/Downloads/";
+            $path          = $this->get('kernel')->getRootDir() . "/../shared/";
             $em            = $this->getDoctrine()->getManager();
             $activeVersion = $em->getRepository('CtaAisheBundle:OfflineTool')->findActiveVersion();
             if (!$activeVersion) {
