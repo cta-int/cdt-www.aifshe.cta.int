@@ -15,4 +15,3 @@ local-config.php
 /bin/
 /composer.phar
 /.idea/
-!shared/.gitkeep
