@@ -16,7 +16,7 @@ switch ($_SERVER['HTTP_HOST']) {
         break;
     case 'preview.aifshe.cta.int':
         $env = 'preview';
-        $debug = true;
+        $debug = false;
         break;
     case 'aifshe.cta.int':
     case 'www.aifshe.cta.int':
@@ -34,19 +34,19 @@ if ($debug) {
     Debug::enable();
 }
 
-// enable APC if environment is production
-if ($env == 'production') {
-    //$loader = new ApcClassLoader('cta_aishe', $loader);
-    //$loader->register(true);
+// enable APC if environment is production/preview
+if ( in_array($env, array('preview', 'prod')) ) {
+    $loader = new ApcClassLoader('cta_aishe', $loader);
+    $loader->register(true);
 }
 
 // start up the kernel depending on the kernel
 require_once __DIR__.'/../app/AppKernel.php';
-$kernel = new AppKernel($env, false);
+$kernel = new AppKernel($env, $debug);
 $kernel->loadClassCache();
 
-// enable APPCACHE if environment is production
-if ($env == 'production') {
+// enable APPCACHE if environment is production/preview
+if ( in_array($env, array('preview', 'prod')) ) {
     require_once __DIR__.'/../app/AppCache.php';
     $kernel = new AppCache($kernel);
 }
