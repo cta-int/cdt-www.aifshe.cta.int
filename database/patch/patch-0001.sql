@@ -640,30 +640,7 @@ CREATE TABLE IF NOT EXISTS `offline_tool` (
   PRIMARY KEY (`id`),
   KEY `IDX_83CC4FCDE12AB56` (`created_by`),
   KEY `IDX_83CC4FC25F94802` (`modified_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
-
---
--- Dumping data for table `offline_tool`
---
-
-INSERT INTO `offline_tool` (`id`, `created_by`, `modified_by`, `status`, `created_at`, `modified_at`, `FileName`, `FileToken`, `latestVersion`, `outdated`) VALUES
-(1, 2, 2, 9, '2014-01-06 09:29:37', '2014-01-06 09:29:37', 'Aifshe Offline Tool', '52ca69713f9fa_06_01_2014_09_29', 1, 0),
-(2, 2, 2, 9, '2014-01-06 09:30:19', '2014-01-06 09:30:19', 'Aifshe Offline Tool', '52ca699b9cdb5_06_01_2014_09_30', 1, 0),
-(3, 2, 2, 9, '2014-01-06 09:43:27', '2014-01-06 09:43:27', 'Aifshe Offline Tool', '52ca6cafe6dde_06_01_2014_09_43', 1, 0),
-(4, 2, 2, 9, '2014-01-06 09:45:01', '2014-01-06 09:45:01', 'Aifshe Offline Tool', '52ca6d0d0ea4b_06_01_2014_09_45', 1, 0),
-(5, 2, 2, 9, '2014-01-06 11:09:54', '2014-01-06 11:09:54', 'Aifshe Offline Tool', '52ca80f227343_06_01_2014_11_09', 1, 0),
-(6, 2, 2, 9, '2014-01-06 11:25:10', '2014-01-06 11:25:10', 'Aifshe Offline Tool', '52ca84868505b_06_01_2014_11_25', 1, 0),
-(7, 2, 2, 9, '2014-01-06 11:36:01', '2014-01-06 11:36:01', 'Aifshe Offline Tool', '52ca871129915_06_01_2014_11_36', 1, 0),
-(8, 2, 2, 9, '2014-01-06 11:45:44', '2014-01-06 11:45:44', 'Aifshe Offline Tool', '52ca8958b43f9_06_01_2014_11_45', 1, 0),
-(9, 2, 2, 9, '2014-01-06 11:46:56', '2014-01-06 11:46:56', 'Aifshe Offline Tool', '52ca89a02df06_06_01_2014_11_46', 1, 0),
-(10, 2, 2, 9, '2014-07-15 16:22:23', '2014-07-15 16:22:23', 'Aifshe Offline Tool', '53c5391fa6f48_15_07_2014_16_22', 1, 0),
-(11, 2, 2, 9, '2014-07-15 17:38:09', '2014-07-15 17:38:09', 'Aifshe Offline Tool.zip', '53c54ae197dc7_15_07_2014_17_38', 1, 0),
-(12, 2, 2, 9, '2014-08-18 15:22:32', '2014-08-18 15:22:32', 'Aifshe Offline Tool', '53f1fe18c86ab_18_08_2014_15_22', 1, 0),
-(13, 2, 2, 9, '2014-08-18 15:36:49', '2014-08-18 15:36:49', 'Aifshe Offline Tool', '53f20171a0801_18_08_2014_15_36', 1, 0),
-(14, 2, 2, 9, '2014-09-03 12:32:58', '2014-09-03 12:32:58', 'Aifshe Offline Tool', '5406ee5a32185_03_09_2014_12_32', 1, 0),
-(15, 2, 2, 9, '2014-09-03 12:41:04', '2014-09-03 12:41:04', 'Aifshe Offline Tool', '5406f040d6b3b_03_09_2014_12_41', 1, 0);
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 --
 -- Table structure for table `page`
