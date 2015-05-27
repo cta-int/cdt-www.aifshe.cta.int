@@ -2,15 +2,19 @@
 {% trans_default_domain "messages" %}
 
 {% block fos_user_content %}
-    {% if error %}
-        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-    {% endif %}
-
     <form action="{{ path("fos_user_security_check") }}" method="post" class="smallForm">
         <h2>{{ 'security.base.login'|trans() }}</h2>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
         <div class="formContent">
+
+            {% if error %}
+                <div class="error" style="margin-top: -44px; margin-bottom: 15px; float: none; display: block; padding: 10px; color: #a94442; background-color: #f2dede; border-color: #ebccd1; text-align: center;">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+
             <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
             <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 

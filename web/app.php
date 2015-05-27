@@ -35,10 +35,10 @@ if ($debug) {
 }
 
 // enable APC if environment is production/preview
-if ( in_array($env, array('preview', 'prod')) ) {
-    $loader = new ApcClassLoader('cta_aishe', $loader);
-    $loader->register(true);
-}
+//if ( in_array($env, array('preview', 'prod')) ) {
+//    $loader = new ApcClassLoader('cta_aishe', $loader);
+//    $loader->register(true);
+//}
 
 // start up the kernel depending on the kernel
 require_once __DIR__.'/../app/AppKernel.php';

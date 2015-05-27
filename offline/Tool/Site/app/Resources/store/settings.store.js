@@ -1,1 +1,0 @@
-var settings = {"version":{"id":1,"checked":false},"host":"http:\/\/aifshe,cta.int\/"}

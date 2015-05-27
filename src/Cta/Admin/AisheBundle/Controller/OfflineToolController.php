@@ -57,7 +57,7 @@ class OfflineToolController extends Controller
             return $this->redirect($this->generateUrl('cta_admin_offline_tool_overview'));
         }
 
-        $path = $this->get('kernel')->getRootDir() . "/../offline/Downloads/";
+        $path = $this->get('kernel')->getRootDir() . "/../shared/";
         foreach ($offlineTools['items'] as &$tool) {
             $tool['fileExists'] = file_exists($path . $tool['fileToken'] . '.zip');
         }
@@ -74,7 +74,7 @@ class OfflineToolController extends Controller
      */
     public function downloadAction($id)
     {
-        $path = $this->get('kernel')->getRootDir() . "/../offline/Downloads/";
+        $path = $this->get('kernel')->getRootDir() . "/../shared/";
         $em = $this->getDoctrine()->getManager();
         $file = $em->getRepository('CtaAisheBundle:OfflineTool')->findOneBy(
             array(
@@ -104,7 +104,7 @@ class OfflineToolController extends Controller
      */
     public function removeAction($id)
     {
-        $path = $this->get('kernel')->getRootDir() . "/../offline/Downloads/";
+        $path = $this->get('kernel')->getRootDir() . "/../shared/";
         $em = $this->getDoctrine()->getManager();
         $file = $em->getRepository('CtaAisheBundle:OfflineTool')->findOneBy(
             array(
@@ -214,7 +214,7 @@ class OfflineToolController extends Controller
     {
         $this->_rootDir = $this->get('kernel')->getRootDir() . '/../';
         $this->_toolDir = $this->_rootDir . 'offline/Tool';
-        $this->_downloadsDir = $this->_rootDir . 'offline/Downloads';
+        $this->_downloadsDir = $this->_rootDir . 'shared';
         $em = $this->getDoctrine()->getManager();
 
         $data = array();
