@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{% block title %}{{ 'site.title.head'|trans }}{% endblock %}</title>
 
+    <!--[if IE]>
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    -->
 
     {% block stylesheets %}
         {% stylesheets
@@ -87,8 +89,7 @@
         </div>
     </nav>
 
-    <section id="main-content">
-
+    <main>
         <div id="flash-messages">
             {% for flashMessage in app.session.flashbag.get('notice') %}
                 <div class="flash-notice">
@@ -103,7 +104,7 @@
         </div>
 
         {% block body %}{% endblock %}
-    </section>
+    </main>
 </div>
 {{ include('footer.html.twig') }}
 </body>
