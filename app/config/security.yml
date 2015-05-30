@@ -32,7 +32,10 @@ security:
         - { path: ^/download, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/version, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/devart, role: ROLE_SUPER_ADMIN }
-        - { path: ^/admin/offlinetool, role: ROLE_ADMIN }
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/institutions, role: ROLE_AUDITOR }
-        - { path: ^/, role: ROLE_USER }
+        - { path: ^/institution, role: ROLE_ADMIN }
+        - { path: ^/page, role: ROLE_USER }
+        - { path: ^/reports, role: ROLE_USER }
+        - { path: ^/report, role: ROLE_USER }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
