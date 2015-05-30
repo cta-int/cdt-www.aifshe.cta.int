@@ -1,3 +1,9 @@
+site:
+  title:
+    short: AIFSHE
+    full:  Auditing Instrument for Food Security in Higher Education
+    head:  AIFSHE - Auditing Instrument for Food Security in Higher Education
+
 security:
     base:
         logged_in_as:   Logged in as
