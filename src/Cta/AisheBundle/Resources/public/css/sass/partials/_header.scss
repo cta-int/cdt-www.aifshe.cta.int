@@ -1,8 +1,8 @@
 header {
   width: 100%;
-  height: 98px;
+  height: 75px;
   display: block;
-  background: $textcolor;
+  background: #4d4d4d;
 
   div#header-box {
     position: relative;
@@ -10,16 +10,35 @@ header {
     width: 990px;
     height: 100%;
     display: block;
-    background: url(../img/header-bg.png) 222px 35px no-repeat;
+
+    div#logo-cta {
+      position: absolute;
+      left: -18px;
+      top: 10px;
+      float: left;
+      img {
+        width: 111px;
+        height: 74px;
+      }
+    }
+
+    h1 {
+      position: absolute;
+      left: 100px;
+      top: 27px;
+      color: #fcfff5;
+      font-size: 20px;
+    }
 
     div#logo {
-      padding: 0 36px 0 0;
+//      padding: 0 36px 0 0;
       position: absolute;
-      left: -372px;
+      left: 710px;
       top: 0;
-      width: 564px;
       height: 118px;
+      width: 195px;
       background: url(../img/logo-bg.png) right top no-repeat;
+      background-size: auto 105px;
       display: block;
 
       a {
@@ -27,18 +46,18 @@ header {
         width: 100%;
         height: 100%;
         text-decoration: none;
-        text-align: right;
         display: block;
         img {
-          margin: 23px 0 0 0;
+          margin: 20px 0 0 2px;
           border: none;
+          width: 160px;
         }
       }
     }
 
     div#language {
       float: right;
-      margin: 33px 0 0 0;
+      margin: 10px 0 0 0;
       width: auto;
       height: 35px;
       text-align: right;

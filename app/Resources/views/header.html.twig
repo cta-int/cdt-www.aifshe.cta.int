@@ -1,7 +1,11 @@
 <header>
     <div id="header-box">
+        <div id="logo-cta">
+            <img src="{{ asset('bundles/ctaaishe/css/img/cta_logo.png') }}" alt="CTA"/>
+        </div>
+        <h1>{{ 'site.title.full'|trans }}</h1>
         <div id="logo">
-            <a href="{{ path('cta_aishe_homepage')  }}"><img src="{{ asset('bundles/ctaaishe/css/img/logo-text.png') }}" alt="AISHE"/></a>
+            <a href="{{ path('cta_aishe_homepage') }}"><img src="{{ asset('bundles/ctaaishe/css/img/logo-text.png') }}" alt="{{ 'site.title.short'|trans }}"/></a>
         </div>
         {% if app.user %}
             <div id="language">

@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,55 +20,55 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+/* line 116, ../../../../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
 /* line 1, ../sass/partials/_header.scss */
 header {
   width: 100%;
-  height: 98px;
+  height: 75px;
   display: block;
-  background: #393939;
+  background: #4d4d4d;
 }
 /* line 7, ../sass/partials/_header.scss */
 header div#header-box {
@@ -77,57 +77,76 @@ header div#header-box {
   width: 990px;
   height: 100%;
   display: block;
-  background: url(../../bundles/ctaaishe/css/img/header-bg.png) 222px 35px no-repeat;
 }
-/* line 15, ../sass/partials/_header.scss */
-header div#header-box div#logo {
-  padding: 0 36px 0 0;
+/* line 14, ../sass/partials/_header.scss */
+header div#header-box div#logo-cta {
   position: absolute;
-  left: -372px;
-  top: 0;
-  width: 564px;
-  height: 118px;
-  background: url(../../bundles/ctaaishe/css/img/logo-bg.png) right top no-repeat;
-  display: block;
+  left: -18px;
+  top: 10px;
+  float: left;
+}
+/* line 19, ../sass/partials/_header.scss */
+header div#header-box div#logo-cta img {
+  width: 111px;
+  height: 74px;
 }
 /* line 25, ../sass/partials/_header.scss */
+header div#header-box h1 {
+  position: absolute;
+  left: 100px;
+  top: 27px;
+  color: #fcfff5;
+  font-size: 20px;
+}
+/* line 33, ../sass/partials/_header.scss */
+header div#header-box div#logo {
+  position: absolute;
+  left: 710px;
+  top: 0;
+  height: 118px;
+  width: 195px;
+  background: url(../bundles/ctaaishe/css/img/logo-bg.png) right top no-repeat;
+  background-size: auto 105px;
+  display: block;
+}
+/* line 44, ../sass/partials/_header.scss */
 header div#header-box div#logo a {
   padding: 0 0 0 8px !important;
   width: 100%;
   height: 100%;
   text-decoration: none;
-  text-align: right;
   display: block;
 }
-/* line 32, ../sass/partials/_header.scss */
+/* line 50, ../sass/partials/_header.scss */
 header div#header-box div#logo a img {
-  margin: 23px 0 0 0;
+  margin: 20px 0 0 2px;
   border: none;
+  width: 160px;
 }
-/* line 39, ../sass/partials/_header.scss */
+/* line 58, ../sass/partials/_header.scss */
 header div#header-box div#language {
   float: right;
-  margin: 33px 0 0 0;
+  margin: 10px 0 0 0;
   width: auto;
   height: 35px;
   text-align: right;
   display: block;
 }
-/* line 47, ../sass/partials/_header.scss */
+/* line 66, ../sass/partials/_header.scss */
 header div#header-box div#language span {
   float: left;
   margin: 0 5px;
 }
-/* line 51, ../sass/partials/_header.scss */
+/* line 70, ../sass/partials/_header.scss */
 header div#header-box div#language span a {
   color: #cfcfcf;
 }
-/* line 53, ../sass/partials/_header.scss */
+/* line 72, ../sass/partials/_header.scss */
 header div#header-box div#language span a:hover {
   text-decoration: none;
   border-bottom: 1px solid #cfcfcf;
 }
-/* line 56, ../sass/partials/_header.scss */
+/* line 75, ../sass/partials/_header.scss */
 header div#header-box div#language span.active a {
   color: #e74739;
   text-decoration: none;
@@ -137,24 +156,24 @@ header div#header-box div#language span.active a {
 /* line 2, ../sass/partials/_nav.scss */
 nav {
   width: 100%;
-  height: 31px;
-  background: url(../../bundles/ctaaishe/css/img/nav-bg.png) left top repeat-x;
+  height: 30px;
+  background: #647678;
   display: block;
 }
 /* line 8, ../sass/partials/_nav.scss */
 nav div#menu {
   margin: 0 auto;
   width: 990px;
-  height: 28px;
+  height: 30px;
   display: block;
 }
 /* line 14, ../sass/partials/_nav.scss */
 nav div#menu ul {
-  float: right;
-  margin: 0 15px 0 0;
+  float: left;
+  margin: 0 0 0 90px;
   width: auto;
   max-width: 975px;
-  height: 28px;
+  height: 30px;
   display: block;
 }
 /* line 22, ../sass/partials/_nav.scss */
@@ -162,27 +181,29 @@ nav div#menu ul li {
   float: left;
   padding: 0 12px 0 10px;
   width: auto !important;
-  line-height: 28px;
-  background: url(../../bundles/ctaaishe/css/img/menu-bg.png) right center no-repeat;
+  line-height: 30px;
+  background: url(../bundles/ctaaishe/css/img/menu-bg.png) right center no-repeat;
+  background-size: 1px 100%;
+  color: #FFFFFF;
   display: block;
   border: none !important;
 }
-/* line 31, ../sass/partials/_nav.scss */
+/* line 33, ../sass/partials/_nav.scss */
 nav div#menu ul li.last-item {
   background-image: none;
 }
-/* line 33, ../sass/partials/_nav.scss */
+/* line 35, ../sass/partials/_nav.scss */
 nav div#menu ul li a {
-  color: #393939;
+  color: #FFFFFF;
   text-decoration: none;
 }
-/* line 37, ../sass/partials/_nav.scss */
+/* line 39, ../sass/partials/_nav.scss */
 nav div#menu ul li a:hover {
-  color: #e74739;
+  color: #FFFFFF;
   text-decoration: underline;
 }
 
-/* line 47, ../sass/partials/_nav.scss */
+/* line 49, ../sass/partials/_nav.scss */
 div#side-menu {
   float: right;
   padding: 0 0 8px 0;
@@ -190,7 +211,7 @@ div#side-menu {
   height: 36px;
   display: table;
 }
-/* line 54, ../sass/partials/_nav.scss */
+/* line 56, ../sass/partials/_nav.scss */
 div#side-menu a {
   position: relative;
   float: left;
@@ -201,36 +222,36 @@ div#side-menu a {
   color: #fff;
   line-height: 34px;
   text-decoration: none;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x;
   display: block;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
 }
-/* line 71, ../sass/partials/_nav.scss */
+/* line 73, ../sass/partials/_nav.scss */
 div#side-menu a img {
   margin: 0 auto;
   padding: 6px 0;
   border: none;
 }
-/* line 77, ../sass/partials/_nav.scss */
+/* line 79, ../sass/partials/_nav.scss */
 div#side-menu a:hover {
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
 }
-/* line 80, ../sass/partials/_nav.scss */
+/* line 82, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu {
   position: relative;
   display: table;
 }
-/* line 84, ../sass/partials/_nav.scss */
+/* line 86, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu a {
   outline: none;
   width: 22px;
   text-align: center;
   display: block;
 }
-/* line 90, ../sass/partials/_nav.scss */
+/* line 92, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu a span.text {
   z-index: 10;
   margin-top: -24px;
@@ -238,7 +259,7 @@ div#side-menu.icons-menu a span.text {
   min-width: 0;
   display: none;
 }
-/* line 97, ../sass/partials/_nav.scss */
+/* line 99, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu a span.text p {
   padding: 0 5px;
   color: #fff;
@@ -252,18 +273,18 @@ div#side-menu.icons-menu a span.text p {
   -webkit-border-radius: 5px;
   white-space: nowrap;
 }
-/* line 113, ../sass/partials/_nav.scss */
+/* line 115, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu a:hover span.text {
   position: absolute;
   left: 0px;
   display: inline;
-  background: url(../../bundles/ctaaishe/css/img/icon-arrow-bg.png) 12px 18px no-repeat;
+  background: url(../bundles/ctaaishe/css/img/icon-arrow-bg.png) 12px 18px no-repeat;
 }
-/* line 119, ../sass/partials/_nav.scss */
+/* line 121, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu a:hover span.text p {
   background: #393939;
 }
-/* line 126, ../sass/partials/_nav.scss */
+/* line 128, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu span.icon {
   position: relative;
   float: left;
@@ -275,12 +296,12 @@ div#side-menu.icons-menu span.icon {
   display: block;
   overflow: hidden;
 }
-/* line 137, ../sass/partials/_nav.scss */
+/* line 139, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu span.icon a {
   position: relative;
   left: 0;
 }
-/* line 141, ../sass/partials/_nav.scss */
+/* line 143, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu span.icon a span.text {
   margin: 0 auto;
   position: absolute;
@@ -294,7 +315,7 @@ div#side-menu.icons-menu span.icon a span.text {
   z-index: 999999;
   border: 10px solid red;
 }
-/* line 158, ../sass/partials/_nav.scss */
+/* line 160, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons {
   clear: both;
   float: right;
@@ -303,35 +324,35 @@ div#side-menu.icons-menu div#icons {
   height: auto;
   display: table;
 }
-/* line 166, ../sass/partials/_nav.scss */
+/* line 168, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons a {
   cursor: pointer;
 }
-/* line 169, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons a.request-approval {
-  background: url(../../bundles/ctaaishe/css/img/hover-request-bg.png) left top repeat-x;
-}
 /* line 171, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons a.request-approval:hover {
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+div#side-menu.icons-menu div#icons a.request-approval {
+  background: url(../bundles/ctaaishe/css/img/hover-request-bg.png) left top repeat-x;
 }
 /* line 173, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons a.deny-approval {
-  background: url(../../bundles/ctaaishe/css/img/deny-bg.png) left top repeat-x;
+div#side-menu.icons-menu div#icons a.request-approval:hover {
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
 }
 /* line 175, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons a.deny-approval:hover {
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+div#side-menu.icons-menu div#icons a.deny-approval {
+  background: url(../bundles/ctaaishe/css/img/deny-bg.png) left top repeat-x;
 }
 /* line 177, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons a.approve-approval {
-  background: url(../../bundles/ctaaishe/css/img/approve-bg.png) left top repeat-x;
+div#side-menu.icons-menu div#icons a.deny-approval:hover {
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
 }
 /* line 179, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons a.approve-approval:hover {
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+div#side-menu.icons-menu div#icons a.approve-approval {
+  background: url(../bundles/ctaaishe/css/img/approve-bg.png) left top repeat-x;
 }
-/* line 183, ../sass/partials/_nav.scss */
+/* line 181, ../sass/partials/_nav.scss */
+div#side-menu.icons-menu div#icons a.approve-approval:hover {
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+}
+/* line 185, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div {
   position: relative;
   float: left;
@@ -343,39 +364,39 @@ div#side-menu.icons-menu div#icons div {
   line-height: 34px;
   text-align: center;
   display: block;
-  background: url(../../bundles/ctaaishe/css/img/hover-request-bg.png) left top repeat-x;
+  background: url(../bundles/ctaaishe/css/img/hover-request-bg.png) left top repeat-x;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
 }
-/* line 200, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons div.request-pending {
-  background: url(../../bundles/ctaaishe/css/img/pending-bg.png) left top repeat-x !important;
-}
 /* line 202, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons div.request-pending:hover {
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+div#side-menu.icons-menu div#icons div.request-pending {
+  background: url(../bundles/ctaaishe/css/img/pending-bg.png) left top repeat-x !important;
 }
-/* line 205, ../sass/partials/_nav.scss */
+/* line 204, ../sass/partials/_nav.scss */
+div#side-menu.icons-menu div#icons div.request-pending:hover {
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+}
+/* line 207, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div.request-accepted {
   height: 32px;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/input-bg.png) left bottom repeat-x !important;
-  border: 1px solid #cfcfcf;
-}
-/* line 206, ../sass/partials/_nav.scss */
-div#side-menu.icons-menu div#icons div.request-denied {
-  height: 32px;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/input-bg.png) left bottom repeat-x !important;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/input-bg.png) left bottom repeat-x !important;
   border: 1px solid #cfcfcf;
 }
 /* line 208, ../sass/partials/_nav.scss */
+div#side-menu.icons-menu div#icons div.request-denied {
+  height: 32px;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/input-bg.png) left bottom repeat-x !important;
+  border: 1px solid #cfcfcf;
+}
+/* line 210, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div img {
   margin: 0 auto;
   padding: 6px 0;
   border: none;
 }
-/* line 214, ../sass/partials/_nav.scss */
+/* line 216, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div span.text {
   z-index: 10;
   margin-top: -24px;
@@ -383,7 +404,7 @@ div#side-menu.icons-menu div#icons div span.text {
   min-width: 0;
   display: none;
 }
-/* line 221, ../sass/partials/_nav.scss */
+/* line 223, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div span.text p {
   padding: 0 5px;
   color: #fff;
@@ -397,18 +418,18 @@ div#side-menu.icons-menu div#icons div span.text p {
   -webkit-border-radius: 5px;
   white-space: nowrap;
 }
-/* line 237, ../sass/partials/_nav.scss */
+/* line 239, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div:hover span.text {
   position: absolute;
   left: 0px;
   display: inline;
-  background: url(../../bundles/ctaaishe/css/img/icon-arrow-bg.png) 12px 18px no-repeat;
+  background: url(../bundles/ctaaishe/css/img/icon-arrow-bg.png) 12px 18px no-repeat;
 }
-/* line 243, ../sass/partials/_nav.scss */
+/* line 245, ../sass/partials/_nav.scss */
 div#side-menu.icons-menu div#icons div:hover span.text p {
   background: #393939;
 }
-/* line 252, ../sass/partials/_nav.scss */
+/* line 254, ../sass/partials/_nav.scss */
 div#side-menu:after {
   clear: both;
 }
@@ -689,10 +710,6 @@ ul li.top span.mediumtitle {
   padding: 0 6px 0 10px;
   width: 230px;
 }
-ul li.top span.institutions-name {
-  padding: 0 6px 0 10px;
-  width: 580px;
-}
 /* line 63, ../sass/partials/_list-items.scss */
 ul li span.info {
   padding: 0 !important;
@@ -732,11 +749,11 @@ ul li span.smalltitle {
 /* line 95, ../sass/partials/_list-items.scss */
 ul li span.mediumtitle {
   padding: 0 6px 0 10px;
-  width: 230px;
-}
-ul li span.institutions-name {
-  padding: 0 6px 0 10px;
   width: 580px;
+}
+/* line 99, ../sass/partials/_list-items.scss */
+ul li span.institution-name {
+  width: 100%;
 }
 /* line 100, ../sass/partials/_list-items.scss */
 ul li span.create-date {
@@ -1006,12 +1023,12 @@ ul span.priority input[type=checkbox] {
 /* line 190, ../sass/partials/_list-items.scss */
 ul span.flag-start {
   height: 32px;
-  background: url(../../bundles/ctaaishe/css/img/start-line.png) right center no-repeat !important;
+  background: url(../bundles/ctaaishe/css/img/start-line.png) right center no-repeat !important;
   cursor: pointer;
 }
 /* line 195, ../sass/partials/_list-items.scss */
 ul span.flag-start.flag-end {
-  background: url(../../bundles/ctaaishe/css/img/start-end.png) center no-repeat !important;
+  background: url(../bundles/ctaaishe/css/img/start-end.png) center no-repeat !important;
 }
 /* line 199, ../sass/partials/_list-items.scss */
 ul span.flag-start img {
@@ -1020,7 +1037,7 @@ ul span.flag-start img {
 /* line 201, ../sass/partials/_list-items.scss */
 ul span.flag-end {
   height: 32px;
-  background: url(../../bundles/ctaaishe/css/img/end-line.png) left center no-repeat !important;
+  background: url(../bundles/ctaaishe/css/img/end-line.png) left center no-repeat !important;
   cursor: pointer;
 }
 /* line 206, ../sass/partials/_list-items.scss */
@@ -1030,7 +1047,7 @@ ul span.flag-end img {
 /* line 209, ../sass/partials/_list-items.scss */
 ul span.flag-line {
   height: 32px;
-  background: url(../../bundles/ctaaishe/css/img/line.png) left center repeat-x !important;
+  background: url(../bundles/ctaaishe/css/img/line.png) left center repeat-x !important;
 }
 /* line 213, ../sass/partials/_list-items.scss */
 ul span.flag-line img {
@@ -1106,12 +1123,12 @@ ul.criterion li span.title {
 }
 /* line 270, ../sass/partials/_list-items.scss */
 ul[name=edit-table-view] li span.flag-start {
-  background: url(../../bundles/ctaaishe/css/img/start-solo.png) center no-repeat;
+  background: url(../bundles/ctaaishe/css/img/start-solo.png) center no-repeat;
   cursor: pointer;
 }
 /* line 274, ../sass/partials/_list-items.scss */
 ul[name=edit-table-view] li span.flag-end {
-  background: url(../../bundles/ctaaishe/css/img/stop-solo.png) center no-repeat;
+  background: url(../bundles/ctaaishe/css/img/stop-solo.png) center no-repeat;
   cursor: pointer;
 }
 /* line 280, ../sass/partials/_list-items.scss */
@@ -1201,7 +1218,7 @@ div.show-report span.priority span.priority {
 }
 /* line 64, ../sass/partials/_show-report.scss */
 div.show-report span.priority span.priority.checked {
-  background: url(../../bundles/ctaaishe/css/img/icon-approved.png) left center no-repeat;
+  background: url(../bundles/ctaaishe/css/img/icon-approved.png) left center no-repeat;
 }
 
 /* line 2, ../sass/partials/_admin.scss */
@@ -1253,7 +1270,7 @@ a.button {
   color: #fff;
   line-height: 34px;
   text-decoration: none;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x;
   display: block;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -1268,7 +1285,7 @@ a.button img {
 /* line 60, ../sass/partials/_admin.scss */
 a.button:hover {
   text-decoration: none;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
 }
 
 /* line 66, ../sass/partials/_admin.scss */
@@ -1378,13 +1395,13 @@ ul[name=groups] li span.roles {
   width: 435px;
 }
 
-/* line 17, ../sass/screen.scss */
+/* line 19, ../sass/screen.scss */
 html {
   height: 100%;
   width: 100%;
 }
 
-/* line 22, ../sass/screen.scss */
+/* line 24, ../sass/screen.scss */
 body {
   margin: 0;
   padding: 0;
@@ -1395,20 +1412,20 @@ body {
   color: #393939;
   font-family: Arial, Verdana, Sans-serif;
 }
-/* line 32, ../sass/screen.scss */
+/* line 34, ../sass/screen.scss */
 body a {
   color: #e74739;
   text-decoration: none;
 }
-/* line 36, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 body a:hover {
   text-decoration: underline;
 }
-/* line 37, ../sass/screen.scss */
+/* line 39, ../sass/screen.scss */
 body a img {
   border: none;
 }
-/* line 40, ../sass/screen.scss */
+/* line 42, ../sass/screen.scss */
 body div#content {
   clear: both;
   margin-bottom: -18px;
@@ -1417,25 +1434,25 @@ body div#content {
   min-height: 100%;
   display: block;
 }
-/* line 48, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 body div#content:after {
   content: "";
   display: block;
   height: 18px;
 }
-/* line 50, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 body img.print-logo {
   display: none;
 }
 
-/* line 53, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 section#main-content {
   margin: 35px auto;
   width: 990px;
   height: auto;
   display: table;
 }
-/* line 59, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 section#main-content div.flash-notice {
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -1444,7 +1461,7 @@ section#main-content div.flash-notice {
   background: #52859e;
   display: table;
 }
-/* line 68, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 section#main-content div.flash-error {
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -1453,7 +1470,7 @@ section#main-content div.flash-error {
   background: #e74739;
   display: table;
 }
-/* line 77, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 section#main-content h2 {
   clear: both !important;
   margin: 0;
@@ -1468,18 +1485,18 @@ section#main-content h2 {
   text-transform: capitalize;
   border-radius: 5px 5px 0 0;
 }
-/* line 91, ../sass/screen.scss */
+/* line 93, ../sass/screen.scss */
 section#main-content h2.smallTitle {
   float: none !important;
   margin: 0 auto !important;
   width: 426px !important;
 }
-/* line 97, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 section#main-content h2 img {
   position: relative;
   top: 2px;
 }
-/* line 103, ../sass/screen.scss */
+/* line 105, ../sass/screen.scss */
 section#main-content h3 {
   float: left;
   margin: 15px 10px 15px 0;
@@ -1488,26 +1505,26 @@ section#main-content h3 {
   line-height: 16px;
   display: block;
 }
-/* line 111, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 section#main-content h3.current {
   font-size: 14px;
   color: #e74739;
 }
-/* line 112, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 section#main-content h3.desired {
   font-size: 14px;
   color: green;
 }
-/* line 113, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 section#main-content h3.priority {
   float: right;
   color: #e74739;
 }
-/* line 116, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 section#main-content strong {
   font-weight: bold;
 }
-/* line 118, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 section#main-content div.top-show-report {
   float: left;
   margin: 0 0 10px 0;
@@ -1517,7 +1534,7 @@ section#main-content div.top-show-report {
   clear: both;
   border-bottom: 1px solid #baced8;
 }
-/* line 128, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 section#main-content textarea {
   float: left;
   margin: 0 0 15px 0;
@@ -1536,15 +1553,15 @@ section#main-content textarea {
   outline: none;
   resize: none;
 }
-/* line 146, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 section#main-content textarea:focus {
   border: 1px solid #baced8;
 }
-/* line 150, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 section#main-content textarea button {
   border: 2px solid green !important;
 }
-/* line 156, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 section#main-content div#criterion_item_translation textarea {
   float: left;
   margin: 0 0 15px 0;
@@ -1563,11 +1580,11 @@ section#main-content div#criterion_item_translation textarea {
   outline: none;
   resize: none;
 }
-/* line 174, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 section#main-content div#criterion_item_translation textarea:focus {
   border: 1px solid #baced8;
 }
-/* line 180, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 section#main-content h1 {
   float: left;
   margin: 0 0 20px 0;
@@ -1577,7 +1594,7 @@ section#main-content h1 {
   font-weight: bold;
   line-height: 36px;
 }
-/* line 190, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 section#main-content p {
   clear: both;
   margin: 0 0 15px 0;
@@ -1585,7 +1602,7 @@ section#main-content p {
   height: auto !important;
   text-align: justify;
 }
-/* line 198, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 section#main-content label {
   clear: left;
   float: left;
@@ -1597,7 +1614,7 @@ section#main-content label {
   line-height: 18px;
   display: block;
 }
-/* line 210, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 section#main-content button {
   clear: both;
   float: right;
@@ -1612,27 +1629,27 @@ section#main-content button {
   cursor: pointer;
   overflow: visible;
   font-family: Arial;
-  background: transparent url(../../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x;
+  background: transparent url(../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
 }
-/* line 230, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 section#main-content button:hover {
-  background: transparent url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
+  background: transparent url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
 }
-/* line 233, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 section#main-content div#accordion {
   width: 100%;
   height: auto;
   display: table;
 }
-/* line 238, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 section#main-content div#accordion h3 {
   width: 100%;
   height: 28px;
-  color: textcolor;
+  color: #393939;
   font-size: 14px;
   font-weight: bold;
   line-height: 28px;
@@ -1641,19 +1658,19 @@ section#main-content div#accordion h3 {
   outline: none;
   cursor: pointer;
 }
-/* line 250, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 section#main-content div#accordion h3:hover {
   color: #e74739;
 }
-/* line 253, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 section#main-content div#accordion p {
   margin: 15px 0;
 }
-/* line 256, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 section#main-content input {
   outline: 0;
 }
-/* line 258, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 section#main-content input:focus {
   outline: 0;
   -webkit-box-shadow: none;
@@ -1662,34 +1679,14 @@ section#main-content input:focus {
 }
 
 /* POP UP */
-
-.ui-dialog .ui-dialog-buttonpane {
-    padding: .3em 1em!important;
-}
-
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
-    float: none!important;
-    width: 80%!important;
-    margin: 0px auto;
-}
-
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button {
-    float:right!important;
-    width: 45%;
-    max-width: 100%!important;
-    text-align: center!important;
-}
-.ui-button-text-only .ui-button-text {
-    padding: 0!important;
-}
-/* line 269, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 div.ui-dialog-titlebar {
   color: #fff;
   background: #52859e;
   border: none !important;
 }
 
-/* line 275, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 button.ui-button-text-only {
   position: relative;
   float: left;
@@ -1700,7 +1697,7 @@ button.ui-button-text-only {
   color: #fff !important;
   line-height: 34px;
   text-decoration: none;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x !important;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg.png) left top repeat-x !important;
   display: block;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -1708,14 +1705,14 @@ button.ui-button-text-only {
   -o-border-radius: 5px;
   outline: none;
 }
-/* line 293, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 button.ui-button-text-only:hover {
   text-decoration: none;
-  background: url(../../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x !important;
+  background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x !important;
 }
 
 /* PAGINATION */
-/* line 300, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 div.pagination {
   position: relative;
   clear: both;
@@ -1727,11 +1724,11 @@ div.pagination {
   line-height: 32px;
   display: table;
 }
-/* line 311, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 div.pagination div.sep-dots {
   float: left;
 }
-/* line 313, ../sass/screen.scss */
+/* line 315, ../sass/screen.scss */
 div.pagination a {
   float: left;
   margin: 0 10px 0 0;
@@ -1743,40 +1740,40 @@ div.pagination a {
   background: #e74739;
   display: block;
 }
-/* line 324, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 div.pagination a:hover {
   text-decoration: none;
   background: #52859e;
 }
-/* line 329, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 div.pagination a.prev {
   width: auto !important;
   color: #fff;
   background: #52859e;
 }
-/* line 334, ../sass/screen.scss */
+/* line 336, ../sass/screen.scss */
 div.pagination a.prev:hover {
   color: #fff;
   background: #e74739;
 }
-/* line 340, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 div.pagination a.next {
   margin: 0;
   width: auto !important;
   color: #fff;
   background: #52859e;
 }
-/* line 346, ../sass/screen.scss */
+/* line 348, ../sass/screen.scss */
 div.pagination a.next:hover {
   color: #fff;
   background: #e74739;
 }
-/* line 352, ../sass/screen.scss */
+/* line 354, ../sass/screen.scss */
 div.pagination a.active {
   background: #52859e;
 }
 
-/* line 356, ../sass/screen.scss */
+/* line 358, ../sass/screen.scss */
 footer {
   clear: both;
   width: 100%;
