@@ -5,10 +5,10 @@ cta_aishe_homepage:
 
 # PAGE
 cta_aishe_info:
-    pattern:  /info
+    pattern:  /page/info
     defaults: { _controller: CtaAisheBundle:Page:view, identifier: info }
 cta_aishe_help:
-    pattern:  /help
+    pattern:  /page/help
     defaults: { _controller: CtaAisheBundle:Page:view, identifier: help }
 
 # REPORT
