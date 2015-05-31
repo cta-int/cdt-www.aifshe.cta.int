@@ -575,7 +575,19 @@ form.largeForm h2 {
 form.largeForm div.formContent {
   width: 988px;
 }
-/* line 92, ../sass/partials/_form.scss */
+/* line 91, ../sass/partials/_form.scss */
+form.fos_user_registration_register {
+  width: 700px;
+}
+/* line 93, ../sass/partials/_form.scss */
+form.fos_user_registration_register h2 {
+  width: 680px !important;
+}
+/* line 94, ../sass/partials/_form.scss */
+form.fos_user_registration_register div.formContent {
+  width: 698px;
+}
+/* line 97, ../sass/partials/_form.scss */
 form h5 {
   float: right;
   margin: 0 -2px 35px 0;
@@ -589,16 +601,16 @@ form h5 {
   display: block;
   border-radius: 0 0 5px 5px;
 }
-/* line 105, ../sass/partials/_form.scss */
+/* line 110, ../sass/partials/_form.scss */
 form h5 a {
   color: #fff;
   text-decoration: none;
 }
-/* line 109, ../sass/partials/_form.scss */
+/* line 114, ../sass/partials/_form.scss */
 form h5 a:hover {
   text-decoration: underline;
 }
-/* line 113, ../sass/partials/_form.scss */
+/* line 118, ../sass/partials/_form.scss */
 form input {
   background: transparent !important;
   backgorund-color: transparent !important;

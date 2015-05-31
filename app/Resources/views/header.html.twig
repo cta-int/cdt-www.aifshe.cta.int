@@ -7,7 +7,7 @@
         <div id="logo">
             <a href="{{ path('cta_aishe_homepage') }}"><img src="{{ asset('bundles/ctaaishe/css/img/logo-text.png') }}" alt="{{ 'site.title.short'|trans }}"/></a>
         </div>
-        {% if app.user %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <div id="language">
                 {% for language in languages %}
                     <span {% if app.request.locale == language %}class="active"{% endif %}>
