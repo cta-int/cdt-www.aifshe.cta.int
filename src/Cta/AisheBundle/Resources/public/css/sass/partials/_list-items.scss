@@ -277,6 +277,7 @@ ul {
 
   &[name=report-overview] {
     li {
+      height: auto;
       span.status {padding: 0 0 0 10px !important; width: 145px !important;}
       span.create-author {width: 126px !important;}
       span.edit-author {width: 126px !important;}

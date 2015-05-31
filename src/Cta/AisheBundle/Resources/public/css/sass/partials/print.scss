@@ -126,13 +126,13 @@
         ul[name=report-view] {
           float: left;
           height: auto;
-          width: 990px !important;
+          width: $bodyWidth !important;
           display: table;
 
           li {
             margin: 0 !important;
             padding: 0 !important;
-            width: 990px;
+            width: $bodyWidth;
             height: 32px;
             display: table;
             background: #fff;
@@ -147,7 +147,7 @@
             &.criterion-row {
               float: left;
               position: fixed;
-              width: 990px;
+              width: $bodyWidth;
               height: 3px;
               border-top: 1px solid #000;
               border-bottom: 1px solid #000;
@@ -275,7 +275,7 @@
     table {
       clear: left;
       margin: 0 0 20px 0;
-      width: 990px;
+      width: $bodyWidth;
       line-height: 28px;
       border: 1px solid #000;
 

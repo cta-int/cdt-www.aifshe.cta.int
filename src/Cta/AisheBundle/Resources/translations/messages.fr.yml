@@ -12,7 +12,9 @@ security:
         login:          Connecter
         register:       Enregistrer
         forgotPassword: Mot de passe oublié?
-        usernameEmail:  Nom d'usager / Email
+        username:       Nom d'utilisateur
+        password:       Mot de passe
+        usernameEmail:  Nom d'utilisateur / Email
         reset:          Réinitialisez mot de passe
         submit:         Envoyer
         delete:         Supprimer

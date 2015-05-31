@@ -7,7 +7,7 @@ nav {
 
   div#menu {
     margin: 0 auto;
-    width: 990px;
+    width: $bodyWidth;
     height: 30px;
     display: block;
 
@@ -23,6 +23,7 @@ nav {
         float: left;
         padding: 0 12px 0 10px;
         width: auto !important;
+        height: 30px !important;
         line-height: 30px;
         background: url(../img/menu-bg.png) right center no-repeat;
         background-size: 1px 100%;

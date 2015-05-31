@@ -84,7 +84,7 @@ form {
   }
 
   &.largeForm {
-    width: 990px;
+    width: $bodyWidth;
     h2 {width: 970px !important;}
     div.formContent {width: 988px;}
   }

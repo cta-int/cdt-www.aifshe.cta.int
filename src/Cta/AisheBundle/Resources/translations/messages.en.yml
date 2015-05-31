@@ -6,12 +6,17 @@ site:
 
 security:
     base:
+        title:          JOIN THE COMMUNITY
+        subtitle:       AIFSHE - Get involved
+        intro:          If you have already a Login, please proceed to the AIFSHE environment below
         logged_in_as:   You are currently logged in as
         showProfile:    Your account
         logout:         Logout
         login:          Login
-        register:       Register
+        register:       Sign up
         forgotPassword: Forgot your password?
+        username:       Username
+        password:       Password
         usernameEmail:  Username / Email
         reset:          Reset password
         submit:         Send

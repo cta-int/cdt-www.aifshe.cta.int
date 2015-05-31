@@ -1,5 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-boo
+    <div id="home">
+        <div class="col1">
+            {% include 'CtaAisheBundle:Default:home-left.html.twig' %}
+        </div>
+        <div class="col2">
+            {% render url('fos_user_security_login') %}
+            {% include 'CtaAisheBundle:Default:home-right.html.twig' %}
+        </div>
+    </div>
 {% endblock %}

@@ -7,7 +7,7 @@ header {
   div#header-box {
     position: relative;
     margin: 0 auto;
-    width: 990px;
+    width: $bodyWidth;
     height: 100%;
     display: block;
 
@@ -31,9 +31,8 @@ header {
     }
 
     div#logo {
-//      padding: 0 36px 0 0;
       position: absolute;
-      left: 710px;
+      left: 765px;
       top: 0;
       height: 118px;
       width: 195px;
