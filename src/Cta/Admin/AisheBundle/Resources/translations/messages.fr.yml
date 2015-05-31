@@ -82,6 +82,7 @@ user:
                 decline: Etes-vous sûr que vous voulez donner à un utilisateur aucun droits de l'vérificateurs?
 
 tool:
+    home:         Home
     offlineTool:  l'outil en ligne
     update:       mettre à jour
     filename:     Nom du fichier

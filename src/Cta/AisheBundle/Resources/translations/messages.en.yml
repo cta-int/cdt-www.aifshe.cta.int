@@ -6,7 +6,8 @@ site:
 
 security:
     base:
-        logged_in_as:   Logged in as
+        logged_in_as:   You are currently logged in as
+        showProfile:    Your account
         logout:         Logout
         login:          Login
         register:       Register
