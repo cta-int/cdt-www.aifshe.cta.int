@@ -6,6 +6,9 @@ site:
 
 security:
     base:
+        title:          REJOIGNEZ LA COMMUNAUTÉ
+        subtitle:       AIFSHE - Participez
+        intro:          Si vous avez déjà un login, veuillez procéder à l'environnement AIFSHE ci-dessous
         logged_in_as:   Connecté en tant que
         showProfile:    Votre compte
         logout:         Se déconnecter

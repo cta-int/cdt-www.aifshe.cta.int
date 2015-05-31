@@ -31,7 +31,7 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
             {% if error %}
-                <div class="error" style="margin-top: -44px; margin-bottom: 15px; float: none; display: block; padding: 10px; color: #a94442; background-color: #f2dede; border-color: #ebccd1; text-align: center;">
+                <div class="auth-error">
                     {{ error.messageKey|trans(error.messageData, 'security') }}
                 </div>
             {% endif %}
