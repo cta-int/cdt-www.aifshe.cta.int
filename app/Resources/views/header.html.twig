@@ -7,18 +7,16 @@
         <div id="logo">
             <a href="{{ path('cta_aishe_homepage') }}"><img src="{{ asset('bundles/ctaaishe/css/img/logo-text.png') }}" alt="{{ 'site.title.short'|trans }}"/></a>
         </div>
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <div id="language">
-                {% for language in languages %}
-                    <span {% if app.request.locale == language %}class="active"{% endif %}>
-                        {% set languageUrl = path('cta_aishe_homepage', {"_locale": language}) %}
-                        {% if app.request.attributes.get('_route') %}
-                            {% set languageUrl = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({"_locale": language})) %}
-                        {% endif %}
-                        <a href="{{ languageUrl }}">{{ language | upper }}</a>
-                    </span>
-                {% endfor %}
-            </div>
-        {% endif %}
+        <div id="language">
+            {% for language in languages %}
+                <span {% if app.request.locale == language %}class="active"{% endif %}>
+                    {% set languageUrl = path('cta_aishe_homepage', {"_locale": language}) %}
+                    {% if app.request.attributes.get('_route') %}
+                        {% set languageUrl = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({"_locale": language})) %}
+                    {% endif %}
+                    <a href="{{ languageUrl }}">{{ language | upper }}</a>
+                </span>
+            {% endfor %}
+        </div>
     </div>
 </header>

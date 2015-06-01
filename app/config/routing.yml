@@ -9,6 +9,7 @@ cta_aishe:
 # FOS USER BUNDLE
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix:   /
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -25,8 +26,3 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-
-# FOS overrides
-fos_user_security_login:
-    pattern:  /login
-    defaults: { _controller: CtaAisheBundle:Security:login }
