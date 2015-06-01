@@ -8,6 +8,10 @@ $menuBackgroundColor: #647678;
 $headertextColor:     #FFFFFF;
 $bodyWidth:           1045px;
 
+@mixin width-body-minus($width) {
+  width: ($bodyWidth - $width);
+}
+
 @import "compass/reset";
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
@@ -271,6 +275,24 @@ main {
 
 /* POP UP */
 
+.ui-dialog .ui-dialog-buttonpane {
+  padding: .3em 1em! important;
+  .ui-dialog-buttonset {
+    float: none !important;
+    width: 80% !important;
+    margin: 0px auto;
+  }
+  .ui-dialog-buttonset button {
+    float:right! important;
+    width: 45%;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+}
+.ui-button-text-only .ui-button-text {
+    padding: 0!important;
+}
+
 div.ui-dialog-titlebar {
   color: #fff;
   background: $blue;
@@ -355,6 +377,24 @@ div.pagination {
     }
 
     &.active {background: $blue;}
+  }
+}
+
+/* PAGES */
+.page {
+  ol {
+    li {
+      background: none;
+      border: 0;
+      height: auto;
+      cursor: auto;
+      float: none;
+      display: list-item;
+      margin-left: 25px;
+      margin-bottom: 10px;
+      line-height: 21px;
+      list-style-type: decimal;
+    }
   }
 }
 

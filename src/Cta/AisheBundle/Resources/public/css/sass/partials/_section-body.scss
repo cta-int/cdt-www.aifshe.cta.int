@@ -1,7 +1,7 @@
 div#section-body {
   float: left;
   padding: 20px;
-  width: 948px;
+  @include width-body-minus(42);
   height: auto;
   display: block;
   border-left: 1px solid $blue;

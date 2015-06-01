@@ -439,7 +439,7 @@ div#side-menu:after {
 div#section-body {
   float: left;
   padding: 20px;
-  width: 948px;
+  width: 1003px;
   height: auto;
   display: block;
   border-left: 1px solid #52859e;
@@ -573,21 +573,21 @@ form.largeForm h2 {
 }
 /* line 89, ../sass/partials/_form.scss */
 form.largeForm div.formContent {
-  width: 988px;
+  width: 1043px;
 }
-/* line 91, ../sass/partials/_form.scss */
+/* line 93, ../sass/partials/_form.scss */
 form.fos_user_registration_register {
   width: 700px;
 }
-/* line 93, ../sass/partials/_form.scss */
+/* line 95, ../sass/partials/_form.scss */
 form.fos_user_registration_register h2 {
   width: 680px !important;
 }
-/* line 94, ../sass/partials/_form.scss */
+/* line 96, ../sass/partials/_form.scss */
 form.fos_user_registration_register div.formContent {
   width: 698px;
 }
-/* line 97, ../sass/partials/_form.scss */
+/* line 99, ../sass/partials/_form.scss */
 form h5 {
   float: right;
   margin: 0 -2px 35px 0;
@@ -601,19 +601,18 @@ form h5 {
   display: block;
   border-radius: 0 0 5px 5px;
 }
-/* line 110, ../sass/partials/_form.scss */
+/* line 112, ../sass/partials/_form.scss */
 form h5 a {
   color: #fff;
   text-decoration: none;
 }
-/* line 114, ../sass/partials/_form.scss */
+/* line 116, ../sass/partials/_form.scss */
 form h5 a:hover {
   text-decoration: underline;
 }
-/* line 118, ../sass/partials/_form.scss */
+/* line 120, ../sass/partials/_form.scss */
 form input {
   background: transparent !important;
-  backgorund-color: transparent !important;
 }
 
 /* line 1, ../sass/partials/_list-items.scss */
@@ -723,78 +722,88 @@ ul li.top span.mediumtitle {
   padding: 0 6px 0 10px;
   width: 230px;
 }
-/* line 63, ../sass/partials/_list-items.scss */
+/* line 61, ../sass/partials/_list-items.scss */
+ul li.top span.institutions-name {
+  padding: 0 6px 0 10px;
+  width: 580px;
+}
+/* line 67, ../sass/partials/_list-items.scss */
 ul li span.info {
   padding: 0 !important;
   width: 72px;
   text-align: center;
   display: block;
 }
-/* line 70, ../sass/partials/_list-items.scss */
+/* line 74, ../sass/partials/_list-items.scss */
 ul li:hover {
   background: #d4e6ef;
 }
-/* line 72, ../sass/partials/_list-items.scss */
+/* line 76, ../sass/partials/_list-items.scss */
 ul li a {
   color: #393939;
   text-decoration: none;
 }
-/* line 77, ../sass/partials/_list-items.scss */
+/* line 81, ../sass/partials/_list-items.scss */
 ul li span {
   float: left;
   padding: 0 20px 0 0;
   display: block;
 }
-/* line 82, ../sass/partials/_list-items.scss */
+/* line 86, ../sass/partials/_list-items.scss */
 ul li span span.text {
   display: none;
 }
-/* line 85, ../sass/partials/_list-items.scss */
+/* line 89, ../sass/partials/_list-items.scss */
 ul li span.title {
   padding: 0 6px 0 10px;
   width: 280px;
 }
-/* line 90, ../sass/partials/_list-items.scss */
+/* line 94, ../sass/partials/_list-items.scss */
 ul li span.smalltitle {
   padding: 0 6px 0 10px;
   width: 175px;
 }
-/* line 95, ../sass/partials/_list-items.scss */
+/* line 99, ../sass/partials/_list-items.scss */
 ul li span.mediumtitle {
+  padding: 0 6px 0 10px;
+  width: 230px;
+}
+/* line 104, ../sass/partials/_list-items.scss */
+ul li span.institutions-name {
   padding: 0 6px 0 10px;
   width: 580px;
 }
-/* line 99, ../sass/partials/_list-items.scss */
+/* line 108, ../sass/partials/_list-items.scss */
 ul li span.institution-name {
   width: 100%;
 }
-/* line 100, ../sass/partials/_list-items.scss */
+/* line 109, ../sass/partials/_list-items.scss */
 ul li span.create-date {
   width: 111px;
 }
-/* line 101, ../sass/partials/_list-items.scss */
+/* line 110, ../sass/partials/_list-items.scss */
 ul li span.create-author {
   width: 200px;
 }
-/* line 102, ../sass/partials/_list-items.scss */
+/* line 111, ../sass/partials/_list-items.scss */
 ul li span.edit-date {
   width: 111px;
 }
-/* line 103, ../sass/partials/_list-items.scss */
+/* line 112, ../sass/partials/_list-items.scss */
 ul li span.roles {
   padding: 0;
   width: 164px;
   text-align: left;
   display: block;
 }
-/* line 104, ../sass/partials/_list-items.scss */
+/* line 113, ../sass/partials/_list-items.scss */
 ul li span.date-time {
   padding: 0;
   width: 194px;
   text-align: left;
   display: block;
 }
-/* line 105, ../sass/partials/_list-items.scss */
+/* line 114, ../sass/partials/_list-items.scss */
 ul li span.enabled {
   padding: 0;
   max-height: 32px;
@@ -802,22 +811,22 @@ ul li span.enabled {
   text-align: left;
   display: block;
 }
-/* line 106, ../sass/partials/_list-items.scss */
+/* line 115, ../sass/partials/_list-items.scss */
 ul li span.enabled img[src$='disabled.png'] {
   margin: 5px 0 0 0;
 }
-/* line 109, ../sass/partials/_list-items.scss */
+/* line 118, ../sass/partials/_list-items.scss */
 ul li span.edit-author {
   padding: 0;
   width: 200px;
 }
-/* line 114, ../sass/partials/_list-items.scss */
+/* line 123, ../sass/partials/_list-items.scss */
 ul li.criterion-row {
   height: 3px;
   background: #52859e;
   display: block;
 }
-/* line 121, ../sass/partials/_list-items.scss */
+/* line 130, ../sass/partials/_list-items.scss */
 ul span.number {
   padding: 0;
   width: 54px;
@@ -825,15 +834,15 @@ ul span.number {
   display: block;
   cursor: pointer;
 }
-/* line 129, ../sass/partials/_list-items.scss */
+/* line 138, ../sass/partials/_list-items.scss */
 ul span.first-number {
   width: 37px;
 }
-/* line 130, ../sass/partials/_list-items.scss */
+/* line 139, ../sass/partials/_list-items.scss */
 ul span.last-number {
   width: 37px;
 }
-/* line 135, ../sass/partials/_list-items.scss */
+/* line 144, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.number {
   padding: 0;
   width: 54px;
@@ -841,60 +850,60 @@ ul[name=report-view] li.top span.number {
   display: block;
   cursor: pointer;
 }
-/* line 144, ../sass/partials/_list-items.scss */
+/* line 153, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.first-number {
   margin: 0;
   width: 37px;
 }
-/* line 145, ../sass/partials/_list-items.scss */
+/* line 154, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.last-number {
   width: 37px;
 }
-/* line 146, ../sass/partials/_list-items.scss */
+/* line 155, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.priority {
   padding: 0;
   width: 104px;
   text-align: center;
   display: block;
 }
-/* line 147, ../sass/partials/_list-items.scss */
+/* line 156, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.language {
   padding: 0;
   width: 104px;
   text-align: center;
   display: block;
 }
-/* line 148, ../sass/partials/_list-items.scss */
+/* line 157, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.roles {
   padding: 0;
   width: 164px;
   text-align: left;
   display: block;
 }
-/* line 149, ../sass/partials/_list-items.scss */
+/* line 158, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.empty-row {
   width: 89px;
   text-align: center;
   display: block;
 }
-/* line 150, ../sass/partials/_list-items.scss */
+/* line 159, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.emptyfield {
   width: 89px;
   text-align: center;
   display: block;
 }
-/* line 152, ../sass/partials/_list-items.scss */
+/* line 161, ../sass/partials/_list-items.scss */
 ul[name=report-view] li.top span.title {
   width: 471px;
   border: none !important;
 }
-/* line 159, ../sass/partials/_list-items.scss */
+/* line 168, ../sass/partials/_list-items.scss */
 ul[name=report-view] span.title {
   width: 471px;
   border-right: 1px dotted #baced8;
   display: block;
 }
-/* line 166, ../sass/partials/_list-items.scss */
+/* line 175, ../sass/partials/_list-items.scss */
 ul span[name="0"] {
   padding: 0;
   width: 36px;
@@ -902,11 +911,11 @@ ul span[name="0"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 166, ../sass/partials/_list-items.scss */
+/* line 175, ../sass/partials/_list-items.scss */
 ul span[name="0"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 167, ../sass/partials/_list-items.scss */
+/* line 176, ../sass/partials/_list-items.scss */
 ul span[name="1"] {
   padding: 0;
   width: 36px;
@@ -914,11 +923,11 @@ ul span[name="1"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 167, ../sass/partials/_list-items.scss */
+/* line 176, ../sass/partials/_list-items.scss */
 ul span[name="1"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 168, ../sass/partials/_list-items.scss */
+/* line 177, ../sass/partials/_list-items.scss */
 ul span[name="2"] {
   padding: 0;
   width: 36px;
@@ -926,11 +935,11 @@ ul span[name="2"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 168, ../sass/partials/_list-items.scss */
+/* line 177, ../sass/partials/_list-items.scss */
 ul span[name="2"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 169, ../sass/partials/_list-items.scss */
+/* line 178, ../sass/partials/_list-items.scss */
 ul span[name="3"] {
   padding: 0;
   width: 36px;
@@ -938,11 +947,11 @@ ul span[name="3"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 169, ../sass/partials/_list-items.scss */
+/* line 178, ../sass/partials/_list-items.scss */
 ul span[name="3"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 170, ../sass/partials/_list-items.scss */
+/* line 179, ../sass/partials/_list-items.scss */
 ul span[name="4"] {
   padding: 0;
   width: 36px;
@@ -950,11 +959,11 @@ ul span[name="4"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 170, ../sass/partials/_list-items.scss */
+/* line 179, ../sass/partials/_list-items.scss */
 ul span[name="4"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 171, ../sass/partials/_list-items.scss */
+/* line 180, ../sass/partials/_list-items.scss */
 ul span[name="5"] {
   padding: 0;
   width: 36px;
@@ -962,11 +971,11 @@ ul span[name="5"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 171, ../sass/partials/_list-items.scss */
+/* line 180, ../sass/partials/_list-items.scss */
 ul span[name="5"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 172, ../sass/partials/_list-items.scss */
+/* line 181, ../sass/partials/_list-items.scss */
 ul span[name="1-5"] {
   padding: 0;
   width: 17px;
@@ -974,11 +983,11 @@ ul span[name="1-5"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 172, ../sass/partials/_list-items.scss */
+/* line 181, ../sass/partials/_list-items.scss */
 ul span[name="1-5"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 173, ../sass/partials/_list-items.scss */
+/* line 182, ../sass/partials/_list-items.scss */
 ul span[name="2-5"] {
   padding: 0;
   width: 17px;
@@ -986,11 +995,11 @@ ul span[name="2-5"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 173, ../sass/partials/_list-items.scss */
+/* line 182, ../sass/partials/_list-items.scss */
 ul span[name="2-5"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 174, ../sass/partials/_list-items.scss */
+/* line 183, ../sass/partials/_list-items.scss */
 ul span[name="3-5"] {
   padding: 0;
   width: 17px;
@@ -998,11 +1007,11 @@ ul span[name="3-5"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 174, ../sass/partials/_list-items.scss */
+/* line 183, ../sass/partials/_list-items.scss */
 ul span[name="3-5"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 175, ../sass/partials/_list-items.scss */
+/* line 184, ../sass/partials/_list-items.scss */
 ul span[name="4-5"] {
   padding: 0;
   width: 17px;
@@ -1010,158 +1019,158 @@ ul span[name="4-5"] {
   border-right: 1px dotted #baced8;
   cursor: pointer;
 }
-/* line 175, ../sass/partials/_list-items.scss */
+/* line 184, ../sass/partials/_list-items.scss */
 ul span[name="4-5"] img {
   margin: 5px 0 -5px 0;
 }
-/* line 176, ../sass/partials/_list-items.scss */
+/* line 185, ../sass/partials/_list-items.scss */
 ul span.priority {
   padding: 0 34px;
   width: 32px;
   text-align: center;
   display: block;
 }
-/* line 182, ../sass/partials/_list-items.scss */
+/* line 191, ../sass/partials/_list-items.scss */
 ul span.priority img {
   display: none;
 }
-/* line 184, ../sass/partials/_list-items.scss */
+/* line 193, ../sass/partials/_list-items.scss */
 ul span.priority.jqtransformdone {
   text-align: center;
 }
-/* line 187, ../sass/partials/_list-items.scss */
+/* line 196, ../sass/partials/_list-items.scss */
 ul span.priority input[type=checkbox] {
   margin: 0 auto;
 }
-/* line 190, ../sass/partials/_list-items.scss */
+/* line 199, ../sass/partials/_list-items.scss */
 ul span.flag-start {
   height: 32px;
   background: url(../bundles/ctaaishe/css/img/start-line.png) right center no-repeat !important;
   cursor: pointer;
 }
-/* line 195, ../sass/partials/_list-items.scss */
+/* line 204, ../sass/partials/_list-items.scss */
 ul span.flag-start.flag-end {
   background: url(../bundles/ctaaishe/css/img/start-end.png) center no-repeat !important;
 }
-/* line 199, ../sass/partials/_list-items.scss */
+/* line 208, ../sass/partials/_list-items.scss */
 ul span.flag-start img {
   display: none;
 }
-/* line 201, ../sass/partials/_list-items.scss */
+/* line 210, ../sass/partials/_list-items.scss */
 ul span.flag-end {
   height: 32px;
   background: url(../bundles/ctaaishe/css/img/end-line.png) left center no-repeat !important;
   cursor: pointer;
 }
-/* line 206, ../sass/partials/_list-items.scss */
+/* line 215, ../sass/partials/_list-items.scss */
 ul span.flag-end img {
   display: none;
 }
-/* line 209, ../sass/partials/_list-items.scss */
+/* line 218, ../sass/partials/_list-items.scss */
 ul span.flag-line {
   height: 32px;
   background: url(../bundles/ctaaishe/css/img/line.png) left center repeat-x !important;
 }
-/* line 213, ../sass/partials/_list-items.scss */
+/* line 222, ../sass/partials/_list-items.scss */
 ul span.flag-line img {
   display: none;
 }
-/* line 216, ../sass/partials/_list-items.scss */
+/* line 225, ../sass/partials/_list-items.scss */
 ul span.empty {
   padding: 0;
   width: 104px;
   text-align: center;
   display: block;
 }
-/* line 221, ../sass/partials/_list-items.scss */
+/* line 230, ../sass/partials/_list-items.scss */
 ul span.empty img {
   margin: 3px auto;
   cursor: pointer;
 }
-/* line 224, ../sass/partials/_list-items.scss */
+/* line 233, ../sass/partials/_list-items.scss */
 ul span.delete {
   width: 41px;
   padding: 0 !important;
   text-align: center;
 }
-/* line 226, ../sass/partials/_list-items.scss */
+/* line 235, ../sass/partials/_list-items.scss */
 ul[name=edit-table-view] {
   width: auto;
   margin: 0;
   display: table;
 }
-/* line 230, ../sass/partials/_list-items.scss */
+/* line 239, ../sass/partials/_list-items.scss */
 ul[name=edit-table-view] li {
   clear: left;
   float: left;
   width: 296px;
 }
-/* line 239, ../sass/partials/_list-items.scss */
+/* line 248, ../sass/partials/_list-items.scss */
 ul#flags.desired_situation li {
   height: 32px;
   line-height: 32px;
 }
-/* line 242, ../sass/partials/_list-items.scss */
+/* line 251, ../sass/partials/_list-items.scss */
 ul#flags.desired_situation li span {
   padding: 0;
 }
-/* line 247, ../sass/partials/_list-items.scss */
+/* line 256, ../sass/partials/_list-items.scss */
 ul#flags.current_situation li {
   height: 32px;
   line-height: 32px;
 }
-/* line 250, ../sass/partials/_list-items.scss */
+/* line 259, ../sass/partials/_list-items.scss */
 ul#flags.current_situation li span {
   padding: 0;
 }
-/* line 257, ../sass/partials/_list-items.scss */
+/* line 266, ../sass/partials/_list-items.scss */
 ul.criterion li.top span.empty-row {
   padding: 0 !important;
 }
-/* line 258, ../sass/partials/_list-items.scss */
+/* line 267, ../sass/partials/_list-items.scss */
 ul.criterion li.top span.create-date {
   padding: 0 !important;
 }
-/* line 259, ../sass/partials/_list-items.scss */
+/* line 268, ../sass/partials/_list-items.scss */
 ul.criterion li.top span.title {
   padding: 0 !important;
 }
-/* line 263, ../sass/partials/_list-items.scss */
+/* line 272, ../sass/partials/_list-items.scss */
 ul.criterion li span.create-date {
   padding: 0 !important;
 }
-/* line 264, ../sass/partials/_list-items.scss */
+/* line 273, ../sass/partials/_list-items.scss */
 ul.criterion li span.title {
   padding: 0 !important;
 }
-/* line 270, ../sass/partials/_list-items.scss */
+/* line 279, ../sass/partials/_list-items.scss */
 ul[name=edit-table-view] li span.flag-start {
   background: url(../bundles/ctaaishe/css/img/start-solo.png) center no-repeat;
   cursor: pointer;
 }
-/* line 274, ../sass/partials/_list-items.scss */
+/* line 283, ../sass/partials/_list-items.scss */
 ul[name=edit-table-view] li span.flag-end {
   background: url(../bundles/ctaaishe/css/img/stop-solo.png) center no-repeat;
   cursor: pointer;
 }
-/* line 279, ../sass/partials/_list-items.scss */
+/* line 288, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li {
   height: auto;
 }
-/* line 281, ../sass/partials/_list-items.scss */
+/* line 290, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.status {
   padding: 0 0 0 10px !important;
   width: 145px !important;
 }
-/* line 282, ../sass/partials/_list-items.scss */
+/* line 291, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.create-author {
   width: 126px !important;
 }
-/* line 283, ../sass/partials/_list-items.scss */
+/* line 292, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.edit-author {
   width: 126px !important;
 }
-/* line 284, ../sass/partials/_list-items.scss */
+/* line 293, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.auditor {
   width: 126px !important;
 }
@@ -1171,7 +1180,7 @@ div.report-item {
   float: left;
   margin: 0 0 20px 0;
   padding: 20px;
-  width: 948px;
+  width: 1003px;
   height: auto;
   display: block;
   border-left: 1px solid #52859e;
@@ -1193,8 +1202,8 @@ div.report-item ul li {
   padding: 0 1%;
   line-height: 28px;
   border-bottom: 1px dotted #baced8;
-  border-left: 0px !important;
-  border-right: 0px !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
   display: block;
 }
 /* line 29, ../sass/partials/_show-report.scss */
@@ -1241,7 +1250,7 @@ div.show-report span.priority span.priority.checked {
 /* line 2, ../sass/partials/_admin.scss */
 form div.admin.formContent {
   padding: 44px 0;
-  width: 988px;
+  width: 1043px;
 }
 /* line 6, ../sass/partials/_admin.scss */
 form div.admin.formContent a#add-role {
@@ -1671,13 +1680,13 @@ main #home #login .auth-error {
   text-align: center;
 }
 
-/* line 23, ../sass/screen.scss */
+/* line 27, ../sass/screen.scss */
 html {
   height: 100%;
   width: 100%;
 }
 
-/* line 28, ../sass/screen.scss */
+/* line 32, ../sass/screen.scss */
 body {
   margin: 0;
   padding: 0;
@@ -1688,20 +1697,20 @@ body {
   color: #393939;
   font-family: 'Noto Sans', Arial, Verdana;
 }
-/* line 38, ../sass/screen.scss */
+/* line 42, ../sass/screen.scss */
 body a {
   color: #e74739;
   text-decoration: none;
 }
-/* line 42, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 body a:hover {
   text-decoration: underline;
 }
-/* line 43, ../sass/screen.scss */
+/* line 47, ../sass/screen.scss */
 body a img {
   border: none;
 }
-/* line 46, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 body div#content {
   clear: both;
   margin-bottom: -18px;
@@ -1710,25 +1719,25 @@ body div#content {
   min-height: 100%;
   display: block;
 }
-/* line 54, ../sass/screen.scss */
+/* line 58, ../sass/screen.scss */
 body div#content:after {
   content: "";
   display: block;
   height: 18px;
 }
-/* line 56, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 body img.print-logo {
   display: none;
 }
 
-/* line 59, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 main {
   margin: 35px auto;
   width: 1045px;
   height: auto;
   display: table;
 }
-/* line 65, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 main div.flash-notice {
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -1737,7 +1746,7 @@ main div.flash-notice {
   background: #52859e;
   display: table;
 }
-/* line 74, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 main div.flash-error {
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -1746,7 +1755,7 @@ main div.flash-error {
   background: #e74739;
   display: table;
 }
-/* line 83, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 main h2 {
   clear: both !important;
   margin: 0;
@@ -1760,18 +1769,18 @@ main h2 {
   text-transform: capitalize;
   border-radius: 5px 5px 0 0;
 }
-/* line 96, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 main h2.smallTitle {
   float: none !important;
   margin: 0 auto !important;
   width: 426px !important;
 }
-/* line 102, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 main h2 img {
   position: relative;
   top: 2px;
 }
-/* line 108, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 main h3 {
   float: left;
   margin: 15px 10px 15px 0;
@@ -1780,26 +1789,26 @@ main h3 {
   line-height: 16px;
   display: block;
 }
-/* line 116, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 main h3.current {
   font-size: 14px;
   color: #e74739;
 }
-/* line 117, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 main h3.desired {
   font-size: 14px;
   color: green;
 }
-/* line 118, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 main h3.priority {
   float: right;
   color: #e74739;
 }
-/* line 121, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 main strong {
   font-weight: bold;
 }
-/* line 123, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 main div.top-show-report {
   float: left;
   margin: 0 0 10px 0;
@@ -1809,7 +1818,7 @@ main div.top-show-report {
   clear: both;
   border-bottom: 1px solid #baced8;
 }
-/* line 133, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 main textarea {
   float: left;
   margin: 0 0 15px 0;
@@ -1828,15 +1837,15 @@ main textarea {
   outline: none;
   resize: none;
 }
-/* line 151, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 main textarea:focus {
   border: 1px solid #baced8;
 }
-/* line 155, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 main textarea button {
   border: 2px solid green !important;
 }
-/* line 161, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 main div#criterion_item_translation textarea {
   float: left;
   margin: 0 0 15px 0;
@@ -1855,11 +1864,11 @@ main div#criterion_item_translation textarea {
   outline: none;
   resize: none;
 }
-/* line 179, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 main div#criterion_item_translation textarea:focus {
   border: 1px solid #baced8;
 }
-/* line 185, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 main h1 {
   float: left;
   margin: 0 0 20px 0;
@@ -1869,7 +1878,7 @@ main h1 {
   font-weight: bold;
   line-height: 36px;
 }
-/* line 195, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 main p {
   clear: both;
   margin: 0 0 15px 0;
@@ -1877,7 +1886,7 @@ main p {
   height: auto !important;
   text-align: justify;
 }
-/* line 203, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 main label {
   clear: left;
   float: left;
@@ -1889,7 +1898,7 @@ main label {
   line-height: 18px;
   display: block;
 }
-/* line 215, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 main button {
   clear: both;
   float: right;
@@ -1910,17 +1919,17 @@ main button {
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
 }
-/* line 235, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 main button:hover {
   background: transparent url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x;
 }
-/* line 238, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 main div#accordion {
   width: 100%;
   height: auto;
   display: table;
 }
-/* line 243, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 main div#accordion h3 {
   width: 100%;
   height: 28px;
@@ -1933,19 +1942,19 @@ main div#accordion h3 {
   outline: none;
   cursor: pointer;
 }
-/* line 255, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 main div#accordion h3:hover {
   color: #e74739;
 }
-/* line 258, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 main div#accordion p {
   margin: 15px 0;
 }
-/* line 261, ../sass/screen.scss */
+/* line 265, ../sass/screen.scss */
 main input {
   outline: 0;
 }
-/* line 263, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 main input:focus {
   outline: 0;
   -webkit-box-shadow: none;
@@ -1954,14 +1963,37 @@ main input:focus {
 }
 
 /* POP UP */
-/* line 274, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
+.ui-dialog .ui-dialog-buttonpane {
+  padding: 0.3em 1em !important;
+}
+/* line 280, ../sass/screen.scss */
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: none !important;
+  width: 80% !important;
+  margin: 0px auto;
+}
+/* line 285, ../sass/screen.scss */
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button {
+  float: right !important;
+  width: 45%;
+  max-width: 100% !important;
+  text-align: center !important;
+}
+
+/* line 292, ../sass/screen.scss */
+.ui-button-text-only .ui-button-text {
+  padding: 0 !important;
+}
+
+/* line 296, ../sass/screen.scss */
 div.ui-dialog-titlebar {
   color: #fff;
   background: #52859e;
   border: none !important;
 }
 
-/* line 280, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 button.ui-button-text-only {
   position: relative;
   float: left;
@@ -1980,14 +2012,14 @@ button.ui-button-text-only {
   -o-border-radius: 5px;
   outline: none;
 }
-/* line 298, ../sass/screen.scss */
+/* line 320, ../sass/screen.scss */
 button.ui-button-text-only:hover {
   text-decoration: none;
   background: url(../bundles/ctaaishe/css/img/jqtransform/button-bg-hover.png) left top repeat-x !important;
 }
 
 /* PAGINATION */
-/* line 305, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 div.pagination {
   position: relative;
   clear: both;
@@ -1999,11 +2031,11 @@ div.pagination {
   line-height: 32px;
   display: table;
 }
-/* line 316, ../sass/screen.scss */
+/* line 338, ../sass/screen.scss */
 div.pagination div.sep-dots {
   float: left;
 }
-/* line 318, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 div.pagination a {
   float: left;
   margin: 0 10px 0 0;
@@ -2015,40 +2047,55 @@ div.pagination a {
   background: #e74739;
   display: block;
 }
-/* line 329, ../sass/screen.scss */
+/* line 351, ../sass/screen.scss */
 div.pagination a:hover {
   text-decoration: none;
   background: #52859e;
 }
-/* line 334, ../sass/screen.scss */
+/* line 356, ../sass/screen.scss */
 div.pagination a.prev {
   width: auto !important;
   color: #fff;
   background: #52859e;
 }
-/* line 339, ../sass/screen.scss */
+/* line 361, ../sass/screen.scss */
 div.pagination a.prev:hover {
   color: #fff;
   background: #e74739;
 }
-/* line 345, ../sass/screen.scss */
+/* line 367, ../sass/screen.scss */
 div.pagination a.next {
   margin: 0;
   width: auto !important;
   color: #fff;
   background: #52859e;
 }
-/* line 351, ../sass/screen.scss */
+/* line 373, ../sass/screen.scss */
 div.pagination a.next:hover {
   color: #fff;
   background: #e74739;
 }
-/* line 357, ../sass/screen.scss */
+/* line 379, ../sass/screen.scss */
 div.pagination a.active {
   background: #52859e;
 }
 
-/* line 361, ../sass/screen.scss */
+/* PAGES */
+/* line 386, ../sass/screen.scss */
+.page ol li {
+  background: none;
+  border: 0;
+  height: auto;
+  cursor: auto;
+  float: none;
+  display: list-item;
+  margin-left: 25px;
+  margin-bottom: 10px;
+  line-height: 21px;
+  list-style-type: decimal;
+}
+
+/* line 401, ../sass/screen.scss */
 footer {
   clear: both;
   width: 100%;
@@ -2360,7 +2407,7 @@ footer {
     float: left;
     margin: 0 0 20px 0;
     padding: 20px;
-    width: 948px;
+    width: 1003px;
     height: auto;
     display: block;
     border: 1px solid #000;
@@ -2883,7 +2930,7 @@ footer {
   }
   /* line 87, ../sass/partials/_smartphone.scss */
   form h5 {
-    margin: 0px 0px 35px 0px;
+    margin: 0 0 35px 0;
   }
 
   /* line 91, ../sass/partials/_smartphone.scss */
@@ -3113,11 +3160,11 @@ footer {
   }
   /* line 213, ../sass/partials/_smartphone.scss */
   div.flags ul#flags li.top span.number.first-number {
-    padding: 0px;
+    padding: 0;
   }
   /* line 214, ../sass/partials/_smartphone.scss */
   div.flags ul#flags li.top span.number.last-number {
-    padding: 0px !important;
+    padding: 0 !important;
   }
   /* line 219, ../sass/partials/_smartphone.scss */
   div.flags ul#flags li span[name="0"] {
@@ -3168,7 +3215,7 @@ footer {
   div.flags ul#flags li span[name="5"] {
     width: 48px;
     height: 43px;
-    border-right: 0px;
+    border-right: 0;
   }
 
   /* line 233, ../sass/partials/_smartphone.scss */

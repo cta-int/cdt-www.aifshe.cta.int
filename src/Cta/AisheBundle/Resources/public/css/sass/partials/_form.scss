@@ -86,7 +86,9 @@ form {
   &.largeForm {
     width: $bodyWidth;
     h2 {width: 970px !important;}
-    div.formContent {width: 988px;}
+    div.formContent {
+      @include width-body-minus(2);
+    }
   }
   &.fos_user_registration_register {
     width: 700px;
@@ -115,6 +117,6 @@ form {
     }
   }
 
-  input {background: transparent !important; backgorund-color: transparent !important;}
+  input {background: transparent !important;}
 
 }
