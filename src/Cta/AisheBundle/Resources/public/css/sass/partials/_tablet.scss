@@ -1,16 +1,85 @@
-/* Tablet (portrait) */
-@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
-  .mce-container,.mce-container *,.mce-widget,.mce-widget *{ display: none !important;}
-  textarea#page_translation_value {display: block !important;}
-
+@media only screen and (max-width : 1024px)  {
   header {
-    width: 100%;
-
     div#header-box {
-      margin: 0 auto;
-      width: 96%;
+      width: 100%;
+      div#logo-cta {
+        left: 0;
+      }
+      h1 {
+        top: 15px;
+        left: 130px;
+        width: 300px;
+      }
+      div#logo {
+        right: 70px;
+        left: auto;
+      }
+      div#language {
+        margin-right: 10px;
+      }
     }
   }
+  main {
+    width: 96% !important;
+
+    #home {
+      .col1 {
+        width: 59%;
+      }
+      .col2 {
+        width: 39%;
+      }
+
+      ul {
+        li {
+          width: 90%;
+        }
+      }
+
+      #login {
+        .btn {
+          width: 48% !important;
+        }
+        .between {
+          display: none;
+        }
+      }
+    }
+  }
+}
+/* Tablet (landscape) */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+  main {
+    #home {
+      .col1 {
+        width: 635px;
+      }
+    }
+
+    ul[name=institutions] {
+      li {
+        span.institutions-name {width: 560px !important;}
+        span.mediumtitle {width: 390px !important;}
+      }
+    }
+  }
+
+  form {
+    &.largeForm {
+      float: left !important;
+      width: 1000px;
+      h2 {width: 660px !important;}
+      div.formContent {width: 998px;}
+    }
+
+    h5 {margin: 0px 0px 35px 0px;}
+  }
+
+}
+/* Tablet (portrait) */
+@media only screen and (min-width : 480px) and (max-width : 768px) and (orientation : portrait) {
+  .mce-container,.mce-container *,.mce-widget,.mce-widget *{ display: none !important;}
+  textarea#page_translation_value {display: block !important;}
 
   nav {
     div#menu {width: 100%;}
@@ -21,7 +90,6 @@
 
   main {
     margin: 35px auto !important;
-    width: 96% !important;
 
     h2 {width: 722px;}
 
