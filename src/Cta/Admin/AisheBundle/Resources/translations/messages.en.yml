@@ -86,6 +86,7 @@ user:
                 decline: Are you sure you want to decline this User\'s auditing permissions?
 
 tool:
+    home:         Home
     offlineTool:  Offline Tool
     update:       Update
     filename:     File Name

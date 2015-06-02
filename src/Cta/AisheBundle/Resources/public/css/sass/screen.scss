@@ -1,11 +1,20 @@
-$textcolor :  #393939;
-$red :        #e74739;
-$blue :       #52859e;
-$lightblue:   #baced8;
-$green:       #569e52;
-$lightgrey:   #cfcfcf;
+$textcolor :          #393939;
+$red :                #e74739;
+$blue :               #52859e;
+$lightblue:           #baced8;
+$green:               #569e52;
+$lightgrey:           #cfcfcf;
+$menuBackgroundColor: #647678;
+$headertextColor:     #FFFFFF;
+$bodyWidth:           1045px;
+
+@mixin width-body-minus($width) {
+  width: ($bodyWidth - $width);
+}
 
 @import "compass/reset";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
 @import "partials/header";
 @import "partials/nav";
 @import "partials/section-body";
@@ -13,6 +22,7 @@ $lightgrey:   #cfcfcf;
 @import "partials/list-items";
 @import "partials/show-report";
 @import "partials/admin";
+@import "partials/home";
 
 html {
   height: 100%;
@@ -27,7 +37,7 @@ body {
   font-size: 14px;
   line-height: 21px;
   color: $textcolor;
-  font-family: Arial, Verdana, Sans-serif;
+  font-family: 'Noto Sans', Arial, Verdana;
 
   a {
     color: $red;
@@ -50,9 +60,9 @@ body {
   img.print-logo {display: none;}
 }
 
-section#main-content {
+main {
   margin: 35px auto;
-  width: 990px;
+  width: $bodyWidth;
   height: auto;
   display: table;
 
@@ -78,7 +88,6 @@ section#main-content {
     clear: both !important;
     margin: 0;
     padding: 0 0 0 20px;
-    width: 970px;
     height: 42px;
     color: #fff;
     font-size: 18px;
@@ -238,7 +247,7 @@ section#main-content {
     h3 {
       width: 100%;
       height: 28px;
-      color: textcolor;
+      color: $textcolor;
       font-size: 14px;
       font-weight: bold;
       line-height: 28px;
@@ -265,6 +274,24 @@ section#main-content {
 }
 
 /* POP UP */
+
+.ui-dialog .ui-dialog-buttonpane {
+  padding: .3em 1em! important;
+  .ui-dialog-buttonset {
+    float: none !important;
+    width: 80% !important;
+    margin: 0px auto;
+  }
+  .ui-dialog-buttonset button {
+    float:right! important;
+    width: 45%;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+}
+.ui-button-text-only .ui-button-text {
+    padding: 0!important;
+}
 
 div.ui-dialog-titlebar {
   color: #fff;
@@ -303,7 +330,7 @@ div.pagination {
   margin: 10px auto;
   padding: 10px 0 0 0;
   width: auto;
-  max-width: 990px;
+  max-width: $bodyWidth;
   height: 44px;
   line-height: 32px;
   display: table;
@@ -350,6 +377,24 @@ div.pagination {
     }
 
     &.active {background: $blue;}
+  }
+}
+
+/* PAGES */
+.page {
+  ol {
+    li {
+      background: none;
+      border: 0;
+      height: auto;
+      cursor: auto;
+      float: none;
+      display: list-item;
+      margin-left: 25px;
+      margin-bottom: 10px;
+      line-height: 21px;
+      list-style-type: decimal;
+    }
   }
 }
 

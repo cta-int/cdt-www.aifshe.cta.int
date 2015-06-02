@@ -1,6 +1,7 @@
 security:
     base:
-        logged_in_as:   Ingelogd als
+        logged_in_as:   U bent momenteel ingelogd als
+        showProfile:    Uw account
         logout:         Uitloggen
         login:          Inloggen
         register:       Registreren

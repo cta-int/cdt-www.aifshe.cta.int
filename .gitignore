@@ -15,3 +15,4 @@ local-config.php
 /bin/
 /composer.phar
 /.idea/
+/src/Cta/AisheBundle/Resources/public/css/.sass-cache/

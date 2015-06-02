@@ -1,7 +1,7 @@
 form {
   div.admin.formContent {
     padding: 44px 0;
-    width: 988px;
+    @include width-body-minus(2);
 
     a#add-role {
       float: left;
