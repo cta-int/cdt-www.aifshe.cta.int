@@ -22,7 +22,7 @@ class Data
 
     private static $_languages = array(
         self::LANG_ENGLISH   => 'en',
-        self::LANG_DUTCH     => 'nl',
+//        self::LANG_DUTCH     => 'nl',
         self::LANG_FRENCH    => 'fr'
     );
 

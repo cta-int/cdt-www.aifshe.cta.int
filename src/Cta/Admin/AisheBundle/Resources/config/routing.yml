@@ -1,54 +1,54 @@
 # HOME
 cta_admin_aishe_homepage:
-    pattern:  /
+    path:  /
     defaults: { _controller: CtaAdminAisheBundle:Default:index }
 
 # USER
 cta_admin_aishe_security_user_pending_activate:
-    pattern:  /users/pending/activate/{action}/{id}
+    path:  /users/pending/activate/{action}/{id}
     defaults: { _controller: CtaAdminAisheBundle:User:activatePendingAuditor }
     requirements:
         action: \w+
         id:     \d+
 cta_admin_aishe_security_user_pending:
-    pattern:  /users/pending
+    path:  /users/pending
     defaults: { _controller: CtaAdminAisheBundle:User:pendingAuditors }
 cta_admin_aishe_security_user:
-    pattern:  /users/{page}
+    path:  /users/{page}
     defaults: { _controller: CtaAdminAisheBundle:User:overview, page:1 }
 cta_admin_aishe_security_user_edit:
-    pattern:  /user/{id}
+    path:  /user/{id}
     defaults: { _controller: CtaAdminAisheBundle:User:edit, id: 0 }
     requirements:
         id:  \d+
 
 # GROUP
 cta_admin_aishe_security_group:
-    pattern:  /devart/groups
+    path:  /devart/groups
     defaults: { _controller: CtaAdminAisheBundle:Group:overview }
 cta_admin_aishe_security_group_delete:
-    pattern:  /devart/group/delete/{id}
+    path:  /devart/group/delete/{id}
     defaults: { _controller: CtaAdminAisheBundle:Group:delete }
     requirements:
         id:  \d+
 cta_admin_aishe_security_group_edit:
-    pattern:  /devart/group/{id}
+    path:  /devart/group/{id}
     defaults: { _controller: CtaAdminAisheBundle:Group:edit, id: 0 }
     requirements:
         id:  \d+
 
 # PAGE
 cta_admin_aishe_page_overview:
-    pattern:  /pages
+    path:  /pages
     defaults: { _controller: CtaAdminAisheBundle:Page:overview }
 cta_admin_aishe_page_edit_translation:
-    pattern:  /page/{lang}/{id}
+    path:  /page/{lang}/{id}
     defaults: { _controller: CtaAdminAisheBundle:Page:editTranslation }
     requirements:
         id:   \d+
         lang: \w+
 cta_admin_aishe_page_edit:
-    pattern:  /page/{id}
+    path:  /page/{id}
     defaults: { _controller: CtaAdminAisheBundle:Page:edit }
     requirements:
         id:  \d+
@@ -56,40 +56,40 @@ cta_admin_aishe_page_edit:
 
 # CRITERION
 cta_admin_aishe_criterion_overview:
-    pattern:  /criteria
+    path:  /criteria
     defaults: { _controller: CtaAdminAisheBundle:Criterion:overview }
 cta_admin_aishe_criterion_delete:
-    pattern:  /criterion/delete/{id}
+    path:  /criterion/delete/{id}
     defaults: { _controller: CtaAdminAisheBundle:Criterion:delete }
     requirements:
         id:  \d+
 cta_admin_aishe_criterion_edit:
-    pattern:  /criterion/{id}
+    path:  /criterion/{id}
     defaults: { _controller: CtaAdminAisheBundle:Criterion:edit, id: 0 }
     requirements:
         id:  \d+
 
 # CRITERION ITEM
 cta_admin_aishe_criterion_item_overview:
-    pattern:  /criterion_items/{criterionId}
+    path:  /criterion_items/{criterionId}
     defaults: { _controller: CtaAdminAisheBundle:CriterionItem:overview }
     requirements:
         criterionId:  \d+
 cta_admin_aishe_criterion_item_delete:
-    pattern:  /criterion_item/{criterionId}/delete/{id}
+    path:  /criterion_item/{criterionId}/delete/{id}
     defaults: { _controller: CtaAdminAisheBundle:CriterionItem:delete }
     requirements:
         criterionId:  \d+
         id:           \d+
 cta_admin_aishe_criterion_item_edit_translation:
-    pattern:  /criterion_item/{lang}/{criterionId}/{criterionItemId}
+    path:  /criterion_item/{lang}/{criterionId}/{criterionItemId}
     defaults: { _controller: CtaAdminAisheBundle:CriterionItem:editTranslation }
     requirements:
         lang:             \w+
         criterionId:      \d+
         criterionItemId:  \d+
 cta_admin_aishe_criterion_item_edit:
-    pattern:  /criterion_item/{criterionId}/{id}
+    path:  /criterion_item/{criterionId}/{id}
     defaults: { _controller: CtaAdminAisheBundle:CriterionItem:edit, id: 1 }
     requirements:
         criterionId:  \d+
@@ -97,26 +97,26 @@ cta_admin_aishe_criterion_item_edit:
 
 # OFFLINE TOOL
 cta_admin_aishe_offline_tool_overview:
-    pattern:  /offlinetool/overview/{page}
+    path:  /offlinetool/overview/{page}
     defaults: { _controller: CtaAdminAisheBundle:OfflineTool:overview , page: 1 }
 cta_admin_aishe_offline_tool_update:
-    pattern:  /offlinetool/update
+    path:  /offlinetool/update
     defaults: { _controller: CtaAdminAisheBundle:OfflineTool:update }
 cta_admin_aishe_offline_tool_download:
-    pattern:  /offlinetool/download/{id}
+    path:  /offlinetool/download/{id}
     defaults: { _controller: CtaAdminAisheBundle:OfflineTool:download, id:-}
     requirements:
         id:  \d+
 cta_admin_aishe_offline_tool_edit:
-    pattern:  /offlinetool/edit/{id}
+    path:  /offlinetool/edit/{id}
     defaults: { _controller: CtaAdminAisheBundle:OfflineTool:edit, id:-}
     requirements:
         id:  \d+
 cta_admin_aishe_offline_tool_remove:
-    pattern:  /offlinetool/remove/{id}
+    path:  /offlinetool/remove/{id}
     defaults: { _controller: CtaAdminAisheBundle:OfflineTool:remove, id:-}
     requirements:
         id:  \d+
 cta_admin_aishe_offline_tool_outdated:
-    pattern: /offlinetool/outdated
+    path: /offlinetool/outdated
     defaults: { _controller: CtaAdminAisheBundle:OfflineTool:outdated }

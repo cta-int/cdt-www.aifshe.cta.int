@@ -32,7 +32,7 @@
   }
 
 
-  section#main-content {
+  main {
     margin: 35px auto !important;
     width: 96% !important;
 
@@ -84,7 +84,7 @@
       div.formContent {width: 460px; padding: 10px 0 !important;}
     }
 
-    h5 {margin: 0px 0px 35px 0px;}
+    h5 {margin: 0 0 35px 0;}
   }
 
   ul#flags {
@@ -210,8 +210,8 @@
             padding: 0 31px 0 0;
             width: 49px;
 
-            &.first-number {padding: 0px;}
-            &.last-number {padding: 0px !important;}
+            &.first-number {padding: 0;}
+            &.last-number {padding: 0 !important;}
           }
 
         }
@@ -225,7 +225,7 @@
         span[name="3-5"] {width: 31px; height: 43px;}
         span[name="4"] {width: 47px; height: 43px;}
         span[name="4-5"] {width: 31px; height: 43px;}
-        span[name="5"] {width: 48px; height: 43px; border-right: 0px;}
+        span[name="5"] {width: 48px; height: 43px; border-right: 0;}
       }
     }
   }
@@ -453,7 +453,7 @@
     }
   }
 
-  section#main-content {
+  main {
     h1 {margin-left: 1%; clear: both;}
 
     margin: 35px auto !important;

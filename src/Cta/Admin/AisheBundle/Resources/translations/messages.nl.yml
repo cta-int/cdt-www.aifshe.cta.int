@@ -82,6 +82,7 @@ user:
                 decline: Weet u zeker dat u deze gebruiker geen auditors rechten wilt geven?
 
 tool:
+    home:         Home
     offlineTool:  Offline Applicatie
     update:     Bijwerken
     filename:   Bestandsnaam

@@ -23,7 +23,6 @@ monolog:
             level:      error
 
 assetic:
-    use_controller: true
     filters:
         cssrewrite: ~
         uglifyjs2: null

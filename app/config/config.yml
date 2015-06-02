@@ -91,5 +91,5 @@ fos_user:
 # JMS :: i18n Translation routing
 jms_i18n_routing:
     default_locale: en
-    locales: [nl, fr, en]
-    strategy: prefix_except_default
+    locales: [fr, en]
+    strategy: prefix
