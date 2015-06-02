@@ -1,0 +1,49 @@
+parameters:
+#    cta_aishe.example.class: Cta\AisheBundle\Example
+
+services:
+    cta.twig.cta_extension:
+        class: Cta\AisheBundle\Twig\CtaExtension
+        tags:
+            - { name: twig.extension }
+    cta.doctrine.subscriber:
+        class:      Cta\AisheBundle\EventListener\DoctrineSubscriber
+        arguments:  ["@service_container"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+    cta.fos.userbundle.usermanager:
+        class: Cta\AisheBundle\Model\UserManager
+        arguments: [@security.encoder_factory,@fos_user.util.username_canonicalizer,@fos_user.util.email_canonicalizer,@fos_user.entity_manager,%fos_user.model.user.class%]
+    cta.fos.subscriber:
+        class: Cta\AisheBundle\EventListener\FosSubscriber
+        arguments: [@fos_user.group_manager]
+        tags:
+            - { name: kernel.event_subscriber }
+    cta.fos.requestAuditor:
+        class: Cta\AisheBundle\EventListener\FosRequestAuditor
+        arguments: [@service_container]
+        tags:
+            - { name: kernel.event_subscriber }
+    cta.aishe.service.registration:
+        class: Cta\AisheBundle\Form\Registration
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: cta_user_registration }
+    cta.aishe.service.report:
+        class:      Cta\AisheBundle\Service\Report
+        arguments:  [@doctrine.orm.entity_manager, @security.context]
+    cta.aishe.form.Institution:
+        class: Cta\AisheBundle\Form\Institution
+        tags:
+            - { name: form.type, alias: institution }
+    cta.aishe.form.report:
+        class: Cta\AisheBundle\Form\Report
+        tags:
+            - { name: form.type, alias: report }
+    cta.aishe.form.reportItem:
+        class: Cta\AisheBundle\Form\ReportItem
+        tags:
+            - { name: form.type, alias: reportItem }
+    cta.aishe.service.chart:
+        class:      Cta\AisheBundle\Service\Chart
+        arguments:  [@doctrine.orm.entity_manager]

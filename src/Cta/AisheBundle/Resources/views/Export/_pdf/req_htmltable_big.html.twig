@@ -1,0 +1,58 @@
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_css.html.twig',
+{  }
+) }}
+<table class="report-htmltable" cellpadding="0" cellspacing="0" align="center" style="line-height: 1.5;">
+    <tr>
+        <td width="8cm" align="left" class="top-row">&nbsp;{{ 'report.item.criterion'|trans() }}</td>
+        <td width="37px" align="center" class="top-row">0</td>
+        <td width="37px" align="center" class="top-row">1</td>
+        <td width="18px" align="center" class="top-row">&nbsp;</td>
+        <td width="37px" align="center" class="top-row">2</td>
+        <td width="18px" align="center" class="top-row">&nbsp;</td>
+        <td width="37px" align="center" class="top-row">3</td>
+        <td width="18px" align="center" class="top-row">&nbsp;</td>
+        <td width="37px" align="center" class="top-row">4</td>
+        <td width="18px" align="center" class="top-row">&nbsp;</td>
+        <td width="37px" align="center" class="top-row">5</td>
+        <td width="1.7cm" class="priority" align="center" class="top-row">{{ 'report.priority'| trans() }}</td>
+    </tr>
+
+    {# Loop over chapters #}
+    {% for criterion in criteria %}
+
+        {# Loop over paragraphs #}
+        {% for criterion_item in criterion.criterionItems %}
+
+            {# Check if we have data for this record #}
+            {% set checked          = null %}
+            {% set currentSituation = null %}
+            {% set desiredSituation = null %}
+            {% for item in report.reportItems %}
+                {% if item.criterionItem.id == criterion_item.id %}
+                    {% set checked          = item.hasHighPriority %}
+                    {% set currentSituation = item.currentSituationRating %}
+                    {% set desiredSituation = item.desiredSituationRating %}
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td align="left" style="border-right: 1px solid #52859e;">&nbsp;{{ criterion.chapterNr }}.{{ criterion_item.paragraphNr }}. {% if criterion_item.criterionItemTranslations|length() > 0 %}{{ criterion_item.criterionItemTranslations.0.value }}{% endif %}</td>
+                {# Loop over the range 0-5 with steps of 0.5, skip when i is 0.5 #}
+                {% for i in range(0, 5, 0.5) if i != 0.5 %}
+                    {% if(i == currentSituation and i == desiredSituation) %}
+                        <td align="center"><p style="font-size: 6pt; line-height: 1;">&nbsp;</p><img height="12px" src="{{ asset('bundles/ctaaishe/css/img/start-line.png') }}" alt="start-line"/></td>
+                    {% elseif(i == currentSituation) %}
+                        <td align="right"><p style="font-size: 6pt; line-height: 1;">&nbsp;</p><img height="12px" src="{{ asset('bundles/ctaaishe/css/img/start-line.png') }}" alt="start-line"/></td>
+                    {% elseif(i == desiredSituation) %}
+                        <td align="left"><p style="font-size: 6pt; line-height: 1;">&nbsp;</p><img height="12px" src="{{ asset('bundles/ctaaishe/css/img/end-line.png') }}" alt="print-end-line"/></td>
+                    {% elseif(i > currentSituation and i < desiredSituation) %}
+                        <td align="center"><p style="font-size: 9pt; line-height: 1.1;">&nbsp;</p><p bgcolor="#437690" style="width: 100%; height: 6px; overflow: hidden; font-size: 1.57; line-height: 1;">&nbsp;</p></td>
+                    {% else %}
+                        <td style="line-height: 1;">&nbsp;</td>
+                    {% endif %}
+                {% endfor %}
+                <td class="priority">{% if checked != null %}<p style="font-size: 6pt; line-height: 1;">&nbsp;</p><img height="12px" src="{{ asset('bundles/ctaaishe/css/img/icon-approved.png') }}"/>{% endif %}</td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+</table>

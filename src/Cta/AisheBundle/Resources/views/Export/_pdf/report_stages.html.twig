@@ -1,0 +1,18 @@
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_css.html.twig',
+{  }
+) }}
+<h2>&nbsp; AISHE Stages</h2>
+<div class="report-item">
+    <table cellpadding="0" cellspacing="0" border="0"><tr><td colspan="2" height="2pt">&nbsp;</td></tr><tr><td width="8pt">&nbsp;</td><td width="17.5cm">{% if info.pageTranslations|length > 0 %}{{ info.pageTranslations.0.value|raw }}{% endif %}</td></tr></table>
+</div>
+
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_criteria.html.twig',
+{  }
+) }}
+
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_general.html.twig',
+{  }
+) }}

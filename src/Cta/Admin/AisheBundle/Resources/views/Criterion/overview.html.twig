@@ -1,0 +1,52 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h1>{{ 'base.criteria'|trans() }}</h1>
+    <a href="{{ path('cta_admin_aishe_criterion_edit') }}" class="button"><img
+                src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"/>{{ 'criterion.add'|trans() }}</a>
+    <ul name="criteria">
+        <li class="top">
+            <span class="info" name="chapter">{{ 'criterion.chapterNr'|trans() }}</span>
+            <span class="info">{{ 'criterion.type'|trans() }}</span>
+            <span class="smalltitle">{{ 'criterion.name'|trans() }}</span>
+            <span class="create-date">{{ 'base.modifiedBy'|trans() }}</span>
+            <span class="create-date">{{ 'base.modifiedAt'|trans() }}</span>
+            <span class="create-date" name="actions">{{ 'criterion.manage'|trans() }}</span>
+        </li>
+
+        {% for criterion in criteria %}
+            <li>
+                <a href="{{ path('cta_admin_aishe_criterion_edit', {'id': criterion.id}) }}">
+                    <span class="info">{{ criterion.chapterNr }}</span>
+                    <span class="info">{{ criterion.type|toCriterionType() }}</span>
+                    <span class="smalltitle">{% if criterion.criterionTranslations|length > 0 %}{{ criterion.criterionTranslations.0.value }}{% else %}{{ criterion.id }}{% endif %}</span>
+                    <span class="create-date">{% if criterion.modifiedBy is not null %}{{ criterion.modifiedBy.username }}{% else %}{% if criterion.createdBy is not null %}{{ criterion.createdBy.username }}{% else %}&nbsp;{% endif %}{% endif %}</span>
+                    <span class="create-date">
+                        {% if criterion.modifiedAt is not null %}
+                            {{ criterion.modifiedAt|date('Y-m-d') }}
+                        {% else %}
+                            {% if criterion.createdAt is not null %}
+                                {#{{ criterion.createdAt|date('Y-m-d') }}#}
+                                {{  criterion.createdAt.date|date('Y-m-d') }}
+                            {% else %}
+                                &nbsp;
+                            {% endif %}
+                        {% endif %}
+                    </span>
+                </a>
+                    <span name="actions" class="create-date">
+                    <a title="{{ 'criterion.items'|trans() }}"
+                       href="{{ path('cta_admin_aishe_criterion_item_overview', {'criterionId': criterion.id}) }}"
+                       style="position: relative; top: -2px; margin: 0 10px 0 0;"><img
+                                src="{{ asset('bundles/ctaaishe/css/img/icon-criterion-black.png') }}"/></a>
+                    &nbsp;&nbsp;
+                    <a title="{{ 'criterion.delete'|trans() }}"
+                       href="{{ path('cta_admin_aishe_criterion_delete', {'id': criterion.id}) }}"
+                       onclick="javascript:showConfirm(this,event,'{{ 'criterion.dialog.title'|trans() }}','{{ 'criterion.dialog.text'|trans() }}');"><img
+                                src="{{ asset('bundles/ctaaishe/css/img/icon-delete-black.png') }}"
+                                style="padding: 3px 0 0 0;"/></a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

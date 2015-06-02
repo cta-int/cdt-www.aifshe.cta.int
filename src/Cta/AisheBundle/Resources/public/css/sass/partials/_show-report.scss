@@ -1,0 +1,69 @@
+div.report-item {
+  float: left;
+  margin: 0 0 20px 0;
+  padding: 20px;
+  @include width-body-minus(42);
+  height: auto;
+  display: block;
+  border-left: 1px solid $blue;
+  border-right: 1px solid $blue;
+  border-bottom: 1px solid $blue;
+
+  ul {
+    margin: 15px auto;
+    width: 100%;
+    height: auto;
+    display: table;
+
+    li {
+      float: left;
+      clear: both;
+      width: 98%;
+      padding: 0 1%;
+      line-height: 28px;
+      border-bottom: 1px dotted $lightblue;
+      border-left: 0 !important;
+      border-right: 0 !important;
+      display: block;
+
+      &:hover {background: transparent;}
+    }
+  }
+}
+
+table {
+  clear: both;
+  margin: 0 0 20px 0;
+  width: $bodyWidth;
+  line-height: 28px;
+  border: 1px solid $blue;
+
+  tr {
+
+
+    &.toprow {
+      td {font-weight: bold;}
+    }
+    td {padding: 0 5px; border-bottom: 1px dotted $lightblue;}
+
+  }
+}
+
+div.show-report {
+  height: auto;
+  margin: 0 0 20px 0;
+  display: table !important;
+
+  span.priority {
+    span.priority {
+      margin: 3px 0 0 0;
+      width: 25px;
+      height: 25px;
+      display: block;
+
+      &.checked {
+        background: url(../img/icon-approved.png) left center no-repeat;
+      }
+    }
+  }
+}

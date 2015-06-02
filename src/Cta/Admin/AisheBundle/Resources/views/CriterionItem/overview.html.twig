@@ -1,0 +1,39 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h1>{{ 'criterion.item.for'|trans() }} [{% if criterion.criterionTranslations|length > 0 %}{{ criterion.criterionTranslations.0.value }}{% else %}{{ criterion.id }}{%  endif %}]</h1>
+    <a href="{{ path('cta_admin_aishe_criterion_item_edit', {'criterionId': criterion.id}) }}" class="button"><img src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"/>{{ 'criterion.item.add'|trans() }}</a>
+    <ul class="criterion">
+        <li class="top">
+            <span class="info">{{ 'criterion.item.paragraphNr'|trans() }}</span>
+            <span class="title">{{ 'criterion.item.name'|trans() }}</span>
+            <span class="create-date">{{ 'base.modifiedBy'|trans() }}</span>
+            <span class="create-date">{{ 'base.modifiedAt'|trans() }}</span>
+
+            {% for language in languages %}
+                <span class="language">{{ ('base.languages.' ~ language)|trans() }}</span>
+            {% endfor %}
+
+            <span class="empty-row">{{ 'criterion.item.delete'|trans() }}</span>
+        </li>
+
+        {% for criterionItem in criterion.criterionItems %}
+            <li>
+                <a href="{{ path('cta_admin_aishe_criterion_item_edit', {'criterionId': criterion.id , 'id': criterionItem.id}) }}">
+                    <span class="info">{{ criterionItem.paragraphNr }}</span>
+                    <span class="title">{% if criterionItem.criterionItemTranslations|length  %}{{ criterionItem.criterionItemTranslations.0.value }}{% else %}{{ criterionItem.id }}{% endif %}</span>
+                    <span class="create-date">{% if criterionItem.modifiedBy is not null %}{{ criterionItem.modifiedBy.username }}{% else %}{% if criterionItem.createdBy is not null %}{{ criterionItem.createdBy.username }}{% else %}&nbsp;{%  endif %}{%  endif %}</span>
+                    <span class="create-date">{% if criterionItem.modifiedAt is not null %}{{ criterionItem.modifiedAt|date('Y-m-d') }}{% else %}{% if criterionItem.createdAt is not null %}{{ criterionItem.createdAt|date('Y-m-d') }}{% else %}&nbsp;{%  endif %}{%  endif %}</span>
+                </a>
+                {% for language in languages %}
+                    <span class="language"><span class="text">{{ ('base.languages.' ~ language)|trans() }}:</span><a href="{{ path('cta_admin_aishe_criterion_item_edit_translation', {'criterionId': criterion.id , 'criterionItemId': criterionItem.id, 'lang': language}) }}"><img src="{{ asset('bundles/ctaaishe/css/img/icon-edit-dark.png') }}"/></a></span>
+                {% endfor %}
+
+                <span class="delete"><span class="text">Delete item:</span><a href="{{ path('cta_admin_aishe_criterion_item_delete', {'criterionId': criterion.id , 'id': criterionItem.id}) }}" onclick="javascript:showConfirm(this,event,'{{ 'criterion.item.dialog.title'|trans() }}','{{ 'criterion.item.dialog.text'|trans() }}');"><img src="{{ asset('bundles/ctaaishe/css/img/icon-delete-black.png') }}" style="padding: 3px 0 0 0;"/></a></span>
+
+
+            </li>
+        {% endfor %}
+
+    </ul>
+{% endblock %}

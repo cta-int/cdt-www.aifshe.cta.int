@@ -1,0 +1,46 @@
+Cta\AisheBundle\Entity\CriterionItemTranslation:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\CriterionItemTranslation
+    table: criterion_item_translation
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        lang:
+            type: smallint
+            nullable: false
+        value:
+            type: string
+            length: 128
+            fixed: false
+            nullable: false
+        infoStage1:
+            type: text
+            nullable: false
+            column: info_stage1
+        infoStage2:
+            type: text
+            nullable: false
+            column: info_stage2
+        infoStage3:
+            type: text
+            nullable: false
+            column: info_stage3
+        infoStage4:
+            type: text
+            nullable: false
+            column: info_stage4
+        infoStage5:
+            type: text
+            nullable: false
+            column: info_stage5
+    manyToOne:
+        criterionItem:
+            targetEntity: CriterionItem
+            inversedBy: criterionItemTranslations
+            joinColumn:
+                name: criterion_item_id
+                referencedColumnName: id

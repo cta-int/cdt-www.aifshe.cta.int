@@ -1,0 +1,50 @@
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_css.html.twig',
+{  }
+) }}
+<table class="info" style="line-height: 1.8;">
+    {% if report.institution is not null %}
+        <tr>
+            <td>&nbsp;{{ 'report.institution'|trans() }}</td>
+            <td>&nbsp;{{ report.institution.name }}</td>
+        </tr>
+    {% endif %}
+    <tr>
+        <td>&nbsp;{{ 'report.department'|trans() }}</td>
+        <td>&nbsp;{{ report.department }}</td>
+    </tr>
+
+    {% if report.isOfficial %}
+        <tr>
+            <td>&nbsp;{{ 'report.auditor'|trans() }}</td>
+            <td>&nbsp;{% if report.createdBy %}{{ report.createdBy.username }}{% else %}&nbsp;{% endif %}</td>
+        </tr>
+    {% endif %}
+
+    <tr>
+        <td>&nbsp;{{ 'report.coordinator'|trans() }}</td>
+        <td>&nbsp;{{ report.coordinator }}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{{ 'report.nrOfParticipants'|trans() }}</td>
+        <td>&nbsp;{{ report.nrOfParticipants }}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{{ 'report.secretary'|trans() }}</td>
+        <td>&nbsp;{{ report.secretary }}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{{ 'report.dateAssessment'|trans() }}</td>
+        <td>&nbsp;{{ report.dateAssessment|date("Y-m-d") }}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{{ 'report.dateLatestAssessment'|trans() }}</td>
+        <td>&nbsp;{{ report.dateLatestAssessment|date("Y-m-d") }}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{{ 'report.dateDesiredSituation'|trans() }}</td>
+        <td>&nbsp;{{ report.dateDesiredSituation|date("Y-m-d") }}</td>
+    </tr>
+</table>
+
+<p>{{ report.comment }}</p>

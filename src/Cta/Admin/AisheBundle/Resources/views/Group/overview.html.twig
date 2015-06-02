@@ -1,0 +1,22 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h1>Groups</h1>
+    <a href="{{ path('cta_admin_aishe_security_group_edit') }}" class="button"><img src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"/>{{ 'group.add'|trans() }}</a>
+
+    <ul name="groups">
+        <li class="top">
+            <span class="title">{{ 'group.name'|trans() }}</span>
+            <span class="roles">{{ 'group.roles'|trans() }}</span>
+            <span class="delete-row">&nbsp;</span>
+        </li>
+
+        {% for group in groups %}
+            <li>
+                <a href="{{ path('cta_admin_aishe_security_group_edit', {'id': group.getId()}) }}"><span class="title">{{ group.getName() }}</span>
+                <span class="roles">{% if group.getRoles()|length() > 0 %}{{ group.getRoles()|join(',') }}{% else %}&nbsp;{% endif %}</span></a>
+                <span class="empty"><a href="{{ path('cta_admin_aishe_security_group_delete', {'id': group.getId()}) }}" onclick="javascript:showConfirm(this,event,'{{ 'group.dialog.title'|trans() }}','{{ 'group.dialog.text'|trans() }}');"><img src="{{ asset('bundles/ctaaishe/css/img/icon-delete-black.png') }}"/></a></span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

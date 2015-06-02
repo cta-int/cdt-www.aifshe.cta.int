@@ -1,0 +1,27 @@
+{% extends "CtaAisheBundle:Report:base.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@CtaAisheBundle/Resources/public/js/Report/view.js'
+    %}<script type="text/javascript" src="{{ asset_url }}"></script>{% endjavascripts %}
+{% endblock %}
+
+{% block javascript_code %}
+    {{ parent() }}
+    var ci_dialog = {
+        title: '{{ 'report.item.dialog.title'|trans() }}',
+        text: '{{ 'report.item.dialog.text'|trans() }}',
+        confirm: '{{ 'base.dialog.confirm'|trans() }}',
+        cancel: '{{ 'base.dialog.cancel'|trans() }}'
+    };
+    var pageUrl = '{{ path('cta_aishe_report_edit', {'id': report.id}) }}';
+{% endblock %}
+
+{% block report %}
+
+    {{ include(
+    'CtaAisheBundle:Report:_partials/req_table_big.html.twig',
+    { 'mode': 'edit' }
+    ) }}
+
+{% endblock %}

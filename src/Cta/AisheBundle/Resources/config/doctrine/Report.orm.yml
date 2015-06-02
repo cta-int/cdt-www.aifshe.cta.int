@@ -1,0 +1,81 @@
+Cta\AisheBundle\Entity\Report:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\Report
+    table: report
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+        department:
+            type: string
+            length: 64
+            fixed: false
+            nullable: true
+        coordinator:
+            type: string
+            length: 64
+            fixed: false
+            nullable: true
+        nrOfParticipants:
+            type: smallint
+            nullable: true
+            column: nr_of_participants
+        secretary:
+            type: string
+            length: 64
+            fixed: false
+            nullable: true
+        dateAssessment:
+            type: date
+            nullable: false
+            column: date_assessment
+        dateLatestAssessment:
+            type: date
+            nullable: true
+            column: date_latest_assessment
+        dateDesiredSituation:
+            type: date
+            nullable: true
+            column: date_desired_situation
+        comment:
+            type: text
+            nullable: true
+        isOfficial:
+            type: boolean
+            nullable: false
+            column: is_official
+    oneToMany:
+        reportItems:
+            targetEntity: ReportItem
+            mappedBy: report
+    oneToOne:
+        chartSettings:
+            targetEntity: Chart
+            mappedBy: report
+    manyToOne:
+        institution:
+            targetEntity: Institution
+            inversedBy: reports
+            joinColumn:
+                name: institution_id
+                referencedColumnName: id
+    manyToMany:
+        users:
+            targetEntity: User
+            inversedBy: reports
+            joinTable:
+                name: fos_user_report
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    report_id:
+                        referencedColumnName: id

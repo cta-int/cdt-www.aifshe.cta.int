@@ -1,0 +1,61 @@
+header {
+  width: 100%;
+  height: 98px;
+  display: block;
+  background: $textcolor;
+
+  div#header-box {
+    position: relative;
+    margin: 0 auto;
+    width: 990px;
+    height: 100%;
+    display: block;
+    background: url(../img/header-bg.png) 222px 35px no-repeat;
+
+    div#logo {
+      padding: 0 36px 0 0;
+      position: absolute;
+      left: -372px;
+      top: 0;
+      width: 564px;
+      height: 118px;
+      background: url(../img/logo-bg.png) right top no-repeat;
+      display: block;
+
+      a {
+        padding: 0 0 0 8px !important;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        text-align: right;
+        display: block;
+        img {
+          margin: 23px 0 0 0;
+          border: none;
+        }
+      }
+    }
+
+    div#language {
+      float: right;
+      margin: 33px 0 0 0;
+      width: auto;
+      height: 35px;
+      text-align: right;
+      display: block;
+
+      span {
+        float: left;
+        margin: 0 5px;
+
+        a {
+          color: $lightgrey;
+          &:hover {text-decoration: none; border-bottom: 1px solid $lightgrey;}
+        }
+
+        &.active {a{color: $red; text-decoration: none; border-bottom: 1px solid $red;}}
+
+      }
+    }
+  }
+}

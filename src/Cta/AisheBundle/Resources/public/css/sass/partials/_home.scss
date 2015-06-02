@@ -1,0 +1,243 @@
+main #home {
+
+  h3 {
+    color: $textcolor;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: none;
+  }
+  .btn {
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+    color: #ffffff;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  ul,ol {
+    li {
+      background: none;
+      border: 0;
+      height: auto;
+      cursor: auto;
+      float: none;
+      display: list-item;
+      margin-left: 25px;
+      margin-bottom: 10px;
+      line-height: 21px;
+    }
+  }
+  ul {
+    li {
+      list-style-type: circle;
+    }
+  }
+  ol {
+    li {
+      list-style-type: decimal;
+    }
+  }
+  p {
+    text-align: left;
+  }
+
+  .col1 {
+    float: left;
+    width: 705px;
+
+    article {
+      margin-top: 45px;
+    }
+    a.btn {
+      background: #6db33f;
+    }
+    .bg-gray {
+      background: #EAECEB;
+      padding: 15px;
+    }
+
+    #home-intro {
+      article {
+        background: #EAECEB;
+        padding: 15px;
+        margin-top: 0;
+        h2 {
+          font-size: 32px;
+          background: none;
+          padding: 0;
+          color: $textcolor;
+          padding-bottom: 15px;
+        }
+        p {
+          font-size: 16px;
+          line-height: 22px;
+          margin: 0;
+        }
+      }
+    }
+    #integrated-approach {
+      h4 {
+        font-size: 17px;
+        margin-bottom: 5px;
+      }
+    }
+    #conclusions-recommendations {
+      figure {
+        img {
+          width: 100%;
+          margin: 5px 0;
+        }
+        figcaption {
+          background: #EAECEB;
+          font-size: 11px;
+          padding: 5px;
+        }
+      }
+    }
+  }
+
+  .col2 {
+    float: right;
+    width: 310px;
+
+    a.btn {
+      background: #ff530d;
+    }
+    #explain-login {
+      background: none;
+      border: 0;
+      padding: 0;
+
+      p {
+        font-size: 13px;
+        line-height: 16px;
+        color: #666666;
+        margin-bottom: 15px;
+      }
+    }
+    aside {
+      background: #f7f9fa;
+      border: 1px solid #dedede;
+      padding: 15px;
+      h3 {
+        margin-top: 0;
+        font-size: 16px;
+      }
+      p {
+        margin: 0;
+        line-height: 19px;
+        color: rgb(102, 102, 102);
+      }
+      .btn {
+        margin-top: 20px;
+        display: inline-block;
+      }
+    }
+  }
+
+  #login {
+    border: 0;
+    padding: 0;
+    background: #eaecee;
+    margin-bottom: 20px;
+
+    h4 {
+      margin: 0;
+      height: 30px;
+      background: #647678;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 30px;
+      padding: 0 15px;
+    }
+    h6 {
+      color: #666666;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    p {
+      color: #666666;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+    .inner {
+      padding: 15px;
+    }
+    form {
+      button {
+        float: none;
+        height: auto;
+        margin-right: 0;
+      }
+      .input-wrap {
+        background: #FFFFFF;
+      }
+      .input-wrap-hide {
+        display: none;
+      }
+      .input-wrap-float {
+        height: 10px !important;
+        a, a:visited {
+          float: right;
+          color: rgb(74, 74, 74);
+          font-size: 12px;
+          text-transform: lowercase;
+          &:hover {
+            color: #e74739;
+          }
+        }
+      }
+      input[type=text],
+      input[type=password] {
+        width: 260px;
+        height: 40px;
+        border: 0;
+        font-size: 14px;
+        padding: 0 10px;
+      }
+    }
+    .btn {
+      width: 120px;
+      padding: 6px 0;
+      text-align: center;
+      &.btn-gray {
+        background: #807c7c;
+      }
+    }
+    button.btn {
+      background: #ff530d;
+      height: auto !important;
+      @include border-radius(0);
+      span {
+        height: auto !important;
+        float: none;
+        line-height: 21px;
+        font-size: 12px;
+        font-family: 'Noto Sans', Arial, Verdana;
+      }
+    }
+    .between {
+      display: inline-block;
+      width: 32px;
+      text-align: center;
+      font-size: 12px;
+      color: rgb(74, 74, 74);
+    }
+    .logged-in {
+      margin: 0;
+    }
+    .auth-error {
+      margin-bottom: 15px;
+      float: none;
+      display: block;
+      padding: 10px;
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      text-align: center;
+    }
+  }
+}

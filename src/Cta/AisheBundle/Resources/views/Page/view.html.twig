@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block javascript_code %}
+    {{ parent() }}
+    {{ page.javascript|raw }}
+{% endblock %}
+{% block body %}
+    {{ include('CtaAisheBundle:Report:_partials/overview_menu.html.twig') }}
+
+    <div class="page">
+        {% if page.pageTranslations|length  %}
+            {{ page.pageTranslations.0.value|raw }}
+        {% else %}
+            {{ 'page.noContent'|trans() }}
+        {% endif %}
+    </div>
+{% endblock %}

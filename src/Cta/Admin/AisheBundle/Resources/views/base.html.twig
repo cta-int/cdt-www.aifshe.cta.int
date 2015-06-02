@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div id="side-menu" class="icons-menu">
+        <a href="{{ path('cta_admin_aishe_offline_tool_overview') }}">
+            <img src="{{ asset('bundles/ctaaishe/css/img/icon-offline-tool.png') }}"/>
+            <span class="text"><p>{{ 'base.offlineTool'|trans() }}</p></span>
+        </a>
+        <a href="{{ path('cta_admin_aishe_criterion_overview') }}">
+            <img src="{{ asset('bundles/ctaaishe/css/img/icon-criterion.png') }}"/>
+            <span class="text"><p>{{ 'base.criteria'|trans() }}</p></span>
+        </a>
+        <a href="{{ path('cta_admin_aishe_page_overview') }}">
+            <img src="{{ asset('bundles/ctaaishe/css/img/icon-page.png') }}"/>
+            <span class="text"><p>{{ 'base.pages'|trans() }}</p></span>
+        </a>
+        <a href="{{ path('cta_admin_aishe_security_user') }}">
+            <img src="{{ asset('bundles/ctaaishe/css/img/icon-users.png') }}"/>
+            <span class="text"><p>{{ 'base.users'|trans() }}</p></span>
+        </a>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <a href="{{ path('cta_admin_aishe_security_group') }}">
+                <img src="{{ asset('bundles/ctaaishe/css/img/icon-group.png') }}"/>
+                <span class="text"><p>{{ 'base.groups'|trans() }}</p></span>
+            </a>
+        {% endif %}
+        <a href="javascript:history.go(-1);">
+            <img src="{{ asset('bundles/ctaaishe/css/img/icon-back.png') }}"/>
+            <span class="text"><p>{{ 'security.base.back'|trans() }}</p></span>
+        </a>
+    </div>
+    {% block bodyAdmin %}{% endblock %}
+
+    <div id="dialog" title="Confirmation title"></div>
+{% endblock %}
+
+{% block javascript_code %}
+    {{ parent() }}
+    jQuery(document).ready(function() {
+        jQuery("#dialog").dialog({
+            autoOpen: false,
+            modal: true
+        });
+    });
+
+    function showConfirm(obj, e, title, text) {
+        e.preventDefault();
+        url = obj.href;
+
+        $("#dialog").html(text);
+        $("#dialog").dialog({
+            title : title,
+            buttons : [
+                {
+                    text: '{{ 'base.dialog.confirm'|trans() }}',
+                    click: function() {
+                        window.location.replace(url);
+                    }
+                },
+                {
+                    text: '{{ 'base.dialog.cancel'|trans() }}',
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+        });
+
+        $("#dialog").dialog("open");
+    }
+
+{% endblock %}

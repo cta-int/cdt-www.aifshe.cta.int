@@ -1,0 +1,846 @@
+/* Smartphone (landscape) */
+@media only screen and (min-width : 321px) and (max-width: 480px) and (orientation: landscape) {
+  .mce-container,.mce-container *,.mce-widget,.mce-widget *{ display: none !important;}
+  textarea#page_translation_value {display: block !important;}
+
+  header {
+    width: 100%;
+    height: 150px;
+
+    div#header-box {
+      margin: 0 auto;
+      width: 96%;
+      background-image: none !important;
+
+      div#language {
+        float: right;
+        margin: 110px 0 0 0;
+        width: auto;
+      }
+    }
+  }
+
+  nav {
+    height: auto !important;
+    background-image: none;
+    background: #cfcfcf;
+    display: table;
+    div#menu {
+      width: 100%;
+      ul {height: auto !important;}
+    }
+  }
+
+
+  section#main-content {
+    margin: 35px auto !important;
+    width: 96% !important;
+
+    div#side-menu {
+      float: left;
+      clear: both;
+      max-width: 100%;
+      margin: 0 0 20px -3px;
+    }
+
+    h1 {clear: left;}
+    h2 {width: 440px;}
+
+    ul {
+      width: 98%;
+      li {
+        span.title {width: 315px;}
+        span.create-author {display: none;}
+        span.edit-author {display: none;}
+        span.create-date {display: none}
+        span.edit-date {width: 100px; display: block;}
+        span.status {display: none;}
+        span.auditor {display: none !important;}
+      }
+
+      &[name=report-overview] {
+        li {
+          span.title {width: 278px !important;}
+          span.edit-date {width: 135px !important;}
+        }
+      }
+    }
+
+    button {margin: 10px 10px 0 0 !important;}
+
+  }
+
+  form {
+    &.smallForm {
+      width: 446px;
+      h2 {width: 424px !important;}
+      div.formContent {width: 444px;padding: 10px 0 !important;}
+    }
+
+    &.largeForm {
+      float: left !important;
+      width: 460px;
+      h2 {width: 434px !important;}
+      div.formContent {width: 460px; padding: 10px 0 !important;}
+    }
+
+    h5 {margin: 0px 0px 35px 0px;}
+  }
+
+  ul#flags {
+    li {
+      margin: 0;
+      padding: 0;
+      height: 41px;
+      line-height: 18px;
+      width: 458px !important;
+
+      span {
+        padding: 2px 0; height: 100%;
+        span.text {
+          float: left;
+          margin: 6px 0 0 0;
+          padding: 0 5px 0 2px;
+          height: 28px;
+          line-height: 28px;
+          display: block;
+        }
+      }
+      span.title {
+        padding: 2px 0 2px 5px;
+        width: 252px !important;
+        border-right: 1px dotted $lightblue;
+        display: block;
+      }
+
+      span.empty {
+        padding: 0 0 0 1%;
+        width: 49%;
+        line-height: 28px;
+        img {
+          float: left;
+        }
+      }
+      span.priority {line-height: 28px; padding: 0 1% 0 0; width: 49%;}
+
+      &.top {
+        width: 460px !important;
+        height: 32px !important;
+        line-height: 32px;
+        span.number {
+          padding: 0;
+          width: 54px;
+          text-align: center;
+          display: block;
+          cursor: pointer;
+        }
+        span.first-number {margin: 0; width: 37px;}
+        span.last-number {width: 37px;}
+        span.priority {padding: 0; width: 104px; text-align: center; display: block;}
+        span.empty-row {padding: 0; width: 89px; text-align: center; display: block;}
+        span.title {
+          width: 252px !important;
+          border: none !important;
+        }
+      }
+      &.criterion-row {height: 3px !important;}
+    }
+
+    &[name=report-view] {
+      li {
+        height: auto !important;
+        border-bottom: 2px solid $blue;
+        span.title {clear: both; width: 99% !important; height: 26px !important; line-height: 26px !important; display: block; border-bottom: 1px solid $blue; border-right: 0px;}
+        span[name="0"] {width: 54px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="1"] {width: 54px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="1-5"] {width: 31px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="2"] {width: 54px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="2-5"] {width: 31px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="3"] {width: 54px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="3-5"] {width: 31px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="4"] {width: 54px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="4-5"] {width: 31px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="5"] {width: 55px; height: 43px; border-bottom: 1px solid $blue; border-right: 0px;}
+
+        span.priority {clear: both;}
+        &.top {
+          span.number {display: none !important;}
+          span.priority {display: none !important;}
+          span.empty-row {display: none !important;}
+        }
+
+
+
+        &.criterion-row {height: 3px !important;}
+
+      }
+    }
+  }
+
+  ul {
+    &#flags {
+      &.desired_situation {
+        li {
+          height: 32px;
+          line-height: 32px;
+          span {padding: 0;}
+        }
+      }
+
+      &.current_situation {
+        li {
+          height: 32px;
+          line-height: 32px;
+          span {padding: 0;}
+        }
+      }
+    }
+  }
+
+  div.flags {
+    ul#flags {
+      width: 420px !important;
+      li {
+        height: auto !important;
+        width: 416px !important;
+        &.top {
+          width: 418px !important;
+
+          span.number {
+            padding: 0 31px 0 0;
+            width: 49px;
+
+            &.first-number {padding: 0px;}
+            &.last-number {padding: 0px !important;}
+          }
+
+        }
+
+        span[name="0"] {width: 47px; height: 43px;}
+        span[name="1"] {width: 47px; height: 43px;}
+        span[name="1-5"] {width: 31px; height: 43px;}
+        span[name="2"] {width: 47px; height: 43px;}
+        span[name="2-5"] {width: 31px; height: 43px;}
+        span[name="3"] {width: 47px; height: 43px;}
+        span[name="3-5"] {width: 31px; height: 43px;}
+        span[name="4"] {width: 47px; height: 43px;}
+        span[name="4-5"] {width: 31px; height: 43px;}
+        span[name="5"] {width: 48px; height: 43px; border-right: 0px;}
+      }
+    }
+  }
+
+  table {
+    margin: 0 auto;
+    width: 460px;
+  }
+
+  div.report-item {width: 420px;}
+  div#section-body {
+    width: 420px;
+
+    label {
+      float: left;
+      width: 98%;
+      margin: 8px 0 0 0;
+      height: 20px;
+      line-height: 20px;
+      text-align: left;
+    }
+
+    textarea {width: 98%;}
+
+    form {
+      button {
+        clear: none;
+        margin: 30px 0 0 10px !important;
+      }
+    }
+  }
+
+  div#side-menu {
+    &.icons-menu {
+      a {
+        float: left;
+        margin: 0 15px 10px 0;
+        padding: 0 10px 0 0;
+        outline:none;
+        width: auto;
+        height: 33px;
+        line-height: 33px;
+        text-align: center;
+        display: block;
+
+        span.text {
+          clear: both;
+          float: left;
+          margin-top: 0;
+          display: table !important;
+
+          p {
+            height: 33px;
+            line-height: 33px;
+            color: #fff;
+            font-size: 14px;
+            background: transparent;
+          }
+        }
+
+        img {display: none;}
+
+        &:hover {
+           text-decoration: underline;
+
+          span.text {
+              position: relative;
+              top: 0;
+              left: 0;
+              background: transparent;
+              background-image: none;
+
+              p {
+                color: #fff;
+                background: transparent;
+              }
+          }
+        }
+      }
+
+      span.icon {
+        display: none;
+
+        a {
+          position: relative;
+          left: 0;
+
+          span.text {
+           float: left;
+          }
+        }
+      }
+    }
+  }
+/* ADMIN */
+
+  ul[name=criteria] {
+    li {
+      span.info {display: none !important;}
+      span.smalltitle {width: 350px !important;}
+      span.create-date {
+        display: none !important;
+        &[name=actions] {display: block !important; width: auto;}
+      }
+    }
+  }
+
+  ul.criterion {
+    li {
+      height: auto !important;
+      span.title {width: 372px !important; border-bottom: 1px dotted $lightblue !important;}
+      span.info {text-align: left; padding:  0 0 0 5px !important; width: 72px !important; border-bottom: 1px dotted $lightblue !important;}
+      span.empty-row {display: none;}
+      span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      span.delete {width: auto !important; clear: left;
+        a {margin: 0 3px !important;}
+      }
+      span.language {
+        width: auto !important; margin: 0 10px 0 0 !important;
+        a {margin: 0 3px !important;}
+        span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      }
+
+      &.top {
+        span.title {border: none !important;}
+        span.info {border: none !important;}
+        span.language {display: none;}
+        span.create-date {display: none;}
+      }
+    }
+  }
+
+  ul.pages {
+    li {
+      height: auto !important;
+      span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      span.title {width: 433px !important; border-bottom: 1px dotted $lightblue !important;}
+      span.language {
+        width: auto !important; margin: 0 0 0 10px !important;
+        a {margin: 0 3px !important;}
+        span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      }
+      span.create-date {display: none !important;}
+      span.edit-date {display: none !important;}
+
+      &.top {
+        span.create-date {display: none !important;}
+        span.edit-date {display: none !important;}
+        span.language {display: none !important;}
+        span.title {border: none !important;}
+      }
+    }
+  }
+
+  ul[name=users] {
+    li {
+      span.title {width: 95px !important;}
+      span.create-author {display: none !important;}
+      span.date-time {display: none !important;}
+      span.enabled {width: 104px !important;}
+
+      span.groups {width: 90px !important; span.group {width: 90px;}}
+      span.institutions {width: 90px !important; span.institute {width: 90px;}}
+    }
+  }
+
+  ul[name=groups] {
+    li {
+      span.title {width: 320px !important;}
+      span.roles {display: none !important;}
+    }
+  }
+
+  ul[name=institutions] {
+    li {
+      span.mediumtitle {width: 390px !important;}
+    }
+  }
+
+/* PAGINATION */
+  div.pagination {
+    max-width: 304px !important;
+
+    a {
+      margin: 0 3px 0 0 !important;
+      padding: 0 4px !important;
+      width: auto !important;
+    }
+  }
+}
+
+/* Smartphone (portrait) */
+@media only screen and (max-width : 320px) and (orientation: portrait) {
+
+  .mce-container,.mce-container *,.mce-widget,.mce-widget *{ display: none !important;}
+  textarea#page_translation_value {display: block !important;}
+
+  header {
+    width: 100%;
+    height: 190px;
+
+    div#header-box {
+      margin: 0 auto;
+      width: 96%;
+      background-image: none;
+
+      div#language {
+        float: right;
+        margin: 130px auto 0 auto;
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+
+  nav {
+    height: auto !important;
+    background-image: none;
+    background: #cfcfcf;
+    display: table;
+    div#menu {
+      width: 100%;
+      ul {height: auto !important;}
+    }
+  }
+
+  section#main-content {
+    h1 {margin-left: 1%; clear: both;}
+
+    margin: 35px auto !important;
+    width: 96% !important;
+
+    div#side-menu {
+      float: left;
+      clear: both;
+      max-width: 100%;
+      margin: 0 0 10px -3px;
+      display: table;
+
+      span {margin-bottom: 5px; float: left; display: block;}
+    }
+
+    h2 {
+      width: 280px !important;
+      &.smallTitle {width: 282px !important; float: left !important;}
+    }
+
+    h3.priority {clear: both !important; float: left !important;}
+
+    ul {
+      margin: 0 auto !important;
+      width: 98%;
+      li {
+        span.title {width: 170px;}
+        span.create-author {display: none;}
+        span.edit-author {display: none;}
+        span.create-date {display: none}
+        span.edit-date {width: 95px; display: block;}
+        span.status {display: none;}
+        span.auditor {display: none !important;}
+      }
+
+      &[name=report-overview] {
+        li {
+          span.title {width: 130px !important;}
+          span.edit-date {width: 133px !important;}
+        }
+      }
+    }
+
+    button {margin: 10px 10px 0 0 !important;}
+
+  }
+
+  form {
+    margin: 0 !important;
+    &.smallForm {
+      width: 300px;
+      h2 {width: 274px !important;}
+      div.formContent {width: 300px;}
+    }
+
+    &.largeForm {
+      width: 300px;
+      h2 {width: 274px !important;}
+      div.formContent {width: 300px;}
+
+      .jqTransformSelectWrapper {margin-bottom: 10px;}
+    }
+
+    h5 {margin: 0px 0px 35px 0px;}
+  }
+
+  ul#flags {
+    li {
+      margin: 0;
+      padding: 0;
+      height: 41px;
+      line-height: 18px;
+      width: 298px !important;
+
+      span {
+        padding: 2px 0; height: 100%;
+        span.text {
+          float: left;
+          margin: 6px 0 0 0;
+          padding: 0 5px 0 2px;
+          height: 28px;
+          line-height: 28px;
+          display: block;
+        }
+      }
+      span.title {
+        padding: 2px 0 2px 5px;
+        width: 251px !important;
+        border-right: 0px;
+        display: block;
+      }
+
+      span.empty {
+        padding: 0 0 0 1%;
+        width: 49%;
+        line-height: 28px;
+        img {
+          float: left;
+        }
+      }
+      span.priority {line-height: 28px; padding: 0 1% 0 0; width: 49%;}
+
+      &.top {
+        width: 300px !important;
+        height: 32px !important;
+        line-height: 32px;
+        span.number {
+          padding: 0;
+          width: 54px;
+          text-align: center;
+          display: block;
+          cursor: pointer;
+        }
+        span.first-number {margin: 0; width: 37px;}
+        span.last-number {width: 37px;}
+        span.priority {padding: 0; width: 104px; text-align: center; display: block;}
+        span.empty-row {padding: 0; width: 89px; text-align: center; display: block;}
+        span.title {
+          width: 252px !important;
+          border: none !important;
+        }
+      }
+      &.criterion-row {height: 3px !important;}
+    }
+
+    &[name=report-view] {
+      li {
+        height: auto !important;
+        border-bottom: 2px solid $blue;
+        span.title {clear: both; width: 98% !important; height: 26px !important; line-height: 26px !important; display: block; border-bottom: 1px solid $blue; border-right: 0px;}
+        span[name="0"] {width: 34px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="1"] {width: 34px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="1-5"] {width: 21px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="2"] {width: 34px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="2-5"] {width: 21px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="3"] {width: 34px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="3-5"] {width: 21px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="4"] {width: 34px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="4-5"] {width: 21px; height: 43px; border-bottom: 1px solid $blue;}
+        span[name="5"] {width: 35px; height: 43px; border-bottom: 1px solid $blue; border-right: 0px;}
+
+        span.priority {clear: both;}
+        &.top {
+          span.number {display: none !important;}
+          span.priority {display: none !important;}
+          span.empty-row {display: none !important;}
+        }
+
+        &.criterion-row {height: 3px !important;}
+      }
+    }
+  }
+
+  ul {
+    &#flags {
+      &.desired_situation {
+        li {
+          height: 32px;
+          line-height: 32px;
+          span {padding: 0;}
+        }
+      }
+
+      &.current_situation {
+        li {
+          height: 32px;
+          line-height: 32px;
+          span {padding: 0;}
+        }
+      }
+    }
+  }
+
+  div.flags {
+    ul#flags {
+      width: 285px !important;
+      li {
+        height: auto !important;
+        width: 280px !important;
+        &.top {
+          width: 282px !important;
+
+          span.number {
+            padding: 0 16px 0 0;
+            width: 36px;
+
+            &.first-number {padding: 0px;}
+            &.last-number {padding: 0px !important;}
+          }
+        }
+
+        span[name="0"] {width: 34px; height: 43px;}
+        span[name="1"] {width: 34px; height: 43px;}
+        span[name="1-5"] {width: 17px; height: 43px;}
+        span[name="2"] {width: 34px; height: 43px;}
+        span[name="2-5"] {width: 17px; height: 43px;}
+        span[name="3"] {width: 34px; height: 43px;}
+        span[name="3-5"] {width: 17px; height: 43px;}
+        span[name="4"] {width: 34px; height: 43px;}
+        span[name="4-5"] {width: 17px; height: 43px;}
+        span[name="5"] {width: 33px; height: 43px; border-right: 0px;}
+      }
+    }
+  }
+
+  table {
+    float: left;
+    width: 300px;
+    tr{ td{word-break:break-all;}}
+  }
+
+  div.report-item {clear: both; width: 260px;}
+  div#section-body {
+    padding: 6px;
+    width: 288px;
+
+    label {
+      float: left;
+      width: 98%;
+      margin: 8px 0 0 0;
+      height: 20px;
+      line-height: 20px;
+      text-align: left;
+    }
+
+    textarea {width: 270px;}
+
+    form {
+      button {
+        clear: none;
+        margin: 30px 0 0 10px !important;
+      }
+    }
+  }
+
+  div#side-menu {
+    width: 300px !important;
+    margin-left: 1% !important;
+    &.icons-menu {
+      a {
+        float: left;
+        margin: 0 10px 10px 0;
+        padding: 0 10px 0 0;
+        outline:none;
+        width: auto;
+        height: 33px;
+        line-height: 33px;
+        text-align: center;
+        display: block;
+
+        span.text {
+          clear: both;
+          float: left;
+          margin-top: 0;
+          display: table !important;
+
+          p {
+            height: 33px;
+            line-height: 33px;
+            color: #fff;
+            font-size: 14px;
+            background: transparent;
+          }
+        }
+
+        img {display: none;}
+
+        &:hover {
+          text-decoration: underline;
+
+          span.text {
+            position: relative;
+            top: 0;
+            left: 0;
+            background: transparent;
+            background-image: none;
+
+            p {
+              color: #fff;
+              background: transparent;
+            }
+          }
+        }
+      }
+
+      span.icon {
+        display: none;
+
+        a {
+          position: relative;
+          left: 0;
+
+          span.text {
+            float: left;
+          }
+        }
+      }
+    }
+  }
+
+
+  /* ADMIN */
+
+  ul[name=criteria] {
+    li {
+      span.info {display: none !important;}
+      span.smalltitle {width: 200px !important;}
+      span.create-date {
+        display: none !important;
+        &[name=actions] {display: block !important; width: auto;}
+      }
+    }
+  }
+
+  ul.criterion {
+    li {
+      height: auto !important;
+      span.title {width: 227px !important; border-bottom: 1px dotted $lightblue !important;}
+      span.info {text-align: left; border-bottom: 1px dotted $lightblue !important;}
+      span.empty-row {display: none;}
+      span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      span.delete {width: auto !important; clear: left;
+        a {margin: 0 3px !important;}
+      }
+      span.language {
+        width: auto !important; margin: 0 10px 0 0 !important;
+        a {margin: 0 3px !important;}
+        span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      }
+
+      &.top {
+        span.title {border: none !important;}
+        span.info {border: none !important;}
+        span.language {display: none;}
+        span.create-date {display: none;}
+      }
+    }
+  }
+
+  ul.pages {
+    li {
+      height: auto !important;
+      span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      span.title {width: 290px !important; border-bottom: 1px dotted $lightblue !important;}
+      span.language {
+        width: auto !important; margin: 0 0 0 10px !important;
+        a {margin: 0 3px !important;}
+        span.text {display: table !important; padding: 0 0 5px 0 !important;}
+      }
+      span.create-date {display: none !important;}
+      span.edit-date {display: none !important;}
+
+      &.top {
+        span.create-date {display: none !important;}
+        span.edit-date {display: none !important;}
+        span.language {display: none !important;}
+      }
+    }
+  }
+
+  ul[name=users] {
+    li {
+      span.title {width: 80px !important;}
+      span.create-author {display: none !important;}
+      span.date-time {display: none !important;}
+      span.enabled {width: 104px !important;}
+      span.groups {width: 75px !important; span.group {width: 75px !important;}}
+      span.institutions {display: none; width: 75px !important; span.insitute {width: 75px !important;}}
+    }
+  }
+
+  ul[name=groups] {
+    li {
+      span.title {width: 176px !important;}
+      span.roles {display: none !important;}
+      span.empty {float: right !important;}
+    }
+  }
+
+/* PAGINATION */
+  div.pagination {
+    max-width: 304px !important;
+
+    a {
+      margin: 0 3px 0 0 !important;
+      padding: 0 4px !important;
+      width: auto !important;
+    }
+  }
+}

@@ -1,0 +1,165 @@
+Cta\AisheBundle\Entity\Report:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [name, institution]
+            errorPath: name
+    properties:
+        name:
+            - NotBlank: ~
+            - Type:
+                type: string
+        department:
+            - Type:
+                type: string
+        coordinator:
+            - Type:
+                type: string
+        nrOfParticipants:
+            - Type:
+                type: integer
+        secretary:
+            - Type:
+                type: string
+        dateAssessment:
+            - NotBlank: ~
+            - Type: \DateTime
+        dateLatestAssessment:
+            - Type: \DateTime
+        dateDesiredSituation:
+            - Type: \DateTime
+        comment:
+            - Type:
+                type: string
+        isOfficial:
+            - Type:
+                type: bool
+
+Cta\AisheBundle\Entity\Institution:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [name]
+            errorPath: name
+    properties:
+        name:
+            - NotBlank: ~
+            - Type:
+                type: string
+
+Cta\AisheBundle\Entity\ReportItem:
+    properties:
+        currentSituationRating:
+        desiredSituationRating:
+        currentSituationComment:
+            - Type:
+                type: string
+        desiredSituationComment:
+            - Type:
+                type: string
+        hasHighPriority:
+            - Type:
+                type: bool
+
+Cta\AisheBundle\Entity\Criterion:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [chapterNr]
+            errorPath: chapterNr
+    properties:
+        chapterNr:
+            - NotBlank: ~
+            - Type:
+                type: integer
+        type:
+            - NotBlank: ~
+            - Type:
+                type: integer
+
+Cta\AisheBundle\Entity\CriterionItem:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [paragraphNr, criterion]
+            errorPath: paragraphNr
+    properties:
+        paragraphNr:
+            - NotBlank: ~
+            - Type:
+                type: integer
+
+Cta\AisheBundle\Entity\CriterionItemTranslation:
+    properties:
+        value:
+            - NotBlank: ~
+            - Type:
+                type: string
+        infoStage1:
+            - NotBlank: ~
+            - Type:
+                type: string
+        infoStage2:
+            - NotBlank: ~
+            - Type:
+                type: string
+        infoStage3:
+            - NotBlank: ~
+            - Type:
+                type: string
+        infoStage4:
+            - NotBlank: ~
+            - Type:
+                type: string
+        infoStage5:
+            - NotBlank: ~
+            - Type:
+                type: string
+
+Cta\AisheBundle\Entity\Group:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+    properties:
+        name:
+            - NotBlank: ~
+            - Type:
+                type: string
+        roles: ~
+
+Cta\AisheBundle\Entity\Page:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [identifier]
+            errorPath: identifier
+    properties:
+        identifier:
+            - NotBlank: ~
+            - Type:
+                type: string
+        javascript:
+            - Type:
+                type: string
+
+Cta\AisheBundle\Entity\PageTranslation:
+    properties:
+        value:
+            - NotBlank: ~
+            - Type:
+                type: string
+
+Cta\AisheBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank: ~
+            - Type:
+                type: string
+        email:
+            - NotBlank: ~
+            - Email: ~
+        enabled:
+            - Type:
+                type: bool
+
+Cta\AisheBundle\Entity\OfflineTool:
+    properties:
+        fileName:
+            - Regex:
+                pattern: "/^[\w\-. ]+$/"
+                match:   true
+                message: invalid filename

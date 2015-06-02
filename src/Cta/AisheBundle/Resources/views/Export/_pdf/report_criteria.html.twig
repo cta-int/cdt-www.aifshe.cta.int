@@ -1,0 +1,96 @@
+{% set types_shown = [] %}
+{% for criterion in criteria %}
+    {% if criterion.type not in types_shown %}
+        {% set types_shown = types_shown|merge([criterion.type]) %}
+        <h1>{{ criterion.type|toCriterionType() }}</h1>
+    {% endif %}
+
+    <h2>&nbsp;{{ criterion.chapterNr }}
+        . {% if criterion.criterionTranslations|length > 0 %}{{ criterion.criterionTranslations.0.value }}{% endif %}</h2>
+
+    <div class="report-item">{% for criterionItem in criterion.criterionItems %}
+            <table class="top-show-report" width="18cm" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="8pt">&nbsp;</td>
+                    <td width="17.5cm" class="title"><span
+                                class="h3">{{ 'report.item.criterion'|trans() }} {{ criterion.chapterNr }}
+                            .{{ criterionItem.paragraphNr }}
+                            . {% if criterionItem.criterionItemTranslations|length > 0 %}{{ criterionItem.criterionItemTranslations.0.value }}{% endif %}</span>
+                        {% for reportItem in report.reportItems %}
+                            {% if reportItem.criterionItem.id == criterionItem.id %}
+                                {% if reportItem.hasHighPriority %}
+                                    <span class="priority">{{ 'report.item.hasHighPriority'|trans() }}</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+
+            <br/><br/>
+            {% set reportItemFound = false %}
+            <table class="plan" width="18cm" border="0" cellpadding="0" cellspacing="0">
+                {% for reportItem in report.reportItems %}
+                    {% if reportItem.criterionItem.id == criterionItem.id %}
+                        {% set reportItemFound = true %}
+                        {# current situation rating #}
+                        <tr>
+                            <td width="8pt">&nbsp;</td>
+                            <td width="17.5cm">
+                                <strong>{{ 'report.item.currentSituation'|trans() }}:</strong>
+                                {% if reportItem.currentSituationRating %}
+                                    <strong>{{ ('report.item.stage.' ~ reportItem.currentSituationRating)|trans() }}</strong>
+                                {% else %}
+                                    {{ 'report.item.stage.0.0'|trans() }}
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        {# comment #}
+                        {% if reportItem.currentSituationComment %}
+                            <tr>
+                                <td width="8pt">&nbsp;</td>
+                                <td width="17.5cm">
+                                    {{ reportItem.currentSituationComment }}
+                                </td>
+                            </tr>
+                        {% endif %}
+
+
+                        {# desired situation rating #}
+                        <tr>
+                            <td width="8pt">&nbsp;</td>
+                            <td width="17.5cm">
+                                <strong>{{ 'report.item.desiredSituation'|trans() }}:</strong>
+                                {% if reportItem.desiredSituationRating %}
+                                    <strong>{{ ('report.item.stage.' ~ reportItem.desiredSituationRating)|trans() }}</strong>
+                                {% else %}
+                                    {{ 'report.item.stage.0.0'|trans() }}<br/>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        {# comment #}
+                        {% if reportItem.desiredSituationComment %}
+                            <tr>
+                                <td width="8pt">&nbsp;</td>
+                                <td width="17.5cm">
+                                    {{ reportItem.desiredSituationComment }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if reportItemFound == false %}
+                    <tr>
+                        <td width="8pt">&nbsp;</td>
+                        <td>
+                            {{ 'report.item.stage.0.0'|trans() }}
+                        </td>
+                    </tr>
+                {% endif %}
+            </table>
+        {% endfor %}
+    </div>
+    <br/><br/>
+{% endfor %}

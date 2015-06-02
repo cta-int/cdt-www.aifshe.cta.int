@@ -1,0 +1,15 @@
+Devart\CommonBundle\Entity\Base:
+    type: mappedSuperclass
+    repositoryClass: Devart\CommonBundle\Entity\Repository\Base
+    fields:
+        status:
+            type: smallint
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        modifiedAt:
+            type: datetime
+            nullable: true
+            column: modified_at

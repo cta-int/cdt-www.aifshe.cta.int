@@ -1,0 +1,17 @@
+parameters:
+#    devart_common.example.class: Devart\CommonBundle\Example
+
+services:
+    devart.doctrine.subscriber:
+        class:      Devart\CommonBundle\EventListener\DoctrineSubscriber
+        arguments:  ["@service_container"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+    devart.twig.security.extension:
+        class:      Devart\CommonBundle\Twig\SecurityExtension
+        arguments:  [@security.context]
+        tags:
+            - { name: twig.extension }
+    devart.mail:
+        class:      Devart\CommonBundle\Service\Mail
+        arguments:  [@service_container]

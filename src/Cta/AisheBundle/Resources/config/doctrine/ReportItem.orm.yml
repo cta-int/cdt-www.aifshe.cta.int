@@ -1,0 +1,45 @@
+Cta\AisheBundle\Entity\ReportItem:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\ReportItem
+    table: report_item
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        currentSituationRating:
+            type: decimal
+            nullable: true
+            scale: 1
+            column: current_situation_rating
+        desiredSituationRating:
+            type: decimal
+            nullable: true
+            scale: 1
+            column: desired_situation_rating
+        currentSituationComment:
+            type: text
+            nullable: true
+            column: current_situation_comment
+        desiredSituationComment:
+            type: text
+            nullable: true
+            column: desired_situation_comment
+        hasHighPriority:
+            type: boolean
+            nullable: true
+            column: has_high_priority
+    manyToOne:
+        report:
+            targetEntity: Report
+            inversedBy: reportItems
+            joinColumn:
+                name: report_id
+                referencedColumnName: id
+        criterionItem:
+            targetEntity: CriterionItem
+            joinColumn:
+                name: criterion_item_id
+                referencedColumnName: id

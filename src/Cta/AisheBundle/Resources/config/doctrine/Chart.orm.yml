@@ -1,0 +1,49 @@
+Cta\AisheBundle\Entity\Chart:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\Chart
+    table: chart
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        type:
+            type: smallint
+            nullable: false
+        showCurrentSituation:
+            type: boolean
+            nullable: false
+            column: show_current_situation
+        showDesiredSituation:
+            type: boolean
+            nullable: false
+            column: show_desired_situation
+        showHighPriority:
+            type: boolean
+            nullable: false
+            column: show_high_priority
+        showCriterion1:
+            type: boolean
+            nullable: false
+            column: show_criterion1
+        showCriterion2:
+            type: boolean
+            nullable: false
+            column: show_criterion2
+        showCriterion3:
+            type: boolean
+            nullable: false
+            column: show_criterion3
+        showCriterion4:
+            type: boolean
+            nullable: false
+            column: show_criterion4
+    oneToOne:
+        report:
+            targetEntity: Report
+            inversedBy: chartSettings
+            joinColumn:
+                name: report_id
+                referencedColumnName: id

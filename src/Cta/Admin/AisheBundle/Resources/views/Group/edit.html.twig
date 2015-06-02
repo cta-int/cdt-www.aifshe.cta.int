@@ -1,0 +1,75 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h2>{{ 'group.addOrEdit'|trans() }}</h2>
+
+    {{ form_start(form, {'attr': {'class': 'largeForm'} } ) }}
+        <div class="formContent admin">
+            {{ form_row(form.name, {'label': 'group.name'}) }}
+
+            <div id="role-fields-list" data-prototype="{{ form_widget(form.roles.vars.prototype) | e }}">
+                {% for roleField in form.roles %}
+                    <span>
+                        {{ form_errors(roleField) }}
+                        {{ form_widget(roleField) }}
+                    </span>
+                {% endfor %}
+            </div>
+
+            <span><a href="#" id="add-role" class="button"><img src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"/>Add Role</a></span>
+
+            {{ form_rest(form) }}
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascript_code %}
+    {{ parent() }}
+
+    // keep track of how many role fields have been rendered
+    var roleCount = '{{ form.roles|length }}';
+
+    jQuery(document).ready(function() {
+
+        jQuery('#role-fields-list').find('span').each(function() {
+            addTagFormDeleteLinkAndLabel($(this));
+        });
+
+        jQuery('#add-role').click(function(e) {
+
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            var roleList = jQuery('#role-fields-list');
+
+            var newWidget = roleList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, roleCount);
+            roleCount++;
+
+            var newLi = jQuery('<span></span>').html(newWidget);
+            newLi.appendTo(jQuery('#role-fields-list'));
+            $(newLi).jqTransform();
+            addTagFormDeleteLinkAndLabel($(newLi));
+
+            return false;
+        });
+    });
+
+    function addTagFormDeleteLinkAndLabel(tagFormLi) {
+        var labelObj = $('<label>{{ 'group.role.label'|trans() }}</label>');
+        var deleteObj = $('<a href="#" class="remove-role"><img src="{{ asset('bundles/ctaaishe/css/img/icon-delete-black.png') }}" alt="{{ 'group.role.remove'|trans() }}"/></a>');
+
+        tagFormLi.prepend(labelObj);
+        tagFormLi.append(deleteObj);
+
+        deleteObj.on('click', function(e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // remove the li for the tag form
+            tagFormLi.remove();
+
+            return false;
+        });
+    }
+{% endblock %}

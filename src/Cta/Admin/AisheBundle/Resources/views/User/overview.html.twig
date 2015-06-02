@@ -1,0 +1,53 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h1>{{ 'base.users'|trans() }}</h1>
+
+    <a href="{{ path('cta_admin_aishe_security_user_edit') }}" class="button"><img src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"/>{{ 'user.add'|trans() }}</a>
+
+    <ul name="users">
+        <li class="top">
+            <span class="title">{{ 'user.name'|trans() }}</span>
+            <span class="create-author">{{ 'user.email'|trans() }}</span>
+            <span class="date-time">{{ 'user.loggedIn'|trans() }}</span>
+            <span class="enabled">{{ 'user.isEnabled'|trans() }}</span>
+            <span class="groups">{{ 'user.groups'|trans() }}</span>
+            <span class="institution">{{ 'user.institution'|trans() }}</span>
+        </li>
+
+        {% for user in users %}
+            <li>
+                <a href="{{ path('cta_admin_aishe_security_user_edit', {'id': user.getId()}) }}">
+                    <span class="title">{{ user.getUsername() }}</span>
+                    <span class="create-author">{{ user.getEmail() }}</span>
+                    <span class="date-time">{% if user.getLastLogin() is not null %}{{ user.getLastLogin()|date("Y-m-d H:i:s") }}{% else %}&nbsp;{% endif %}</span>
+                    <span class="enabled">{% if user.isEnabled() %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-enabled.png') }}"/>{% else %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-disabled.png') }}"/>{% endif %}</span>
+                    <span class="groups">
+                        {% spaceless %}
+                            {% for group in user.getGroups() %}
+                               <span class="group">{{ group.getName() }}</span>
+                            {% endfor %}
+                        {% endspaceless %}
+                    </span>
+                    <span class="institution">
+                        {% spaceless %}
+                            {% if user.getInstitution() is not null %}
+                                {{ user.getInstitution().getName() }}
+                            {% else %}
+                                &nbsp;
+                            {% endif %}
+                        {% endspaceless %}
+                    </span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ include('DevartCommonBundle:_partials:_pagination.html.twig', {
+        currentFilters: app.request.attributes.get('_route_params') ? app.request.attributes.get('_route_params') : {},
+        currentPage: page,
+        paginationPath: "cta_admin_aishe_security_user",
+        lastPage: lastPage,
+        showAlwaysFirstAndLast: false
+    }) }}
+{% endblock %}

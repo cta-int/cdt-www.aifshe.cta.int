@@ -1,0 +1,24 @@
+Cta\AisheBundle\Entity\PageTranslation:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\PageTranslation
+    table: page_translation
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        lang:
+            type: smallint
+            nullable: false
+        value:
+            type: text
+            nullable: false
+    manyToOne:
+        page:
+            targetEntity: Page
+            inversedBy: pageTranslations
+            joinColumn:
+                name: page_id
+                referencedColumnName: id

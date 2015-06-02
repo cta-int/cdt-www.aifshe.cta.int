@@ -1,0 +1,37 @@
+parameters:
+#    cta_admin_aishe.example.class: Cta\Admin\AisheBundle\Example
+
+services:
+    cta.admin.aishe.form.user:
+        class: Cta\Admin\AisheBundle\Form\User
+        tags:
+            - { name: form.type, alias: user }
+    cta.admin.aishe.form.group:
+        class: Cta\Admin\AisheBundle\Form\Group
+        tags:
+            - { name: form.type, alias: group }
+    cta.admin.aishe.form.page:
+        class: Cta\Admin\AisheBundle\Form\Page
+        tags:
+            - { name: form.type, alias: page }
+    cta.admin.aishe.form.page.translation:
+        class: Cta\Admin\AisheBundle\Form\PageTranslation
+        tags:
+            - { name: form.type, alias: page_translation }
+    cta.admin.aishe.form.criterion:
+        class: Cta\Admin\AisheBundle\Form\Criterion
+        tags:
+            - { name: form.type, alias: criterion }
+    cta.admin.aishe.form.offlinetool:
+        class: Cta\Admin\AisheBundle\Form\OfflineTool
+        tags:
+            - { name: form.type, alias: offlineTool }
+    cta.admin.aishe.form.criterion.item:
+        class: Cta\Admin\AisheBundle\Form\CriterionItem
+        arguments:  [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: criterion_item }
+    cta.admin.aishe.form.criterion.item.translation:
+        class: Cta\Admin\AisheBundle\Form\CriterionItemTranslation
+        tags:
+            - { name: form.type, alias: criterion_item_translation }

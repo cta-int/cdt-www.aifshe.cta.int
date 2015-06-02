@@ -1,0 +1,16 @@
+<h1 style="position: relative;"><span style="position:absolute;right: -20px;"><a href="{{ path('cta_aishe_help') }}#general_data" title="{{ 'base.help'|trans() }}">?</a></span> General Data</h1>
+<table>
+    <tr class="toprow">
+        <td>{{ 'base.globalIndicators'|trans() }}</td>
+        <td>{{ 'report.item.currentSituation'|trans() }}</td>
+        <td>{{ 'report.item.desiredSituation'|trans() }}</td>
+    </tr>
+
+    {% for gdKey,gdValue in generalData %}
+        <tr>
+            <td>{% if 'certification' in  gdKey %}{{ 'base.distanceToCertification'|trans() }} {% endif %}{{ ('base.' ~ gdKey)|trans() }}</td>
+            <td>{{ gdValue.current }}</td>
+            <td>{{ gdValue.desired }}</td>
+        </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,29 @@
+Cta\AisheBundle\Entity\CriterionItem:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\CriterionItem
+    table: criterion_item
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        paragraphNr:
+            type: smallint
+            nullable: false
+            column: paragraph_nr
+    manyToOne:
+        criterion:
+            targetEntity: Criterion
+            inversedBy: criterionItems
+            joinColumn:
+                name: criterion_id
+                referencedColumnName: id
+    oneToMany:
+        criterionItemTranslations:
+            targetEntity: CriterionItemTranslation
+            mappedBy: criterionItem
+        certificationRequirements:
+            targetEntity: CertificationRequirement
+            mappedBy: criterionItem

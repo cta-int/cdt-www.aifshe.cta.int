@@ -1,0 +1,233 @@
+@media print {
+  /* line 2, ../../sass/partials/print.scss */
+  body {
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: Georgia, Times New Roman, serif;
+    background: #fff;
+  }
+  /* line 9, ../../sass/partials/print.scss */
+  body header {
+    display: none;
+  }
+  /* line 10, ../../sass/partials/print.scss */
+  body header:after {
+    content: "AISHE - Auditing Instrument for Sustainable Development in Higher Education";
+    display: table;
+  }
+  /* line 12, ../../sass/partials/print.scss */
+  body nav {
+    display: none;
+  }
+  /* line 14, ../../sass/partials/print.scss */
+  body img.print-logo {
+    clear: right;
+    float: right;
+    width: 150px;
+    display: block !important;
+    padding: 0 0 20px 0 !important;
+  }
+  /* line 23, ../../sass/partials/print.scss */
+  body section#main-content h1 {
+    color: #000;
+  }
+  /* line 24, ../../sass/partials/print.scss */
+  body section#main-content h2 {
+    color: #000;
+  }
+  /* line 25, ../../sass/partials/print.scss */
+  body section#main-content h3 {
+    color: #000;
+  }
+  /* line 27, ../../sass/partials/print.scss */
+  body section#main-content h3.current {
+    color: #000;
+  }
+  /* line 28, ../../sass/partials/print.scss */
+  body section#main-content h3.desired {
+    color: #000;
+  }
+  /* line 29, ../../sass/partials/print.scss */
+  body section#main-content h3.priority {
+    color: #000;
+  }
+  /* line 31, ../../sass/partials/print.scss */
+  body section#main-content h4 {
+    color: #000;
+  }
+  /* line 32, ../../sass/partials/print.scss */
+  body section#main-content h5 {
+    color: #000;
+  }
+  /* line 33, ../../sass/partials/print.scss */
+  body section#main-content p {
+    color: #000;
+  }
+  /* line 36, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu.icons-menu {
+    float: left;
+    clear: left;
+    padding: 0;
+    margin: 0;
+  }
+  /* line 41, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu.icons-menu a {
+    display: none;
+  }
+  /* line 43, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu div#icons {
+    float: left;
+    width: auto !important;
+    display: table !important;
+  }
+  /* line 47, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu div#icons div {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    border: none;
+    background-image: none !important;
+    background: transparent !important;
+    display: table !important;
+  }
+  /* line 56, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu div#icons div img {
+    display: none;
+  }
+  /* line 57, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu div#icons div span.text {
+    margin-top: 0 !important;
+    display: table;
+  }
+  /* line 60, ../../sass/partials/print.scss */
+  body section#main-content div#side-menu div#icons div span.text p {
+    display: table;
+    color: #000;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  /* line 71, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] {
+    width: 780px !important;
+  }
+  /* line 73, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li {
+    background: #fff;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+  /* line 78, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li span {
+    color: #000;
+  }
+  /* line 79, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li span.empty {
+    display: none;
+  }
+  /* line 80, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li span.priority {
+    display: none;
+  }
+  /* line 82, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li.top {
+    background: transparent;
+    color: #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+  }
+  /* line 91, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li.top span {
+    color: #000;
+  }
+  /* line 92, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li.top span.empty {
+    display: none;
+  }
+  /* line 93, ../../sass/partials/print.scss */
+  body section#main-content ul[name=report-view] li.top span.priority {
+    display: none;
+  }
+  /* line 99, ../../sass/partials/print.scss */
+  body section#main-content div.top-show-report {
+    border-bottom: 1px solid #000 !important;
+  }
+  /* line 102, ../../sass/partials/print.scss */
+  body footer {
+    display: none;
+  }
+  /* line 103, ../../sass/partials/print.scss */
+  body div#sf-toolbar {
+    display: none !important;
+  }
+  /* line 104, ../../sass/partials/print.scss */
+  body div#sf-minitoolbar {
+    display: none !important;
+  }
+  /* line 105, ../../sass/partials/print.scss */
+  body div#sf-toolbarreset {
+    display: none !important;
+  }
+  /* line 106, ../../sass/partials/print.scss */
+  body div[id^=sfToolbarClearer] {
+    display: none !important;
+  }
+  /* line 108, ../../sass/partials/print.scss */
+  body div.report-item {
+    float: left;
+    margin: 0 0 20px 0;
+    padding: 20px;
+    width: 948px;
+    height: auto;
+    display: block;
+    border: 1px solid #000;
+  }
+  /* line 117, ../../sass/partials/print.scss */
+  body div.report-item ul {
+    margin: 15px auto;
+    width: 100%;
+    height: auto;
+    display: table;
+  }
+  /* line 123, ../../sass/partials/print.scss */
+  body div.report-item ul li {
+    float: left;
+    clear: both;
+    width: 98%;
+    padding: 0 1%;
+    line-height: 28px;
+    border-bottom: 1px solid #000;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    display: block;
+  }
+  /* line 134, ../../sass/partials/print.scss */
+  body div.report-item ul li:hover {
+    background: transparent;
+  }
+  /* line 139, ../../sass/partials/print.scss */
+  body table {
+    clear: left;
+    margin: 0 0 20px 0;
+    width: 990px;
+    line-height: 28px;
+    border: 1px solid #000;
+  }
+  /* line 146, ../../sass/partials/print.scss */
+  body table tr {
+    border-bottom: 1px solid #000;
+  }
+  /* line 149, ../../sass/partials/print.scss */
+  body table tr.toprow td {
+    font-weight: bold;
+  }
+  /* line 151, ../../sass/partials/print.scss */
+  body table tr td {
+    padding: 0 5px;
+  }
+}

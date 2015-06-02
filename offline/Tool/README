@@ -1,0 +1,59 @@
+Aifshe Offline Tool
+
+--------------------
+Installation Guide
+--------------------
+
+WINDOWS:
+    extract contents , run aifshe.exe
+
+MAC / LINUX
+    extract contents , run aifshe.html in a chrome browser (tested in chrome version 30+)
+
+--------------------
+User Guide
+--------------------
+
+When you open the Aifshe Offline Tool the first thing you will see is a form to create a new report.
+Fill the form and press the (save) button to submit the data.
+
+When you submitted the form you will be able to navigate to other pages on the application.
+
+The Buttons are explained from left to right here:
+
+    QuickView:
+        The QuickView, here you can set the desired/current situation for criterion and mark it as priority.
+        If you click on the bin icon , you can reset the row for a criterion.
+
+    Edit Report:
+        This is the same form as when you create a new report, you can edit the data you have entered when creating a new
+        report here.
+
+    Edit Criterion:
+        This is the place where you have to be if you want to add comments to a current / present situation.
+        You can also change the present / current situation and mark it as priority.
+
+    Show Report:
+        On this page you can see all the data you entered in the application and view the report.
+
+    Allow other users to access this Report:
+        This is online functionality and cannot be accessed offline.
+        When you click this button and you are connected to the internet you will be able to send this report to the
+        online tool and continue there.
+
+    Print:
+        This is online functionality and cannot be accessed offline.
+        When you click this button and you are connected to the internet you will be able to send this report to the
+        online tool and continue there.
+
+    Export:
+        This is online functionality and cannot be accessed offline.
+        When you click this button and you are connected to the internet you will be able to send this report to the
+        online tool and continue there.
+
+    Delete:
+        When you click on this button it will reset the application data, so you can start over in a fresh application.
+
+Below the Delete button you can see another button, which shows if you have connection or not, you can click it and if
+you have internet connection you will be asked if you want to continue on the online application.
+

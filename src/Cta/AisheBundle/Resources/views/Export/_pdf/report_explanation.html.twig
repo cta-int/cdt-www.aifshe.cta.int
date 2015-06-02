@@ -1,0 +1,27 @@
+{{ include(
+'CtaAisheBundle:Export:_pdf/report_css.html.twig',
+{  }
+) }}
+<h3>{{ 'base.explanation'|trans() }}</h3>
+
+<table class="report" style="line-height: 2;">
+    <tr class="toprow">
+        <td>&nbsp;{{ 'report.item.criterion'|trans() }}</td>
+        <td>&nbsp;{{ 'base.certification.1'|trans() }}</td>
+        <td>&nbsp;{{ 'base.certification.2'|trans() }}</td>
+        <td>&nbsp;{{ 'base.certification.3'|trans() }}</td>
+        <td>&nbsp;{{ 'base.certification.4'|trans() }}</td>
+    </tr>
+
+    {% for criterion in criteria %}
+        {% for criterionItem in criterion.criterionItems %}
+            <tr>
+                <td>&nbsp;{{ criterion.chapterNr }}.{{ criterionItem.paragraphNr }}.</td>
+                {% for req in criterionItem.certificationRequirements %}
+                    <td>&nbsp;{{ req.stage }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endfor %}
+
+</table>

@@ -1,0 +1,33 @@
+Cta\AisheBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        requestAuditor:
+            type: boolean
+            column: request_auditor
+    manyToMany:
+        groups:
+            targetEntity: Group
+            joinTable:
+                name: fos_user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+        reports:
+            targetEntity: Report
+            mappedBy: users
+    manyToOne:
+        institution:
+            targetEntity: Institution
+            inversedBy: users
+            joinColumn:
+                name: institution_id
+                referencedColumnName: id

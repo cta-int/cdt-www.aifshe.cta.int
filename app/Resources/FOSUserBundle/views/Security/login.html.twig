@@ -1,0 +1,64 @@
+<aside id="login">
+    <h4>{{ 'security.base.title'|trans() }}</h4>
+    <div class="inner">
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+        <h6>{{ 'security.base.logged_in_as'|trans({}, 'messages') }}:</h6>
+        <p class="logged-in">{{ app.user.email }}</p>
+        <div>
+            <a class="btn" href="{{ path('fos_user_profile_show') }}">{{ 'security.base.showProfile'|trans({}, 'messages') }}</a>
+            <span class="between"></span>
+            <a class="btn" href="{{ path('fos_user_security_logout') }}">{{ 'security.base.logout'|trans({}, 'messages') }}</a>
+        </div>
+
+    {% else %}
+
+        {% trans_default_domain "messages" %}
+
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for key, message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            <h6>{{ 'security.base.subtitle'|trans() }}</h6>
+            <p>{{ 'security.base.intro'|trans() }}</p>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            {% if error %}
+                <div class="auth-error">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            <p class="input-wrap">
+                <input class="jqtranformdone" type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="{{ 'security.base.username'|trans }}"/>
+            </p>
+            <p class="input-wrap">
+                <input class="jqtranformdone" type="password" id="password" name="_password" required="required" placeholder="{{ 'security.base.password'|trans }}" />
+            </p>
+            <p class="input-wrap-hide">
+                <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}:</label>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            </p>
+            <p class="input-wrap-float">
+                <a href="{{path('fos_user_resetting_request') }}">{{ 'security.base.forgotPassword'|trans() }}</a>
+            </p>
+
+            <div>
+                <input class="btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                <span class="between">or</span>
+                <a class="btn btn-gray" href="{{ path('fos_user_registration_register') }}">{{ 'security.base.register'|trans({}, 'messages') }}</a>
+            </div>
+
+        </form>
+
+    {% endif %}
+
+    </div>
+</aside>

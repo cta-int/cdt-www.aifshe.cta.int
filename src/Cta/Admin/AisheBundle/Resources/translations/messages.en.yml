@@ -1,0 +1,98 @@
+base:
+    offlineTool:  Offline tool
+    criteria:     Criteria
+    pages:        Pages
+    users:        Users
+    groups:       Groups
+    pending:      Users waiting for auditing approval
+    window:
+        pending:
+            title:  Auditor Requests
+            text:   user(s) are waiting for your approval.
+            over:   Click to go to the Auditor Request Management.
+        updateOfflineTool:
+            title:  Update Offline Tool
+            text:   The current Offline Tool is outdated.
+            over:   Click here to update the offline tool.
+page:
+    identifier: Identifier
+    content:    Content
+    edit:       Edit page
+    translation:
+        addOrEdit:  Add / Edit Translation for page
+
+criterion:
+    chapterNr:  Chapter
+    addOrEdit:  Add / Edit Criterion
+    type:       Type
+    name:       Name
+    add:        Add Criterion
+    manage:     Manage
+    delete:     Delete this Criterion
+    items:      Manage Criterion Items
+    deleted:    The criterion has been deleted
+    dialog:
+        title:  Delete Criterion
+        text:   Are you sure you want to delete this Criterion?
+    item:
+        paragraphNr:  Paragraph
+        for:          Criterion Items For
+        add:          Add Criterion Item
+        name:         Name
+        delete:       Delete this Item
+        dialog:
+            title:  Delete Criterion Item
+            text:   Are you sure you want to delete this Criterion Item?
+        deleted:      The criterion item has been deleted
+        addOrEdit:    Add / Edit Criterion Item
+        translation:
+            addOrEdit:  Add / Edit translation for Criterion chapter
+            name:       Name
+            infoStage1: Stage 1 Info
+            infoStage2: Stage 2 Info
+            infoStage3: Stage 3 Info
+            infoStage4: Stage 4 Info
+            infoStage5: Stage 5 Info
+
+group:
+    name:       Name
+    add:        Add Group
+    roles:      Roles
+    addOrEdit:  Add / Edit Group
+    role:
+        label:    Role
+        remove:   Delete Role
+    dialog:
+        title:  Delete Group
+        text:   Are you sure you want to delete this group?
+
+user:
+    name:           Username
+    email:          E-Mail
+    loggedIn:       Last logged in at
+    isEnabled:      Is Enabled
+    groups:         Groups
+    password:       Password
+    passwordRepeat: Repeat Password
+    add:            Add User
+    addOrEdit:      Add / Edit User
+    institution:    Institution
+    manage:     Manage
+    pending:
+        dialog:
+            title:  User auditing permissions
+            text:
+                accept: Are you sure you want to give this User auditing permissions?
+                decline: Are you sure you want to decline this User\'s auditing permissions?
+
+tool:
+    home:         Home
+    offlineTool:  Offline Tool
+    update:       Update
+    filename:     File Name
+    filesize:     File Size
+    createdby:    Created By
+    datetime:     Created At
+    edit:         Edit
+    download:     Download
+    delete:       Delete

@@ -1,0 +1,72 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+{% block bodyAdmin %}
+    <h1>{{ 'base.offlineTool'|trans() }}</h1>
+
+    <a href="{{ path('cta_admin_aishe_offline_tool_update') }}" class="update-tool button"><img
+                src="{{ asset('bundles/ctaaishe/css/img/icon-add.png') }}"
+                onclick="javascript:showConfirm(this,event,'Update','Generating new version.');"/>{{ 'tool.update'|trans() }}
+    </a>
+
+    <ul name="offlineToolsVersions">
+        <li class="top">
+            <span class="smalltitle">{{ 'tool.filename'|trans() }}</span>
+            <span class="create-date">{{ 'tool.createdby'|trans() }}</span>
+            <span class="create-date">{{ 'tool.datetime'|trans() }}</span>
+            <span class="create-date" name="actions">{{ 'tool.manage'|trans() }}</span>
+        </li>
+        {% for tool in offlineTools %}
+            <li>
+                {#<a>#}
+                <span class="smalltitle">{{ tool.fileName }}</span>
+                <span class="create-date">{{ tool.createdBy.username }}</span>
+                <span class="create-date">{{ tool.createdAt|date("Y-m-d") }}</span>
+                    <span name="actions" class="smalltitle">
+                        {% if tool %}
+                            <a href="{{ path('cta_admin_aishe_offline_tool_edit',{'id': tool.id}) }}">
+                                <img src="{{ asset('/bundles/ctaaishe/css/img/icon-enabled.png') }}"
+                                     style="padding: 3px 0 0 0;"/>
+                            </a>
+                        {% else %}
+                            <a href="{{ path('cta_admin_aishe_offline_tool_edit',{'id': tool.id}) }}">
+                                <img src="{{ asset('/bundles/ctaaishe/css/img/icon-disabled.png') }}"
+                                     style="padding: 3px 0 0 0;"/>
+                            </a>
+                        {% endif %}
+                        &nbsp;&nbsp;
+                        <a title="{{ 'tool.edit'|trans }}"
+                           href="{{ path('cta_admin_aishe_offline_tool_edit',{'id': tool.id}) }}">
+                            <img src="{{ asset('/bundles/ctaaishe/css/img/icon-edit-dark.png') }}"
+                                 style="padding: 3px 0 0 0;"/>
+                        </a>
+                        &nbsp;&nbsp;
+                        {# download icon #}
+                        {% if(tool.fileExists == true) %}
+                            <a title="{{ 'tool.download'|trans }}"
+                               href="{{ path('cta_admin_aishe_offline_tool_download',{'id': tool.id }) }}">
+                                <img src="{{ asset('/bundles/ctaaishe/css/img/icon-download-black.png') }}"
+                                     style="padding: 3px 0 0 0;"/>
+                            </a>
+                            &nbsp;&nbsp;
+                        {% else %}
+                            {# file not found icon ?? #}
+                        {% endif %}
+                        <a title="{{ 'tool.delete'|trans }}"
+                           href="{{ path('cta_admin_aishe_offline_tool_remove',{'id': tool.id}) }}"
+                           onclick="javascript:showConfirm(this,event,'Delete','Are you sure you want to delete this version ?');">
+                            <img src="{{ asset('/bundles/ctaaishe/css/img/icon-delete-black.png') }}" style="padding: 3px 0 0 0;"/>
+                        </a>
+
+                    </span>
+                {#</a>#}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ include('DevartCommonBundle:_partials:_pagination.html.twig', {
+    currentFilters: app.request.attributes.get('_route_params') ? app.request.attributes.get('_route_params') : {},
+    currentPage: page,
+    paginationPath: "cta_admin_aishe_offline_tool_overview",
+    lastPage: lastPage,
+    showAlwaysFirstAndLast: false
+    }) }}
+{% endblock %}

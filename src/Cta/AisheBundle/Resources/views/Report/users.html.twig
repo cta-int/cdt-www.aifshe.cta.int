@@ -1,0 +1,36 @@
+{% extends "CtaAisheBundle:Report:base.html.twig" %}
+
+{% block report %}
+    <h2>{{ 'security.menu.allowUsers'|trans() }}</h2>
+    {{  form(form, {'attr': {'class': 'largeForm'} } ) }}
+
+    <h3>{{ 'report.user.info'|trans() }}</h3>
+    <ul name="users" class="user-info">
+        <li class="top">
+            <span class="title">{{ 'user.name'|trans() }}</span>
+            <span class="create-author">{{ 'user.email'|trans() }}</span>
+            <span class="date-time">{{ 'user.loggedIn'|trans() }}</span>
+            <span class="enabled">{{ 'user.isEnabled'|trans() }}</span>
+            <span class="institution">{{ 'user.institution'|trans() }}</span>
+        </li>
+
+        {% for user in report.getUsers() %}
+            <li>
+                <span class="title">{{ user.getUsername() }}</span>
+                <span class="create-author">{{ user.getEmail() }}</span>
+                <span class="date-time">{% if user.getLastLogin() is not null %}{{ user.getLastLogin()|date("Y-m-d H:i:s") }}{% else %}&nbsp;{% endif %}</span>
+                <span class="enabled">{% if user.isEnabled() %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-enabled.png') }}"/>{% else %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-disabled.png') }}"/>{% endif %}</span>
+                <span class="groups">
+                <span class="institution">
+                    {% spaceless %}
+                        {% if user.getInstitution() is not null %}
+                            {{ user.getInstitution().getName() }}
+                        {% else %}
+                            &nbsp;
+                        {% endif %}
+                    {% endspaceless %}
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

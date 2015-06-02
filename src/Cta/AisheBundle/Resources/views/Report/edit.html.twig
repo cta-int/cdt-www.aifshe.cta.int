@@ -1,0 +1,93 @@
+{% extends "CtaAisheBundle:Report:base.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@CtaAisheBundle/Resources/public/js/Report/edit.js'
+    %}<script type="text/javascript" src="{{ asset_url }}"></script>{% endjavascripts %}
+{% endblock %}
+
+{% block report %}
+    <h2>{% if currentCriterion.criterionTranslations|length > 0 %}{{ currentCriterion.criterionTranslations.0.value }}{%  endif %} [{{ currentCriterion.type|toCriterionType() }}]</h2>
+    <div id="section-body">
+
+        <label>{{ 'report.item.criterion' | trans() }}</label>
+        <select name="select_criterion">
+            {% for criterion in criteria %}
+                {% for criterion_item in criterion.criterionItems %}
+                    {% if currentCriterion.chapterNr == criterion.chapterNr and currentCriterion.criterionItem.paragraphNr == criterion_item.paragraphNr %}
+                        <option selected value="{{ criterion.chapterNr }}-{{ criterion_item.paragraphNr }}">{{ criterion.chapterNr }}.{{ criterion_item.paragraphNr }}. {% if criterion_item.criterionItemTranslations|length > 0 %}{{ criterion_item.criterionItemTranslations.0.value }}{% endif %}</option>
+                    {% else %}
+                        <option value="{{ criterion.chapterNr }}-{{ criterion_item.paragraphNr }}">{{ criterion.chapterNr }}.{{ criterion_item.paragraphNr }}. {% if criterion_item.criterionItemTranslations|length > 0 %}{{ criterion_item.criterionItemTranslations.0.value }}{% endif %}</option>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
+
+
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <label>{{ 'report.item.currentSituation'|trans() }}</label>
+            <div class="flags">
+                {{ include(
+                'CtaAisheBundle:Report:_partials/req_table_small.html.twig',
+                { 'class': 'current_situation' }
+                ) }}
+            </div>
+            <div>
+                {{ form_row(form.currentSituationComment, {'label': 'report.item.currentSituationComment'}) }}
+            </div>
+            <label>{{ 'report.item.desiredSituation'|trans() }}</label>
+            <div class="flags">
+                {{ include(
+                'CtaAisheBundle:Report:_partials/req_table_small.html.twig',
+                { 'class': 'desired_situation' }
+                ) }}
+            </div>
+            <div>
+                {{ form_row(form.desiredSituationComment, {'label': 'report.item.desiredSituationComment'}) }}
+            </div>
+
+            <div>
+                {{ form_row(form.hasHighPriority, {'label': 'report.item.hasHighPriority'}) }}
+            </div>
+
+            {{ form_rest(form) }}
+        {{ form_end(form) }}
+
+        <div id="info">
+            <h3>{{ 'report.stage1'|trans() }}</h3>
+            <p>{% if currentCriterion.criterionItem.criterionItemTranslations|length > 0 %}{{ currentCriterion.criterionItem.criterionItemTranslations.0.infoStage1 }}{% endif %}</p>
+            <h3>{{ 'report.stage2'|trans() }}</h3>
+            <p>{% if currentCriterion.criterionItem.criterionItemTranslations|length > 0 %}{{ currentCriterion.criterionItem.criterionItemTranslations.0.infoStage2 }}{% endif %}</p>
+            <h3>{{ 'report.stage3'|trans() }}</h3>
+            <p>{% if currentCriterion.criterionItem.criterionItemTranslations|length > 0 %}{{ currentCriterion.criterionItem.criterionItemTranslations.0.infoStage3 }}{% endif %}</p>
+            <h3>{{ 'report.stage4'|trans() }}</h3>
+            <p>{% if currentCriterion.criterionItem.criterionItemTranslations|length > 0 %}{{ currentCriterion.criterionItem.criterionItemTranslations.0.infoStage4 }}{% endif %}</p>
+            <h3>{{ 'report.stage5'|trans() }}</h3>
+            <p>{% if currentCriterion.criterionItem.criterionItemTranslations|length > 0 %}{{ currentCriterion.criterionItem.criterionItemTranslations.0.infoStage5 }}{% endif %}</p>
+        </div>
+    </div>
+
+    <div id="dialog" title="Error" hidden="true">{{ 'report.dialog.error'|trans() }}</div>
+{% endblock %}
+
+
+{% block javascript_code %}
+    {{ parent() }}
+        var reportEditBaseUrl = '{{ path('cta_aishe_report_edit', {'id': report.id}) }}';
+
+        jQuery(document).ready(function() {
+            jQuery("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons : {
+                    {{ 'base.dialog.confirm'|trans() }}: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+
+{% endblock %}

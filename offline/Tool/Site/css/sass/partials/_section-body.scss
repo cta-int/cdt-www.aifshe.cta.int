@@ -1,0 +1,32 @@
+div#section-body {
+  float: left;
+  padding: 20px;
+  width: 948px;
+  height: auto;
+  display: block;
+  border-left: 1px solid $blue;
+  border-right: 1px solid $blue;
+  border-bottom: 1px solid $blue;
+
+  div#info {
+    clear: both;
+    margin: 30px 0 0 0;
+    width: 100%;
+    height: auto;
+  }
+
+  form {
+    width: 100%;
+    height: auto;
+    display: table;
+
+    button {
+      clear: none;
+      margin: 30px 40px 0 0 !important;
+    }
+  }
+
+  div {
+    &.flags {float: left; clear: none; display: table; margin: 0 0 10px 0;}
+  }
+}

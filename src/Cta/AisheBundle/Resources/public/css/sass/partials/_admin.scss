@@ -1,0 +1,156 @@
+form {
+  div.admin.formContent {
+    padding: 44px 0;
+    @include width-body-minus(2);
+
+    a#add-role {
+      float: left;
+      margin: 0 0 0 15px;
+      clear: both;
+      display: block;
+    }
+
+    span.empty {margin: 0 10px;}
+
+    input[name^=group] {
+      clear: left !important;
+      width: 100% !important;
+    }
+
+    .jqtransformdone {
+      clear: both;
+      width: 100%;
+      display: block;
+    }
+
+    a.remove-role {
+      float: left;
+      margin: 0 0 0 5px;
+    }
+  }
+
+  &:after {
+    clear:both;
+  }
+}
+
+a.button {
+  clear: left;
+  position: relative;
+  float: left;
+  margin: 0 0 10px 0;
+  padding: 0 10px;
+  width: auto;
+  height: 34px;
+  color: #fff;
+  line-height: 34px;
+  text-decoration: none;
+  background: url(../img/jqtransform/button-bg.png) left top repeat-x;
+  display: block;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+
+  img {
+    float: left;
+    margin: 5px 4px 5px 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: url(../img/jqtransform/button-bg-hover.png) left top repeat-x;
+  }
+}
+
+select#user_groups {
+  float: left;
+  width: 65% !important;
+  font-size: 14px;
+  line-height: 21px;
+  color: #393939;
+  font-family: Arial, Verdana, Sans-serif;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  display: block;
+
+  option {
+    padding: 5px;
+    height: 21px;
+    line-height: 21px;
+    text-transform: capitalize !important;
+  }
+
+  &:focus {
+    border: 1px solid #baced8;
+    outline: none;
+  }
+}
+
+div#admin-message {
+  position: fixed;
+  bottom: 17px;
+  right: 20px;
+  height: auto;
+  width: 160px;
+  background: #fff;
+  border: 1px solid $textcolor;
+  display: block;
+  z-index: 900;
+
+  h2 {
+    margin: 0;
+    padding: 0 10px;
+    width: 140px;
+    height: auto;
+    line-height: 30px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    background: $red;
+  }
+
+  p {
+    color: $textcolor;
+    padding: 10px;
+    width: 140px;
+  }
+}
+
+
+ul[name=users] {
+  li {
+    height: auto !important;
+    min-height: 32px;
+
+    span.title {
+      padding: 0 6px 0 10px;
+      width: 144px !important;
+    }
+
+    span.groups {
+      width: 100px !important;
+      span.group {padding: 0 !important; width: 100px; line-height: 20px !important;}
+    }
+    span.institutions { width: 112px !important;
+      span.institute {padding: 0 !important; width: 100px; line-height: 20px !important;}
+    }
+    a {
+      img[src$='enabled.png'] {margin: 0 5px 0 0;}
+      img[src$='disabled.png'] {margin: 4px 5px 0 0;}
+     }
+
+  }
+}
+
+ul[name=groups] {
+  li {
+    span.title { width: 435px; }
+    span.roles { width: 435px; }
+  }
+}
+
+

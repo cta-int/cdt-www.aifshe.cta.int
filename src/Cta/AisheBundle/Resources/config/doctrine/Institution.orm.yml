@@ -1,0 +1,23 @@
+Cta\AisheBundle\Entity\Institution:
+    type: entity
+    repositoryClass: Cta\AisheBundle\Entity\Repository\Institution
+    table: institution
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+    oneToMany:
+        reports:
+            targetEntity: Report
+            mappedBy: institution
+        users:
+            targetEntity: User
+            mappedBy: institution
