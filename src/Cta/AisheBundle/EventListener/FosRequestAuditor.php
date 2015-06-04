@@ -9,8 +9,9 @@
 
 namespace Cta\AisheBundle\EventListener;
 
+use Cta\AisheBundle\Entity\User;
 use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -40,16 +41,20 @@ class FosRequestAuditor implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationComplete',
         );
     }
 
     /**
-     * @param FormEvent $event
+     * @param FilterUserResponseEvent $event
+     * @param $eventName
+     * @param $dispatcher
      */
-    public function onRegistrationSuccess(FormEvent $event)
+    public function onRegistrationComplete(FilterUserResponseEvent $event, $eventName, $dispatcher)
     {
-        $user = $event->getForm()->getData();
+        /** @var User $user */
+        $user = $event->getUser();
+
         if($user->getRequestAuditor()){
             $message = $this->_container->get('devart.mail')->getMessage('CtaAisheBundle:Mails:FOS/Registration/RequestAuditor.html.twig', array(
                 'user' => $user
@@ -58,6 +63,7 @@ class FosRequestAuditor implements EventSubscriberInterface
             $userManager = $this->_container->get('fos_user.user_manager');
             $adminsGroup = $userManager->findOverviewByGroup('ADMIN');
 
+            /** @var User $admin */
             foreach($adminsGroup['items'] as $admin){
                 $message->addTo($admin->getEmail());
             }
