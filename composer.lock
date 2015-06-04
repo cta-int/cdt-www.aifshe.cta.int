@@ -1305,17 +1305,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.3.17",
+            "version": "v2.3.21",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "49334e66844f89898d21646b4fda4cfcfe116200"
+                "reference": "251d3176b7fded45b69360e8ffba03015052974d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/49334e66844f89898d21646b4fda4cfcfe116200",
-                "reference": "49334e66844f89898d21646b4fda4cfcfe116200",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/251d3176b7fded45b69360e8ffba03015052974d",
+                "reference": "251d3176b7fded45b69360e8ffba03015052974d",
                 "shasum": ""
             },
             "require": {
@@ -1347,7 +1347,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-05-29 22:34:59"
+            "time": "2015-06-04 13:44:01"
         },
         {
             "name": "sensio/framework-extra-bundle",
