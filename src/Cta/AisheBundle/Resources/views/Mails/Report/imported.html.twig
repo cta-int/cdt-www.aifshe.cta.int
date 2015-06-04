@@ -7,8 +7,8 @@
     {% block content %}
         Beste Administrator, <br/><br/>
 
-        <strong>{{ user.getUsername()|capitalize }}</strong> heeft een rapport ge&iuml;mporteerd. <br/>
-        Klik <a href="#" style="color: #e74739; text-decoration: underline;">hier</a> om het rapport te bekijken.
+        <strong>{{ user.getUsername() }}</strong> heeft een rapport ge&iuml;mporteerd. <br/>
+        Klik <a href="{{ appUrl }}{{ path('cta_aishe_report_show', {'id': reportId}) }}" style="color: #e74739; text-decoration: underline;">hier</a> om het rapport te bekijken.
 
         <br/><br/>
         <em>AIFSHE</em>
