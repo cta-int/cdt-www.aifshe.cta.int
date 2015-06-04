@@ -57,10 +57,10 @@ class Mail
 
         $message = \Swift_Message::newInstance();
         $message
-            ->addPart($bodyHtml, 'text/html')
+            ->addPart($bodyText, 'text/plain')
             ->setFrom($this->getMailFrom())
             ->setSubject($subject)
-            ->setBody($bodyText, 'text/plain')
+            ->setBody($bodyHtml, 'text/html')
         ;
 
         return $message;
