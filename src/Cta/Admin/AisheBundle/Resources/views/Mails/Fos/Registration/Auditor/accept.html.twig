@@ -1,13 +1,13 @@
 {% extends '::mail.html.twig' %}
 
-{% block subject 'Aanvraag auditor geaccepteerd ' ~ user.getUsername() %}
+{% block subject 'Request to becone an Auditor has been approved ' ~ user.getUsername() %}
 
     {% block body_html %}
         {{ parent() }}
         {% block content %}
-            Beste {{ user.getUserName() }}, <br/><br/>
+            Dear {{ user.getUserName() }}, <br/><br/>
 
-            Je aanvraag om auditor te worden is geaccepteerd. <a href="{{ appUrl }}" style="color: #e74739; text-decoration: underline;">Log in</a> om de auditor funtionaliteiten te gebruiken.
+            Your request to become an Auditor has been approved. <a href="{{ appUrl }}" style="color: #e74739; text-decoration: underline;">Log in</a> here to use your Auditor privileges.
 
             <br/><br/>
             <em>AIFSHE</em>
