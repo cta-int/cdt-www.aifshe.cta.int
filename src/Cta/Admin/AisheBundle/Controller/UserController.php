@@ -127,7 +127,7 @@ class UserController extends Controller
                         }
                     }
 
-                    $message = $this->get('devart.mail')->getMessage('CtaAdminAisheBundle:Mails:FOS/Registration/Auditor/accept.html.twig', array(
+                    $message = $this->get('devart.mail')->getMessage('CtaAdminAisheBundle:Mails:Fos/Registration/Auditor/accept.html.twig', array(
                         'user' => $user
                     ));
 
