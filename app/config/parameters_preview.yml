@@ -2,6 +2,7 @@
 parameters:
     app_name: 'CTA AISHE'
     app_email: info@cta.int
+    app_url: http://preview.aifshe.cta.int
     database_driver: pdo_mysql
     database_host: 94.198.24.82
     database_port: 3306

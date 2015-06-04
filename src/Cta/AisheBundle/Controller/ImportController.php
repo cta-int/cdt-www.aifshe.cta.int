@@ -49,7 +49,8 @@ class ImportController extends Controller
 
                 if($this->get('security.context')->isGranted('ROLE_AUDITOR')){
                     $message = $this->get('devart.mail')->getMessage('CtaAisheBundle:Mails:Report/imported.html.twig', array(
-                        'user' => $this->get('security.context')->getToken()->getUser()
+                        'user'     => $this->get('security.context')->getToken()->getUser(),
+                        'reportId' => $import->getReportId(),
                     ));
 
                     $userManager = $this->container->get('fos_user.user_manager');
