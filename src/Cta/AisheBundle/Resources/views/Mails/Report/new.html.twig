@@ -1,14 +1,14 @@
 {% extends '::mail.html.twig' %}
 
-{% block subject 'er werd een nieuw rapport toegevoegd door ' ~ user.getUsername() %}
+{% block subject 'A new report was added by ' ~ user.getUsername() %}
 
 {% block body_html %}
     {{ parent() }}
     {% block content %}
         {{ 'mails.headerAdmin'|trans() }}
         <br/><br/>
-        <strong>{{ user.getUsername() }}</strong> heeft een nieuw rapport toegevoegd. <br/>
-        Klik <a href="{{ appUrl }}{{ path('cta_aishe_report_show', {'id': reportId}) }}" style="color: #e74739; text-decoration: underline;">hier</a> om dit rapport te bekijken.
+        <strong>{{ user.getUsername() }}</strong> has added a new report. <br/>
+        Click <a href="{{ appUrl }}{{ path('cta_aishe_report_show', {'id': reportId}) }}" style="color: #e74739; text-decoration: underline;">here</a> to show this report.
 
         <br/><br/>
         <em>AIFSHE</em>
