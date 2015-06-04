@@ -1161,23 +1161,40 @@ ul[name=edit-table-view] li span.flag-end {
   cursor: pointer;
 }
 /* line 309, ../sass/partials/_list-items.scss */
-ul[name=report-overview] li {
+ul[name=users-pending] li {
   height: auto;
 }
 /* line 311, ../sass/partials/_list-items.scss */
+ul[name=users-pending] li span.create-author,
+ul[name=users-pending] li span.institution {
+  width: 29%;
+}
+/* line 315, ../sass/partials/_list-items.scss */
+ul[name=users-pending] li span.title {
+  width: 25%;
+}
+/* line 318, ../sass/partials/_list-items.scss */
+ul[name=users-pending] li span.manage {
+  width: 8%;
+}
+/* line 324, ../sass/partials/_list-items.scss */
+ul[name=report-overview] li {
+  height: auto;
+}
+/* line 326, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.status {
   padding: 0 0 0 10px !important;
   width: 20%;
 }
-/* line 315, ../sass/partials/_list-items.scss */
+/* line 330, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.create-author {
   width: 15%;
 }
-/* line 318, ../sass/partials/_list-items.scss */
+/* line 333, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.edit-author {
   width: 15%;
 }
-/* line 321, ../sass/partials/_list-items.scss */
+/* line 336, ../sass/partials/_list-items.scss */
 ul[name=report-overview] li span.auditor {
   width: 15%;
 }

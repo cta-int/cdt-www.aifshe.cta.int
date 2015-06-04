@@ -305,6 +305,21 @@ ul {
     }
   }
 
+  &[name=users-pending] {
+    li {
+      height: auto;
+      span.create-author,
+      span.institution {
+        width: 29%;
+      }
+      span.title {
+        width: 25%;
+      }
+      span.manage {
+        width: 8%;
+      }
+    }
+  }
   &[name=report-overview] {
     li {
       height: auto;
