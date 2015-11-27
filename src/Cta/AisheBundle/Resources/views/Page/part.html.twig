@@ -1,0 +1,19 @@
+{#{% block javascript_code %}#}
+    {#{{ parent() }}#}
+    {#{{ page.javascript|raw }}#}
+{#{% endblock %}#}
+{% if page.javascript %}
+    <script type="text/javascript">
+    //<![CDATA[
+    {{ page.javascript|raw }}
+    //]]>
+    </script>
+{% endif %}
+
+<div class="page">
+    {% if page.pageTranslations|length  %}
+        {{ page.pageTranslations.0.value|raw }}
+    {% else %}
+        {{ 'page.noContent'|trans() }}
+    {% endif %}
+</div>

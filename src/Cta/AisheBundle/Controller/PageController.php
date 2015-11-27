@@ -9,21 +9,62 @@
 
 namespace Cta\AisheBundle\Controller;
 
+use \Doctrine\ORM\NoResultException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Cta\AisheBundle\Model\Data;
 
 class PageController extends Controller
 {
     /**
+     * @param Request $request
      * @param $identifier
-     * @return mixed
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
      */
-    public function viewAction($identifier)
+    public function viewAction(Request $request, $identifier)
     {
-        $em     = $this->getDoctrine()->getManager();
         return $this->render('CtaAisheBundle:Page:view.html.twig', array(
-            'page'   => $em->getRepository('CtaAisheBundle:Page')->findByIdentifier($identifier, Data::getLanguageCodes($this->getRequest()->getLocale())),
+            'page' => $this->findFor($request, $identifier),
         ));
     }
 
+    /**
+     * @param Request $request
+     * @param $identifier
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function partAction(Request $request, $identifier)
+    {
+        try {
+            $page = $this->findFor($request, $identifier);
+        } catch (NoResultException $e) {
+            $page = $this->findFor($request, $identifier, Data::LANG_ENGLISH);
+        }
+
+        return $this->render('CtaAisheBundle:Page:part.html.twig', array(
+            'page' => $page,
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @param $identifier
+     * @param null $language
+     *
+     * @return mixed
+     */
+    private function findFor(Request $request, $identifier, $language = null)
+    {
+        if (is_null($language)) {
+            $language = Data::getLanguageCodes($request->getLocale());
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('CtaAisheBundle:Page');
+
+        return $page = $repo->findByIdentifier($identifier, $language);
+    }
 }
