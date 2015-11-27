@@ -41,9 +41,11 @@ class Page extends Base
     /**
      * @param $identifier
      * @param $lang
+     *
      * @return mixed
-     * @throws \Doctrine\ORM\EntityNotFoundException
-     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     *
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function findByIdentifier($identifier, $lang)
     {
