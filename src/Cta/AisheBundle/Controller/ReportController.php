@@ -142,7 +142,8 @@ class ReportController extends Controller
             );
             if($newReport && $this->get('security.context')->isGranted('ROLE_AUDITOR')){
                 $message = $this->get('devart.mail')->getMessage('CtaAisheBundle:Mails:Report/new.html.twig', array(
-                    'user' => $this->get('security.context')->getToken()->getUser()
+                    'user'     => $this->get('security.context')->getToken()->getUser(),
+                    'reportId' => $report->getId(),
                 ));
 
                 $userManager = $this->container->get('fos_user.user_manager');

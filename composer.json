@@ -23,14 +23,16 @@
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "jms/i18n-routing-bundle": "~1.1",
         "whiteoctober/tcpdf-bundle": "~1.0",
-        "mbence/opentbs-bundle": "dev-master"
+        "mbence/opentbs-bundle": "dev-master",
+        "umpirsky/composer-permissions-handler": "~1.0"
     },
     "scripts": {
         "post-install-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Umpirsky\\PermissionsHandler\\ScriptHandler::setPermissions"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -48,6 +50,7 @@
         "symfony-web-dir": "web",
         "branch-alias": {
             "dev-master": "2.3-dev"
-        }
+        },
+        "writable-dirs": ["app/cache", "app/logs"]
     }
 }

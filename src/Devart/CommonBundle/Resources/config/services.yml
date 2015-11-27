@@ -14,4 +14,7 @@ services:
             - { name: twig.extension }
     devart.mail:
         class:      Devart\CommonBundle\Service\Mail
-        arguments:  [@service_container]
+        arguments:
+            - @twig
+            - %app_url%
+            - %app_email%

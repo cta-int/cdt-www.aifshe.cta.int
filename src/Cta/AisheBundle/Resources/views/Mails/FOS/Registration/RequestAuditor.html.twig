@@ -1,16 +1,16 @@
 {% extends '::mail.html.twig' %}
 
-{% block subject 'Aanvraag auditor door ' ~ user.getUsername() %}
+{% block subject 'Auditor privileges requested by ' ~ user.getUsername() %}
 
-    {% block body_html %}
-        {{ parent() }}
-        {% block content %}
-            Beste Administrator, <br/><br/>
+{% block body_html %}
+    {{ parent() }}
+    {% block content %}
+        Dear ADMIN, <br/><br/>
 
-            Een nieuwe gebruiker <strong>({{ user.getUsername|capitalize }})</strong> heeft een aanvraag ingedient om auditor te worden.<br/>
-            Klik <a href="#" style="color: #e74739; text-decoration: underline;">hier</a> om deze rechten aan de gebruiker toe te kennen.
+        A new user, <strong>({{ user.getUsername() }})</strong>, has requested to becone an Audtor.<br/>
+        Click <a href="{{ appUrl }}{{ path('cta_admin_aishe_security_user_pending_activate', {'action': 'accept', 'id': user.getId()}) }}" style="color: #e74739; text-decoration: underline;">here</a> to approve the Auditor privileges.
 
-            <br/><br/>
-            <em>AIFSHE</em>
-        {% endblock %}
+        <br/><br/>
+        <em>AIFSHE</em>
     {% endblock %}
+{% endblock %}

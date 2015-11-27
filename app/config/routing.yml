@@ -26,3 +26,8 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+# FOS overrides
+fos_user_security_login:
+    path:  /login
+    defaults: { _controller: CtaAisheBundle:Security:login }
