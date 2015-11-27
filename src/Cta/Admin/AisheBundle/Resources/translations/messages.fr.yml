@@ -83,7 +83,7 @@ user:
 
 tool:
     home:         Home
-    offlineTool:  l'outil en ligne
+    offlineTool:  Outil hors connexion
     update:       mettre à jour
     filename:     Nom du fichier
     filesize:     taille du fichier
