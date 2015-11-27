@@ -9,7 +9,7 @@
 
 namespace Cta\AisheBundle\Controller;
 
-use Doctrine\ORM\EntityNotFoundException;
+use \Doctrine\ORM\NoResultException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Cta\AisheBundle\Model\Data;
@@ -40,7 +40,7 @@ class PageController extends Controller
     {
         try {
             $page = $this->findFor($request, $identifier);
-        } catch (EntityNotFoundException $e) {
+        } catch (NoResultException $e) {
             $page = $this->findFor($request, $identifier, Data::LANG_ENGLISH);
         }
 
