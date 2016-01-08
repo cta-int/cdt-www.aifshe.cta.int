@@ -4,27 +4,8 @@ use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
-// get environment
-switch ($_SERVER['HTTP_HOST']) {
-    case 'dev.aifshe.cta.int':
-        $env = 'dev';
-        $debug = true;
-        break;
-    case 'staging.aifshe.cta.int':
-        $env = 'staging';
-        $debug = true;
-        break;
-    case 'preview.aifshe.cta.int':
-        $env = 'preview';
-        $debug = false;
-        break;
-    case 'aifshe.cta.int':
-    case 'www.aifshe.cta.int':
-    default:
-        $env = 'prod';
-        $debug = false;
-        break;
-}
+$env = isset($_SERVER['SYMFONY_ENV']) ? $_SERVER['SYMFONY_ENV'] : 'prod';
+$debug = isset($_SERVER['SYMFONY_DEBUG']) ? $_SERVER['SYMFONY_DEBUG'] : false;
 
 // get BOOTSTRAP
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
