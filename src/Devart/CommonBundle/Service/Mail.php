@@ -34,7 +34,7 @@ class Mail
      * @param string $template
      * @param array  $parameters
      *
-     * @return mixed
+     * @return \Swift_Message
      */
     public function getMessage($template = '', $parameters = array())
     {
