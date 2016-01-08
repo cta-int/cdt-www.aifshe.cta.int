@@ -13,6 +13,7 @@ local-config.php
 /build/
 /vendor/
 /bin/
-/composer.phar
 /.idea/
 /src/Cta/AisheBundle/Resources/public/css/.sass-cache/
+/shared/*
+!shared/.gitkeep
