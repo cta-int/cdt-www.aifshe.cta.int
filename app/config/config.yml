@@ -58,10 +58,10 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport: '%mailer_transport%'
+    host:      '%mailer_host%'
+    username:  '%mailer_user%'
+    password:  '%mailer_password%'
     port:       587
     encryption: tls
     spool:     { type: memory }
@@ -83,13 +83,13 @@ fos_user:
         confirmation:
             enabled:        true
             from_email:
-                address:      %app_email%
-                sender_name:  %app_name% Registration
+                address:      '%app_email%'
+                sender_name:  '%app_name% Registration'
     resetting:
         email:
             from_email:
-                address:      %app_email%
-                sender_name:  %app_name% Reset Password
+                address:      '%app_email%'
+                sender_name:  '%app_name% Reset Password'
 
 # JMS :: i18n Translation routing
 jms_i18n_routing:
