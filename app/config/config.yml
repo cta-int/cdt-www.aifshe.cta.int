@@ -62,6 +62,8 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
+    port:       587
+    encryption: tls
     spool:     { type: memory }
 
 # Friends Of Symfony :: User Bundle

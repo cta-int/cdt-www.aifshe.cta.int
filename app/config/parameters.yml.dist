@@ -9,10 +9,10 @@ parameters:
     database_user: null
     database_password: null
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host: 'email-smtp.eu-west-1.amazonaws.com'
+    mailer_user: 'AKIAIIMBRKHIPQSCRNTQ'
+    mailer_password: 'AutpS1o9ezHoCdSqnMgCNcGqqU2rb9+RxIZHCJ0u8qZG'
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
-    mailer_error_from: exceptions@devart.be
-    mailer_error_to: exceptions@devart.be
+    mailer_error_from: exceptions@cta.int
+    mailer_error_to: exceptions@cta.int
