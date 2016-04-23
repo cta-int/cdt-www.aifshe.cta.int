@@ -12,7 +12,7 @@ namespace Cta\AisheBundle\Form;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Cta\AisheBundle\Entity\Institution;
 
 class Report extends AbstractType
@@ -50,7 +50,7 @@ class Report extends AbstractType
         return 'report';
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Cta\AisheBundle\Entity\Report',
