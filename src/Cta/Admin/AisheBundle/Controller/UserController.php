@@ -9,6 +9,7 @@
 
 namespace Cta\Admin\AisheBundle\Controller;
 
+use Cta\AisheBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,9 +18,6 @@ class UserController extends Controller
 {
     const ITEMS_PER_PAGE = 20;
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     /**
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
@@ -102,6 +100,28 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function pendingActivation(Request $request)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $users = $userManager->findUsersBy(array(
+            'enabled' => true,
+            'locked'  => true,
+            'expired' => false,
+        ));
+
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse(count($users));
+        } else {
+            return $this->render('CtaAdminAisheBundle:User:pending.html.twig', array(
+                'users' => $users,
+            ));
+        }
+    }
+
+    /**
      * @param $action
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -158,6 +178,66 @@ class UserController extends Controller
                 );
             }
         }
+        return $this->redirect($this->generateUrl('cta_admin_aishe_security_user_pending'));
+    }
+
+    /**
+     * @param $action
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function activateUserAction($action, $id)
+    {
+        if ($action == 'accept' || $action == 'decline') {
+            $userManager = $this->container->get('fos_user.user_manager');
+            /** @var User $user */
+            $user = $userManager->findUserBy(array(
+                'id'    => $id,
+            ));
+
+            if ($user) {
+                if ($action == 'accept') {
+                    // unlock user
+                    $user->setLocked(false);
+                    $user->setExpired(false);
+                    $userManager->updateUser($user);
+
+                    $mailTemplate = 'CtaAdminAisheBundle:Mails:Fos/Registration/accept.html.twig';
+                } else {
+                    // unlock user, but expire the credentials
+                    $user->setLocked(false);
+                    $user->setExpired(true);
+                    $userManager->updateUser($user);
+
+                    $mailTemplate = 'CtaAdminAisheBundle:Mails:Fos/Registration/reject.html.twig';
+                }
+
+                // send user the email with the result of the review
+                $message = $this->get('devart.mail')
+                    ->getMessage($mailTemplate, ['user' => $user])
+                    ->addTo($user->getEmail());
+
+                $this->get('mailer')
+                    ->send($message);
+
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    $this->get('translator')->trans(
+                        'form.flash.notice',
+                        array('%subject%' => $user->getUsername())
+                    )
+                );
+            } else {
+                $this->get('session')->getFlashBag()->add(
+                    'error',
+                    $this->get('translator')->trans(
+                        'form.flash.error',
+                        array('%subject%' => 'loading id ' . $id)
+                    )
+                );
+            }
+        }
+
         return $this->redirect($this->generateUrl('cta_admin_aishe_security_user_pending'));
     }
 }
