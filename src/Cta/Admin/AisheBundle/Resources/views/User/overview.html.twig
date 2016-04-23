@@ -11,8 +11,9 @@
             <span class="create-author">{{ 'user.email'|trans() }}</span>
             <span class="date-time">{{ 'user.loggedIn'|trans() }}</span>
             <span class="enabled">{{ 'user.isEnabled'|trans() }}</span>
+            <span class="enabled">{{ 'user.isLocked'|trans() }}</span>
             <span class="groups">{{ 'user.groups'|trans() }}</span>
-            <span class="institution">{{ 'user.institution'|trans() }}</span>
+            {#<span class="institution">{{ 'user.institution'|trans() }}</span>#}
         </li>
 
         {% for user in users %}
@@ -22,6 +23,7 @@
                     <span class="create-author">{{ user.getEmail() }}</span>
                     <span class="date-time">{% if user.getLastLogin() is not null %}{{ user.getLastLogin()|date("Y-m-d H:i:s") }}{% else %}&nbsp;{% endif %}</span>
                     <span class="enabled">{% if user.isEnabled() %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-enabled.png') }}"/>{% else %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-disabled.png') }}"/>{% endif %}</span>
+                    <span class="enabled">{% if not user.isLocked() %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-enabled.png') }}"/>{% else %}<img src="{{ asset('bundles/ctaaishe/css/img/icon-disabled.png') }}"/>{% endif %}</span>
                     <span class="groups">
                         {% spaceless %}
                             {% for group in user.getGroups() %}
@@ -29,15 +31,15 @@
                             {% endfor %}
                         {% endspaceless %}
                     </span>
-                    <span class="institution">
-                        {% spaceless %}
-                            {% if user.getInstitution() is not null %}
-                                {{ user.getInstitution().getName() }}
-                            {% else %}
-                                &nbsp;
-                            {% endif %}
-                        {% endspaceless %}
-                    </span>
+                    {#<span class="institution">#}
+                        {#{% spaceless %}#}
+                            {#{% if user.getInstitution() is not null %}#}
+                                {#{{ user.getInstitution().getName() }}#}
+                            {#{% else %}#}
+                                {#&nbsp;#}
+                            {#{% endif %}#}
+                        {#{% endspaceless %}#}
+                    {#</span>#}
                 </a>
             </li>
         {% endfor %}
