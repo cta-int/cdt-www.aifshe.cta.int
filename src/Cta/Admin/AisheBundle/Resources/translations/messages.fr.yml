@@ -7,7 +7,7 @@ base:
     window:
         pending:
             title:  Demander du vérificateur
-            text:   Utilisateur (s) en attente d'approbation vous.
+            text:   utilisateur(s) en attente de verification
             over:   Cliquez pour aller de vérificatrice de la gestion.
 
 page:
@@ -79,8 +79,8 @@ user:
         dialog:
             title:  Les droits des vérificateurs d'utilisateurs
             text:
-                accept: Etes-vous sûr que vous voulez donner cet utilisateur des droits de l'vérificateurs?
-                decline: Etes-vous sûr que vous voulez donner à un utilisateur aucun droits de l'vérificateurs?
+                accept: Etes-vous sûr que vous voulez accepter cet utilisateur?
+                decline: Etes-vous vraiment sûr que vous ne voulez PAS accepter cet utilisateur?
 
 tool:
     home:         Home
