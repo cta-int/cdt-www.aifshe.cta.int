@@ -51,7 +51,7 @@ class CtaExtension extends Twig_Extension implements \Twig_Extension_GlobalsInte
     {
         return array(
             new Twig_SimpleFilter('toCriterionType', array($this, 'getCriterionTypeFilter')),
-            'format_bytes' => new \Twig_Filter_Method($this, 'format_bytes'),
+            new Twig_SimpleFilter('format_bytes', array($this, 'formatBytes')),
         );
     }
 
@@ -71,7 +71,7 @@ class CtaExtension extends Twig_Extension implements \Twig_Extension_GlobalsInte
      * @param bool $si
      * @return string
      */
-    public function format_bytes($bytes, $si = true)
+    public function formatBytes($bytes, $si = true)
     {
         $unit = $si ? 1000 : 1024;
         if ($bytes <= $unit) return $bytes . " B";
