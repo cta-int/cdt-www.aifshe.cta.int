@@ -15,7 +15,7 @@ Cta\AisheBundle\Entity\CertificationRequirement:
     manyToOne:
         certification:
             targetEntity: Certification
-            inversedBy: CertificationRequirements
+            inversedBy: certificationRequirements
             joinColumn:
                 name: certification_requirement_id
                 referencedColumnName: id
