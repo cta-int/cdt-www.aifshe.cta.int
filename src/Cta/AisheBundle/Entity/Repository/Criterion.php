@@ -2,6 +2,11 @@
 
 namespace Cta\AisheBundle\Entity\Repository;
 
+use Cta\AisheBundle\Entity\CertificationRequirement;
+use Cta\AisheBundle\Entity\Criterion as CriterionEntity;
+use Cta\AisheBundle\Entity\CriterionItem;
+use Cta\AisheBundle\Entity\CriterionItemTranslation;
+use Cta\AisheBundle\Entity\CriterionTranslation;
 use Devart\CommonBundle\Entity\Repository\Base;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\ORMInvalidArgumentException;
@@ -31,16 +36,16 @@ class Criterion extends Base
 
         $query = $qb->select('c', 'ci', 'ct', 'cit', 'cr', 'c_user_cr', 'c_user_mo', 'ci_user_cr', 'ci_user_mo')
             ->from('CtaAisheBundle:Criterion'           , 'c')
-            ->leftJoin('c.criterionItems'               , 'ci', Query\Expr\Join::WITH, $qb->expr()->eq('ci.status', \Cta\AisheBundle\Entity\CriterionItem::ST_ACTIVE))
-            ->leftJoin('c.criterionTranslations'        , 'ct', Query\Expr\Join::WITH, $qb->expr()->eq('ct.status', \Cta\AisheBundle\Entity\CriterionTranslation::ST_ACTIVE) . ' AND ' . $qb->expr()->eq('ct.lang', $lang))
-            ->leftJoin('ci.criterionItemTranslations'   , 'cit', Query\Expr\Join::WITH, $qb->expr()->eq('cit.status', \Cta\AisheBundle\Entity\CriterionItemTranslation::ST_ACTIVE) . ' AND ' . $qb->expr()->eq('cit.lang', $lang))
-            ->leftJoin('ci.certificationRequirements'   , 'cr', Query\Expr\Join::WITH, $qb->expr()->eq('cr.status', \Cta\AisheBundle\Entity\CertificationRequirement::ST_ACTIVE))
+            ->leftJoin('c.criterionItems'               , 'ci', Query\Expr\Join::WITH, $qb->expr()->eq('ci.status', CriterionItem::ST_ACTIVE))
+            ->leftJoin('c.criterionTranslations'        , 'ct', Query\Expr\Join::WITH, $qb->expr()->eq('ct.status', CriterionTranslation::ST_ACTIVE) . ' AND ' . $qb->expr()->eq('ct.lang', $lang))
+            ->leftJoin('ci.criterionItemTranslations'   , 'cit', Query\Expr\Join::WITH, $qb->expr()->eq('cit.status', CriterionItemTranslation::ST_ACTIVE) . ' AND ' . $qb->expr()->eq('cit.lang', $lang))
+            ->leftJoin('ci.certificationRequirements'   , 'cr', Query\Expr\Join::WITH, $qb->expr()->eq('cr.status', CertificationRequirement::ST_ACTIVE))
             ->leftJoin('c.createdBy'                    , 'c_user_cr')
             ->leftJoin('c.modifiedBy'                   , 'c_user_mo')
             ->leftJoin('ci.createdBy'                   , 'ci_user_cr')
             ->leftJoin('ci.modifiedBy'                  , 'ci_user_mo')
             ->andWhere('c.status = :status')
-            ->setParameter('status', \Cta\AisheBundle\Entity\Criterion::ST_ACTIVE)
+            ->setParameter('status', CriterionEntity::ST_ACTIVE)
             ->addOrderBy('c.chapterNr', 'ASC')
             ->addOrderBy('ci.paragraphNr', 'ASC');
 
@@ -78,7 +83,7 @@ class Criterion extends Base
 
         // flag translations as deleted
         foreach ($criterion->getCriterionTranslations() as $criterionTranslation) {
-            $criterionTranslation->setStatus(\Cta\AisheBundle\Entity\CriterionTranslation::ST_DELETED);
+            $criterionTranslation->setStatus(CriterionTranslation::ST_DELETED);
         }
 
         // flag criterionItems as deleted
@@ -86,19 +91,19 @@ class Criterion extends Base
 
             // flag criterionItemTranslations as deleted
             foreach ($criterionItem->getCriterionItemTranslations() as $criterionItemTranslations) {
-                $criterionItemTranslations->setStatus(\Cta\AisheBundle\Entity\CriterionItemTranslation::ST_DELETED);
+                $criterionItemTranslations->setStatus(CriterionItemTranslation::ST_DELETED);
             }
 
             // flag certificationRequirements as deleted
             foreach ($criterionItem->getCertificationRequirements() as $certificationRequirements) {
-                $certificationRequirements->setStatus(\Cta\AisheBundle\Entity\CertificationRequirement::ST_DELETED);
+                $certificationRequirements->setStatus(CertificationRequirement::ST_DELETED);
             }
 
-            $criterionItem->setStatus(\Cta\AisheBundle\Entity\CriterionItem::ST_DELETED);
+            $criterionItem->setStatus(CriterionItem::ST_DELETED);
         }
 
         // flag criterion as deleted
-        $criterion->setStatus(\Cta\AisheBundle\Entity\Criterion::ST_DELETED);
+        $criterion->setStatus(CriterionEntity::ST_DELETED);
 
         // save changes
         $em->flush();
