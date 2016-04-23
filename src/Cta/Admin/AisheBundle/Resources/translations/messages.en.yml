@@ -70,7 +70,8 @@ user:
     name:           Username
     email:          E-Mail
     loggedIn:       Last logged in at
-    isEnabled:      Is Enabled
+    isEnabled:      Confirmed?
+    isLocked:       Approved?
     groups:         Groups
     password:       Password
     passwordRepeat: Repeat Password
