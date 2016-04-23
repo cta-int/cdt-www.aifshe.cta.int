@@ -2,13 +2,13 @@ site:
   title:
     short: AIFSHE
     full:  Auditing Instrument for Food Security in Higher Education
-    head:  AIFSHE - Auditing Instrument for Food Security in Higher Education
+    head:  'AIFSHE - Auditing Instrument for Food Security in Higher Education'
 
 security:
     base:
         title:          JOIN THE COMMUNITY
         subtitle:       AIFSHE - Get involved
-        intro:          If you have already a Login, please proceed to the AIFSHE environment below
+        intro:          'If you have already a Login, please proceed to the AIFSHE environment below'
         logged_in_as:   You are currently logged in as
         showProfile:    Your account
         logout:         Logout
@@ -65,7 +65,7 @@ report:
     stages:
         title:          AIFSHE Stages
         fiveStages:     The five stages of AIFSHE are:
-        moreInfo:       For more information: see the website www.dho.nl or mail to Niko Roorda, Olivier.bello@wur.nl
+        moreInfo:       'For more information: see the website www.dho.nl or mail to Niko Roorda, Olivier.bello@wur.nl'
     stage:
         1:  'Stage 1: Activity oriented'
         2:  'Stage 2: Process oriented'
@@ -107,18 +107,18 @@ report:
     user:
         info:       Additional user information
         dialog:
-            title:  Revoke auditing permissions
-            text:   Are you sure you want to revoke auditing permissions for this user for this report?
+            title:  'Revoke auditing permissions'
+            text:   'Are you sure you want to revoke auditing permissions for this user for this report?'
     status:
         title:    Status
-        changed:  This report's status has been successfully changed
+        changed:  "This report's status has been successfully changed"
         0:        Deleted
         6:        Approval Requested
         7:        Approval Denied
         8:        Approved
         9:        Active
     flash:
-        notice: Your changes were saved to <span class="hightlight">%subject%</span>. Please validate the date fields, these are very prone to error.
+        notice: 'Your changes were saved to <span class="hightlight">%subject%</span>. Please validate the date fields, these are very prone to error.'
     export:
         dialog:
             title:  Export report
@@ -175,8 +175,8 @@ form:
     save:         Save
     saveAndNext:  Next (save)
     flash:
-        notice: Your changes were saved to <span class="hightlight">%subject%</span>.
-        error:  An error has occurred while <span class="hightlight">%subject%</span>.
+        notice: 'Your changes were saved to <span class="hightlight">%subject%</span>.'
+        error:  'An error has occurred while <span class="hightlight">%subject%</span>.'
 
 page:
     noContent: No Content
@@ -187,8 +187,8 @@ offline:
     notice:
       noInternetConnection: You do not have an internet connection.
       onlyOnline:
-        internetConnection: This action is only available in the online version, you have connection to the internet, do you want to go to the online application ?
-        noInternetConnection: This action is only available in the online version, you have no connection to the internet.
+        internetConnection: 'This action is only available in the online version, you have connection to the internet, do you want to go to the online application?'
+        noInternetConnection: 'This action is only available in the online version, you have no connection to the internet.'
     report:
       notice:
         updated:
@@ -198,7 +198,7 @@ offline:
         delete:
           confirmation:
             title: Confirmation
-            text: Are you sure you want to delete this report?<br>This action cannot be reversed.
+            text: 'Are you sure you want to delete this report?<br />This action cannot be reversed.'
             buttons:
               confirm: Confirm
               cancel: Cancel
@@ -212,9 +212,9 @@ offline:
       notice:
         new:
           title: There is a new version available.
-          text: There is a newer version available. Do you want to download the new version now?
-      yourVersion: Your version:
-      newVersion: Newest version:
+          text: 'There is a newer version available. Do you want to download the new version now?'
+      yourVersion: 'Your version:'
+      newVersion: 'Newest version:'
 notice:
   buttons:
     confirm: Confirm
@@ -222,4 +222,4 @@ notice:
     yes: Yes
     no: No
     ok: Ok
-    yesDownload: Yes, Download
+    yesDownload: 'Yes, Download'
