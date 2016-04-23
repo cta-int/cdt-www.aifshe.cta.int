@@ -54,7 +54,7 @@ class OfflineToolController extends Controller
         $offlineTools = $em->getRepository('CtaAisheBundle:OfflineTool')->findOverview($params);
 
         if ($page > 1 && $offlineTools['count'] < 1) {
-            return $this->redirect($this->generateUrl('cta_admin_offline_tool_overview'));
+            return $this->redirect($this->generateUrl('cta_admin_aishe_offline_tool_overview'));
         }
 
         $path = $this->get('kernel')->getRootDir() . "/../shared/";
@@ -208,6 +208,8 @@ class OfflineToolController extends Controller
     }
 
     /**
+     * @param $offlineTool
+     *
      * @return bool
      */
     private function _updateOfflineTool($offlineTool)
@@ -237,6 +239,8 @@ class OfflineToolController extends Controller
 
     /**
      * @param $criteria
+     * @param $lang
+     *
      * @return string
      */
     private function _generateCriteriaJsonString($criteria, $lang)
@@ -312,7 +316,7 @@ class OfflineToolController extends Controller
      * @param $zip
      * @param $toolDir
      */
-    private function _folderToZip($folder, &$zip, $toolDir)
+    private function _folderToZip($folder, ZipArchive &$zip, $toolDir)
     {
         $handle = opendir($folder);
         while (false !== $file = readdir($handle)) {
