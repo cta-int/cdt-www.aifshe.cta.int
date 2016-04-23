@@ -41,10 +41,3 @@ assetic:
         cssrewrite: ~
         uglifyjs2: null
         uglifycss: null
-
-swiftmailer:
-    transport: smtp
-    host: 'localhost'
-    port: 1025
-    username: null
-    password: null
