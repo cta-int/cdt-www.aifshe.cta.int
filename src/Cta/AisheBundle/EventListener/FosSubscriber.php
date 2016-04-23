@@ -9,9 +9,14 @@
 
 namespace Cta\AisheBundle\EventListener;
 
+use Cta\AisheBundle\Entity\User;
+use Cta\AisheBundle\Model\UserManager;
+use Devart\CommonBundle\Service\Mail as MailMessageService;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Doctrine\GroupManager;
+use Swift_Mailer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -20,14 +25,38 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class FosSubscriber implements EventSubscriberInterface
 {
-    private $_gm;
+    /**
+     * @var GroupManager
+     */
+    private $groupManager;
+    
+    /**
+     * @var UserManager
+     */
+    private $userManager;
+    
+    /**
+     * @var Swift_Mailer
+     */
+    private $mailerService;
+    
+    /**
+     * @var MailMessageService
+     */
+    private $mailMessageService;
 
     /**
-     * @param GroupManager $gm
+     * @param GroupManager       $gm
+     * @param UserManager        $userManager
+     * @param MailMessageService $mailMessageService
+     * @param                    $mailerService
      */
-    public function __construct(GroupManager $gm)
+    public function __construct(GroupManager $gm, UserManager $userManager, MailMessageService $mailMessageService, Swift_Mailer $mailerService)
     {
-        $this->_gm = $gm;
+        $this->groupManager = $gm;
+        $this->userManager = $userManager;
+        $this->mailerService = $mailerService;
+        $this->mailMessageService = $mailMessageService;
     }
 
     /**
@@ -37,6 +66,7 @@ class FosSubscriber implements EventSubscriberInterface
     {
         return array(
             FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::REGISTRATION_CONFIRMED => 'onRegistrationConfirmed',
         );
     }
 
@@ -45,8 +75,36 @@ class FosSubscriber implements EventSubscriberInterface
      */
     public function onRegistrationSuccess(FormEvent $event)
     {
+        /** @var User $user */
         $user = $event->getForm()->getData();
-        $user->addGroup($this->_gm->findGroupByName('USER'));
+
+        // set user to locked (until an admin approves the registration)
+        $user->setLocked(true);
+
+        // add the default group
+        $user->addGroup($this->groupManager->findGroupByName('USER'));
+    }
+
+    /**
+     * @param FilterUserResponseEvent $event
+     */
+    public function onRegistrationConfirmed(FilterUserResponseEvent $event)
+    {
+        /** @var User $user */
+        $user = $event->getUser();
+
+        $message = $this->mailMessageService->getMessage('CtaAisheBundle:Mails:FOS/Registration/RequestAccess.html.twig', array(
+            'user' => $user
+        ));
+
+        $adminsGroup = $this->userManager->findOverviewByGroup('ADMIN');
+
+        /** @var User $admin */
+        foreach($adminsGroup['items'] as $admin){
+            $message->addTo($admin->getEmail());
+        }
+
+        $this->mailerService->send($message);
     }
 
 }
