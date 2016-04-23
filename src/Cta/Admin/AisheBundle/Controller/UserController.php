@@ -103,7 +103,7 @@ class UserController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function pendingActivation(Request $request)
+    public function pendingActivationAction(Request $request)
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $users = $userManager->findUsersBy(array(
