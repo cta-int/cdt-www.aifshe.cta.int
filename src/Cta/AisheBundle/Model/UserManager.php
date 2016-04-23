@@ -9,8 +9,13 @@
 
 namespace Cta\AisheBundle\Model;
 
+use Doctrine\ORM\EntityRepository;
+
 class UserManager extends \FOS\UserBundle\Doctrine\UserManager
 {
+    /** @var EntityRepository */
+    protected $repository;
+
     /**
      * @param $criteria
      * @return array
@@ -74,7 +79,7 @@ class UserManager extends \FOS\UserBundle\Doctrine\UserManager
             ->orderBy('u.username', 'ASC');
 
         if (array_key_exists('blockGroups', $params)) {
-            $query->where('g.name NOT IN (:blockgroups)');
+            $query->andWhere('g.name NOT IN (:blockgroups)');
             $query->setParameter('blockgroups', $params['blockGroups']);
         }
 
