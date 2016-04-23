@@ -13,12 +13,12 @@ class User extends BaseUser
     /**
      * @var \Cta\AisheBundle\Entity\Institution
      */
-    private $institution;
+    private $institution = null;
 
     /**
      * @var boolean
      */
-    private $requestAuditor;
+    private $requestAuditor = false;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -31,6 +31,8 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        
+        $this->reports = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -62,7 +64,7 @@ class User extends BaseUser
      * @param boolean $requestAuditor
      * @return User
      */
-    public function setRequestAuditor($requestAuditor)
+    public function setRequestAuditor($requestAuditor = false)
     {
         $this->requestAuditor = $requestAuditor;
 
