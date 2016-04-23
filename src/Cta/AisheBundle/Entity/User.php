@@ -1,17 +1,17 @@
 <?php
-
 namespace Cta\AisheBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
  */
-class User extends BaseUser
+class User extends BaseUser implements AdvancedUserInterface
 {
     /**
-     * @var \Cta\AisheBundle\Entity\Institution
+     * @var Institution
      */
     private $institution = null;
 
@@ -21,7 +21,7 @@ class User extends BaseUser
     private $requestAuditor = false;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var ArrayCollection
      */
     private $reports;
 
@@ -31,27 +31,14 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        
-        $this->reports = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
-    /**
-     * Set institution
-     *
-     * @param \Cta\AisheBundle\Entity\Institution $institution
-     * @return User
-     */
-    public function setInstitution(\Cta\AisheBundle\Entity\Institution $institution = null)
-    {
-        $this->institution = $institution;
-
-        return $this;
+        $this->reports = new ArrayCollection();
     }
 
     /**
      * Get institution
      *
-     * @return \Cta\AisheBundle\Entity\Institution
+     * @return Institution
      */
     public function getInstitution()
     {
@@ -59,14 +46,15 @@ class User extends BaseUser
     }
 
     /**
-     * Set requestAuditor
+     * Set institution
      *
-     * @param boolean $requestAuditor
+     * @param Institution $institution
+     *
      * @return User
      */
-    public function setRequestAuditor($requestAuditor = false)
+    public function setInstitution(Institution $institution = null)
     {
-        $this->requestAuditor = $requestAuditor;
+        $this->institution = $institution;
 
         return $this;
     }
@@ -82,12 +70,27 @@ class User extends BaseUser
     }
 
     /**
-     * Add reports
+     * Set requestAuditor
      *
-     * @param \Cta\AisheBundle\Entity\Report $reports
+     * @param boolean $requestAuditor
+     *
      * @return User
      */
-    public function addReport(\Cta\AisheBundle\Entity\Report $reports)
+    public function setRequestAuditor($requestAuditor = false)
+    {
+        $this->requestAuditor = $requestAuditor;
+
+        return $this;
+    }
+
+    /**
+     * Add reports
+     *
+     * @param Report $reports
+     *
+     * @return User
+     */
+    public function addReport(Report $reports)
     {
         $this->reports[] = $reports;
 
@@ -97,9 +100,9 @@ class User extends BaseUser
     /**
      * Remove reports
      *
-     * @param \Cta\AisheBundle\Entity\Report $reports
+     * @param Report $reports
      */
-    public function removeReport(\Cta\AisheBundle\Entity\Report $reports)
+    public function removeReport(Report $reports)
     {
         $this->reports->removeElement($reports);
     }
@@ -107,7 +110,7 @@ class User extends BaseUser
     /**
      * Get reports
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getReports()
     {
