@@ -52,17 +52,15 @@ class Mail
         $blocks = $template->getBlocks(); // this is needed to render all the blocks inside the parent blocks.
 
         $subject  = $template->renderBlock('subject', $parameters, $blocks);
-        $bodyText = $template->renderBlock('body_text', $parameters, $blocks);
+        $bodyText = trim($template->renderBlock('body_text', $parameters, $blocks));
         $bodyHtml = $template->renderBlock('body_html', $parameters, $blocks);
 
-        $message = \Swift_Message::newInstance();
-        $message
-            ->addPart($bodyText, 'text/plain')
-            ->setFrom($this->getMailFrom())
-            ->setSubject($subject)
-            ->setBody($bodyHtml, 'text/html')
-        ;
-
+        $message = \Swift_Message::newInstance($subject, $bodyHtml, 'text/html');
+        if ($bodyText) {
+            $message->addPart($bodyText, 'text/plain');
+        }
+        $message->setFrom($this->getMailFrom());
+;
         return $message;
     }
 
