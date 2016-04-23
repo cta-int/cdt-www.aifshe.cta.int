@@ -69,6 +69,7 @@ class UserManager extends \FOS\UserBundle\Doctrine\UserManager
         );
 
         $query = $this->repository->createQueryBuilder('u')
+            ->where('u.expired=0')
             ->leftJoin('u.groups', 'g')
             ->orderBy('u.username', 'ASC');
 
