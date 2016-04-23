@@ -21,7 +21,7 @@ use Cta\AisheBundle\Model\Data;
  * *
  * @package Cta\AisheBundle\Twig
  */
-class CtaExtension extends Twig_Extension
+class CtaExtension extends Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
     /**
      * Informs Twig about this extension's name
