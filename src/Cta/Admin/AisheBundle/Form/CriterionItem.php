@@ -9,7 +9,6 @@
 
 namespace Cta\Admin\AisheBundle\Form;
 
-use Cta\AisheBundle\Model\Data;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,10 +29,13 @@ class CriterionItem extends AbstractType
 
         $certs = $this->_em->getRepository('CtaAisheBundle:Certification')->findAll();
         foreach ($certs as $cert) {
-            $builder->add(str_replace('.','_',$cert->getName()), 'integer', array('mapped' => false, 'label' => 'base.' . $cert->getName()));
+            $builder->add(
+                str_replace('.', '_', $cert->getName()), 'integer',
+                array('mapped' => false, 'label' => 'base.' . $cert->getName())
+            );
         }
 
-        $builder->add('save', 'submit'  , array('label' => 'form.save'));
+        $builder->add('save', 'submit', array('label' => 'form.save'));
     }
 
     public function getName()
@@ -43,8 +45,10 @@ class CriterionItem extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Cta\AisheBundle\Entity\CriterionItem',
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'Cta\AisheBundle\Entity\CriterionItem',
+            )
+        );
     }
 }

@@ -2,9 +2,10 @@
 
 namespace Cta\AisheBundle\Entity\Repository;
 
+use Cta\AisheBundle\Entity\Page as PageEntity;
+use Cta\AisheBundle\Entity\PageTranslation as PageTranslationEntity;
 use Devart\CommonBundle\Entity\Repository\Base;
 use Doctrine\ORM\ORMInvalidArgumentException;
-use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\Query;
 
 /**
@@ -17,6 +18,7 @@ class Page extends Base
 {
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function findById($id)
@@ -28,7 +30,7 @@ class Page extends Base
             ->andWhere('p.id = :id')
             ->andWhere('p.status = :status')
             ->setParameter('id', $id)
-            ->setParameter('status', \Cta\AisheBundle\Entity\Page::ST_ACTIVE)
+            ->setParameter('status', PageEntity::ST_ACTIVE)
             ->getQuery();
 
         try {
@@ -56,28 +58,34 @@ class Page extends Base
         $qb = $this->getEntityManager()->createQueryBuilder();
 
         $query = $qb->select('p', 'pt')
-            ->from('CtaAisheBundle:Page'    , 'p')
-            ->leftJoin('p.pageTranslations' , 'pt', Query\Expr\Join::WITH, $qb->expr()->eq('pt.status', \Cta\AisheBundle\Entity\PageTranslation::ST_ACTIVE))
+            ->from('CtaAisheBundle:Page', 'p')
+            ->leftJoin(
+                'p.pageTranslations', 'pt', Query\Expr\Join::WITH,
+                $qb->expr()->eq('pt.status', PageTranslationEntity::ST_ACTIVE)
+            )
             ->andWhere('p.status = :status')
             ->andWhere('p.identifier = :identifier')
             ->andWhere('pt.lang = :lang')
             ->setParameter('identifier', $identifier)
             ->setParameter('lang', $lang)
-            ->setParameter('status', \Cta\AisheBundle\Entity\Page::ST_ACTIVE)
+            ->setParameter('status', PageEntity::ST_ACTIVE)
             ->getQuery();
 
         return $query->getSingleResult(Query::HYDRATE_ARRAY);
     }
 
+    /**
+     * @return array
+     */
     public function findAllWithoutTranslations()
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
 
         $query = $qb->select('p', 'user_mo')
-            ->from('CtaAisheBundle:Page'    , 'p')
-            ->leftJoin('p.modifiedBy'       , 'user_mo')
+            ->from('CtaAisheBundle:Page', 'p')
+            ->leftJoin('p.modifiedBy', 'user_mo')
             ->andWhere('p.status = :status')
-            ->setParameter('status', \Cta\AisheBundle\Entity\Page::ST_ACTIVE)
+            ->setParameter('status', PageEntity::ST_ACTIVE)
             ->getQuery();
 
         return $query->getArrayResult();
