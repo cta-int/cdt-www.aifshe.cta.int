@@ -32,6 +32,7 @@ class User extends AbstractType
                 },
                 'property' => 'name',
                 'multiple'  => false,
+                'required' => false,
             ))
             ->add('enabled'             , 'checkbox'      , array('required' => false))
             ->add('plainPassword', 'repeated', array(
