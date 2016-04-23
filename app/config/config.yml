@@ -79,7 +79,7 @@ fos_user:
     use_username_form_type: false
     registration:
         form:
-            type: cta_user_registration
+            type: Cta\AisheBundle\Form\Registration
         confirmation:
             enabled:        true
             from_email:
