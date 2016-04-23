@@ -67,11 +67,11 @@ report:
         fiveStages:     The five stages of AIFSHE are:
         moreInfo:       For more information: see the website www.dho.nl or mail to Niko Roorda, Olivier.bello@wur.nl
     stage:
-        1:  Stage 1: Activity oriented
-        2:  Stage 2: Process oriented
-        3:  Stage 3: System oriented
-        4:  Stage 4: Chain oriented
-        5:  Stage 5: Society oriented
+        1:  'Stage 1: Activity oriented'
+        2:  'Stage 2: Process oriented'
+        3:  'Stage 3: System oriented'
+        4:  'Stage 4: Chain oriented'
+        5:  'Stage 5: Society oriented'
     stage1:               Stage 1
     stage2:               Stage 2
     stage3:               Stage 3
