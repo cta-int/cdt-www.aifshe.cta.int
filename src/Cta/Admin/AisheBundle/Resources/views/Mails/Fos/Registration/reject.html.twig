@@ -1,0 +1,12 @@
+{% extends '::mail.html.twig' %}
+
+{% block subject 'Your registration request has been rejected, ' ~ user.getUsername() %}
+
+{% block content %}
+    Dear {{ user.getUserName() }}, <br/><br/>
+
+    We're sorry, but your registration for the AIFSHE tool has been rejected.
+
+    <br/><br/>
+    <em>AIFSHE</em>
+{% endblock %}

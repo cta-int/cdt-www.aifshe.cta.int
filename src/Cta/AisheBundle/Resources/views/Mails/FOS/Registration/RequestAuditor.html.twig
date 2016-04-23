@@ -2,15 +2,12 @@
 
 {% block subject 'Auditor privileges requested by ' ~ user.getUsername() %}
 
-{% block body_html %}
-    {{ parent() }}
-    {% block content %}
-        Dear ADMIN, <br/><br/>
+{% block content %}
+    Dear ADMIN, <br/><br/>
 
-        A new user, <strong>({{ user.getUsername() }})</strong>, has requested to becone an Audtor.<br/>
-        Click <a href="{{ appUrl }}{{ path('cta_admin_aishe_security_user_pending_activate', {'action': 'accept', 'id': user.getId()}) }}" style="color: #e74739; text-decoration: underline;">here</a> to approve the Auditor privileges.
+    A new user, <strong>({{ user.getUsername() }})</strong>, has requested to becone an Audtor.<br/>
+    Click <a href="{{ appUrl }}{{ path('cta_admin_aishe_security_user_pending_activate', {'action': 'accept', 'id': user.getId()}) }}" style="color: #e74739; text-decoration: underline;">here</a> to approve the Auditor privileges.
 
-        <br/><br/>
-        <em>AIFSHE</em>
-    {% endblock %}
+    <br/><br/>
+    <em>AIFSHE</em>
 {% endblock %}
