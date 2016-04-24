@@ -11,21 +11,27 @@ namespace Cta\AisheBundle\Service;
 
 use Cta\AisheBundle\Entity\Chart;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class Report
 {
     private $_em;
-    private $_securityContext;
+    private $authCheck;
+    private $user;
 
     /**
-     * @param EntityManager $em
-     * @param SecurityContext $securityContext
+     * @param EntityManager        $em
+     * @param AuthorizationChecker $authCheck
+     * @param TokenStorage         $tokenStorage
+     *
+     * @internal param SecurityContext $securityContext
      */
-    public function __construct(EntityManager $em, SecurityContext $securityContext)
+    public function __construct(EntityManager $em, AuthorizationChecker $authCheck, TokenStorage $tokenStorage)
     {
         $this->_em = $em;
-        $this->_securityContext = $securityContext;
+        $this->authCheck = $authCheck;
+        $this->user = $tokenStorage->getToken()->getUser();
     }
 
     /**
@@ -121,7 +127,7 @@ class Report
                 case'institution':
                     $institution = $this->_em->getRepository('CtaAisheBundle:Institution')->findOneByName($value);
                     if (!$institution) {
-                        $institution = $this->_securityContext->getToken()->getUser()->getInstitution();
+                        $institution = $this->user->getInstitution();
                     }
 
                     $report->setInstitution($institution);
@@ -176,7 +182,7 @@ class Report
                     if ($value instanceof \Cta\AisheBundle\Entity\User) {
                         $report->setCreatedBy($value);
                     } else {
-                        $report->setCreatedBy($this->_securityContext->getToken()->getUser());
+                        $report->setCreatedBy($this->user);
                     }
                     break;
                 case'modifiedBy':
@@ -187,7 +193,7 @@ class Report
             }
         }
 
-        if (false !== $this->_securityContext->isGranted('ROLE_AUDITOR')) {
+        if (false !== $this->authCheck->isGranted('ROLE_AUDITOR')) {
             $report->setIsOfficial(true);
         } else {
             $report->setIsOfficial(false);
@@ -198,8 +204,8 @@ class Report
         $chartRepository = new Chart();
         $chartRepository->setReport($report);
         $chartRepository->setModifiedAt(new \DateTime());
-        $chartRepository->setModifiedBy($this->_securityContext->getToken()->getUser());
-        $chartRepository->setCreatedBy($this->_securityContext->getToken()->getUser());
+        $chartRepository->setModifiedBy($this->user);
+        $chartRepository->setCreatedBy($this->user);
         $chartRepository->setType(Chart::TYPE_AREA);
         $chartRepository->setShowCriterion1(true);
         $chartRepository->setShowCriterion2(true);

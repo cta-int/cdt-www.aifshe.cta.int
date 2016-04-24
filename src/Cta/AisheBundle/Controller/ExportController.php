@@ -13,6 +13,8 @@ use Cta\AisheBundle\Model\Data;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ExportController extends Controller
 {
@@ -22,32 +24,34 @@ class ExportController extends Controller
     private $_generalData;
 
     /**
-     * @param $id
-     * @param $type
+     * @param Request $request
+     * @param         $id
+     * @param         $type
+     *
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Doctrine\ORM\EntityNotFoundException
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @throws AccessDeniedException
+     * @throws EntityNotFoundException
      */
-    public function indexAction($id, $type)
+    public function indexAction(Request $request, $id, $type)
     {
         $em = $this->getDoctrine()->getManager();
-        $this->_report = $em->getRepository('CtaAisheBundle:Report')->findForShow($id, Data::getLanguageCodes($this->getRequest()->getLocale()));
+        $this->_report = $em->getRepository('CtaAisheBundle:Report')->findForShow($id, Data::getLanguageCodes($request->getLocale()));
 
         if (!$this->_report) {
             throw new EntityNotFoundException();
         }
 
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            if (true === $this->get('security.context')->isGranted('ROLE_AUDITOR')) {
-                if ($this->_report['createdBy']['id'] != $this->get('security.context')->getToken()->getUser()->getId() &&
-                    $this->_report['institution']['id'] != $this->get('security.context')->getToken()->getUser()->getInstitution()->getId()) {
+        if (false === $this->isGranted('ROLE_ADMIN')) {
+            if (true === $this->isGranted('ROLE_AUDITOR')) {
+                if ($this->_report['createdBy']['id'] != $this->getUser()->getId() &&
+                    $this->_report['institution']['id'] != $this->getUser()->getInstitution()->getId()) {
                     throw new AccessDeniedException('Auditor is not allowed to export this report');
                 }
             } else {
-                if ($this->_report['createdBy']['id'] != $this->get('security.context')->getToken()->getUser()->getId()) {
+                if ($this->_report['createdBy']['id'] != $this->getUser()->getId()) {
                     $specialAccess = false;
                     foreach ($this->_report['users'] as $privilegedUser) {
-                        if ($privilegedUser['id'] ==  $this->get('security.context')->getToken()->getUser()->getId()) {
+                        if ($privilegedUser['id'] ==  $this->getUser()->getId()) {
                             $specialAccess = true;
                         }
                     }
@@ -58,8 +62,8 @@ class ExportController extends Controller
             }
         }
 
-        $this->_criteria = $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($this->getRequest()->getLocale()));
-        $this->_info = $em->getRepository('CtaAisheBundle:Page')->findByIdentifier('report_info', Data::getLanguageCodes($this->getRequest()->getLocale()));
+        $this->_criteria = $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($request->getLocale()));
+        $this->_info = $em->getRepository('CtaAisheBundle:Page')->findByIdentifier('report_info', Data::getLanguageCodes($request->getLocale()));
         $this->_generalData = Data::getGeneralData($this->_report, $em->getRepository('CtaAisheBundle:Certification')->findForShow());
 
         switch (strtolower($type)) {
@@ -228,7 +232,7 @@ class ExportController extends Controller
 
 
         // get the service
-        $TBS = $this->container->get('opentbs');
+        $TBS = $this->get('opentbs');
         // load your template
         $TBS->LoadTemplate($this->get('kernel')->getRootDir() . '/../static/template.docx');
         // replace variables
@@ -239,7 +243,7 @@ class ExportController extends Controller
 
     private function _toPDF()
     {
-        $pdf = $this->container->get("white_october.tcpdf")->create();
+        $pdf = $this->get("white_october.tcpdf")->create();
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor(

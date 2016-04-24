@@ -29,7 +29,7 @@ class UserController extends Controller
         $params['limit']        = self::ITEMS_PER_PAGE;
         $params['blockGroups']  = array('DEVART');
 
-        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findOverview($params);
 
         if ($page > 1 && $users['count'] < 1) {
@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $userManager    = $this->container->get('fos_user.user_manager');
+        $userManager    = $this->get('fos_user.user_manager');
         $user           = $userManager->findUserBy(array('id' => $id));
 
         if (!$user) {
@@ -63,7 +63,7 @@ class UserController extends Controller
         if ($form->isValid()) {
             $userManager->updateUser($user);
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -85,7 +85,7 @@ class UserController extends Controller
      */
     public function pendingAuditorsAction(Request $request)
     {
-        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsersBy(array(
             'requestAuditor'  => true,
         ));
@@ -105,7 +105,7 @@ class UserController extends Controller
      */
     public function pendingActivationAction(Request $request)
     {
-        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsersBy(array(
             'enabled' => true,
             'locked'  => true,
@@ -129,7 +129,7 @@ class UserController extends Controller
     public function activatePendingAuditorAction($action, $id)
     {
         if ($action == 'accept' || $action == 'decline') {
-            $userManager = $this->container->get('fos_user.user_manager');
+            $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->findUserBy(array(
                 'id'    => $id,
             ));
@@ -137,7 +137,7 @@ class UserController extends Controller
             if ($user) {
                 if ($action == 'accept') {
                     // add auditing group to this user
-                    $groupManager = $this->container->get('fos_user.group_manager');
+                    $groupManager = $this->get('fos_user.group_manager');
                     $auditorGroup = $groupManager->findGroupByName('AUDITOR');
                     if ($auditorGroup) {
                         $user->addGroup($auditorGroup);
@@ -161,7 +161,7 @@ class UserController extends Controller
                 $userManager->updateUser($user);
 
 
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'notice',
                     $this->get('translator')->trans(
                         'form.flash.notice',
@@ -169,7 +169,7 @@ class UserController extends Controller
                     )
                 );
             } else {
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'error',
                     $this->get('translator')->trans(
                         'form.flash.error',
@@ -189,7 +189,7 @@ class UserController extends Controller
     public function activateUserAction($action, $id)
     {
         if ($action == 'accept' || $action == 'decline') {
-            $userManager = $this->container->get('fos_user.user_manager');
+            $userManager = $this->get('fos_user.user_manager');
             /** @var User $user */
             $user = $userManager->findUserBy(array(
                 'id'    => $id,
@@ -220,7 +220,7 @@ class UserController extends Controller
                 $this->get('mailer')
                     ->send($message);
 
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'notice',
                     $this->get('translator')->trans(
                         'form.flash.notice',
@@ -228,7 +228,7 @@ class UserController extends Controller
                     )
                 );
             } else {
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'error',
                     $this->get('translator')->trans(
                         'form.flash.error',
