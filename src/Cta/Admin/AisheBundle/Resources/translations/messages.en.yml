@@ -4,12 +4,12 @@ base:
     pages:        Pages
     users:        Users
     groups:       Groups
-    pending:      Users waiting for auditing approval
+    pending:      New registrations waiting for approval
     window:
         pending:
-            title:  Auditor Requests
-            text:   user(s) are waiting for your approval.
-            over:   Click to go to the Auditor Request Management.
+            title:  New registrations
+            text:   user(s) are waiting for approval.
+            over:   Click to view all users awaiting approval.
         updateOfflineTool:
             title:  Update Offline Tool
             text:   The current Offline Tool is outdated.
@@ -70,7 +70,8 @@ user:
     name:           Username
     email:          E-Mail
     loggedIn:       Last logged in at
-    isEnabled:      Is Enabled
+    isEnabled:      Confirmed?
+    isLocked:       Approved?
     groups:         Groups
     password:       Password
     passwordRepeat: Repeat Password
@@ -80,10 +81,10 @@ user:
     manage:     Manage
     pending:
         dialog:
-            title:  User auditing permissions
+            title:  User registration
             text:
-                accept: Are you sure you want to give this User auditing permissions?
-                decline: Are you sure you want to decline this User\'s auditing permissions?
+                accept: Allow this user access to the tool?
+                decline: Are you really, really, really sure you want to REJECT this user\'s access to the tool?
 
 tool:
     home:         Home

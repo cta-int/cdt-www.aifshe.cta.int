@@ -79,8 +79,6 @@ class Data
      */
     public static function getGeneralData($report, $certifications)
     {
-        $generalData    = array();
-
         $currentRatings     = array();
         $currentTotal       = 0;
         $currentPlanTotal   = 0;
@@ -122,13 +120,6 @@ class Data
         }
 
         $qualifications = array();
-//        Disable certifications
-//        foreach ($certificationTotals as $certificationKey => $certificationTotal) {
-//            $qualifications[$certificationKey] = array(
-//                'current' => $currentTotal - $certificationTotal,
-//                'desired' => $desiredTotal - $certificationTotal,
-//            );
-//        }
 
         return array_merge(array(
             'median'            => array(

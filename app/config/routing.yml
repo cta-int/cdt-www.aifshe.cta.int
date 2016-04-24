@@ -31,3 +31,7 @@ fos_user_change_password:
 fos_user_security_login:
     path:  /login
     defaults: { _controller: CtaAisheBundle:Security:login }
+
+fos_user_registration_confirmed:
+    path:  /register/confirmed
+    defaults: { _controller: CtaAisheBundle:Registration:confirmed }

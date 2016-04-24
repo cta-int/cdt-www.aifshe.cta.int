@@ -11,7 +11,7 @@ namespace Cta\AisheBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ReportItem extends AbstractType
 {
@@ -32,7 +32,7 @@ class ReportItem extends AbstractType
         return 'reportItem';
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Cta\AisheBundle\Entity\ReportItem',

@@ -2,6 +2,7 @@
 
 namespace Cta\AisheBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -69,7 +70,7 @@ class Report extends Base
     private $isOfficial;
 
     /**
-     * @var \Cta\AisheBundle\Entity\Chart
+     * @var Chart
      */
     private $chartSettings;
 
@@ -79,7 +80,7 @@ class Report extends Base
     private $reportItems;
 
     /**
-     * @var \Cta\AisheBundle\Entity\Institution
+     * @var Institution
      */
     private $institution;
 
@@ -93,8 +94,8 @@ class Report extends Base
      */
     public function __construct()
     {
-        $this->reportItems = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reportItems = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
     
     /**
@@ -340,10 +341,10 @@ class Report extends Base
     /**
      * Set chartSettings
      *
-     * @param \Cta\AisheBundle\Entity\Chart $chartSettings
+     * @param Chart $chartSettings
      * @return Report
      */
-    public function setChartSettings(\Cta\AisheBundle\Entity\Chart $chartSettings = null)
+    public function setChartSettings(Chart $chartSettings = null)
     {
         $this->chartSettings = $chartSettings;
     
@@ -353,7 +354,7 @@ class Report extends Base
     /**
      * Get chartSettings
      *
-     * @return \Cta\AisheBundle\Entity\Chart 
+     * @return Chart 
      */
     public function getChartSettings()
     {
@@ -363,10 +364,10 @@ class Report extends Base
     /**
      * Add reportItems
      *
-     * @param \Cta\AisheBundle\Entity\ReportItem $reportItems
+     * @param ReportItem $reportItems
      * @return Report
      */
-    public function addReportItem(\Cta\AisheBundle\Entity\ReportItem $reportItems)
+    public function addReportItem(ReportItem $reportItems)
     {
         $this->reportItems[] = $reportItems;
     
@@ -376,9 +377,9 @@ class Report extends Base
     /**
      * Remove reportItems
      *
-     * @param \Cta\AisheBundle\Entity\ReportItem $reportItems
+     * @param ReportItem $reportItems
      */
-    public function removeReportItem(\Cta\AisheBundle\Entity\ReportItem $reportItems)
+    public function removeReportItem(ReportItem $reportItems)
     {
         $this->reportItems->removeElement($reportItems);
     }
@@ -396,10 +397,10 @@ class Report extends Base
     /**
      * Set institution
      *
-     * @param \Cta\AisheBundle\Entity\Institution $institution
+     * @param Institution $institution
      * @return Report
      */
-    public function setInstitution(\Cta\AisheBundle\Entity\Institution $institution = null)
+    public function setInstitution(Institution $institution = null)
     {
         $this->institution = $institution;
     
@@ -409,7 +410,7 @@ class Report extends Base
     /**
      * Get institution
      *
-     * @return \Cta\AisheBundle\Entity\Institution 
+     * @return Institution 
      */
     public function getInstitution()
     {
@@ -419,10 +420,10 @@ class Report extends Base
     /**
      * Add users
      *
-     * @param \Cta\AisheBundle\Entity\User $users
+     * @param User $users
      * @return Report
      */
-    public function addUser(\Cta\AisheBundle\Entity\User $users)
+    public function addUser(User $users)
     {
         $this->users[] = $users;
     
@@ -432,9 +433,9 @@ class Report extends Base
     /**
      * Remove users
      *
-     * @param \Cta\AisheBundle\Entity\User $users
+     * @param User $users
      */
-    public function removeUser(\Cta\AisheBundle\Entity\User $users)
+    public function removeUser(User $users)
     {
         $this->users->removeElement($users);
     }

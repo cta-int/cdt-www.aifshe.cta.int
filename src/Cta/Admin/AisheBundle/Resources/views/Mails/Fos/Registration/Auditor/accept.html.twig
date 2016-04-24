@@ -2,14 +2,11 @@
 
 {% block subject 'Request to becone an Auditor has been approved ' ~ user.getUsername() %}
 
-    {% block body_html %}
-        {{ parent() }}
-        {% block content %}
-            Dear {{ user.getUserName() }}, <br/><br/>
+{% block content %}
+    Dear {{ user.getUserName() }}, <br/><br/>
 
-            Your request to become an Auditor has been approved. <a href="{{ appUrl }}" style="color: #e74739; text-decoration: underline;">Log in</a> here to use your Auditor privileges.
+    Your request to become an Auditor has been approved. <a href="{{ appUrl }}" style="color: #e74739; text-decoration: underline;">Log in</a> here to use your Auditor privileges.
 
-            <br/><br/>
-            <em>AIFSHE</em>
-        {% endblock %}
-    {% endblock %}
+    <br/><br/>
+    <em>AIFSHE</em>
+{% endblock %}

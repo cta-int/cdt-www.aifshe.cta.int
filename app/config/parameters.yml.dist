@@ -12,6 +12,7 @@ parameters:
     mailer_host: 'email-smtp.eu-west-1.amazonaws.com'
     mailer_user: 'AKIAIIMBRKHIPQSCRNTQ'
     mailer_password: 'AutpS1o9ezHoCdSqnMgCNcGqqU2rb9+RxIZHCJ0u8qZG'
+    mailer_port: 587
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
     mailer_error_from: exceptions@cta.int

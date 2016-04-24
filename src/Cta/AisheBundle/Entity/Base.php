@@ -10,12 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Base extends \Devart\CommonBundle\Entity\Base
 {
     /**
-     * @var \Cta\AisheBundle\Entity\User
+     * @var User
      */
     private $createdBy;
 
     /**
-     * @var \Cta\AisheBundle\Entity\User
+     * @var User
      */
     private $modifiedBy;
 
@@ -23,10 +23,10 @@ class Base extends \Devart\CommonBundle\Entity\Base
     /**
      * Set createdBy
      *
-     * @param \Cta\AisheBundle\Entity\User $createdBy
+     * @param User $createdBy
      * @return Base
      */
-    public function setCreatedBy(\Cta\AisheBundle\Entity\User $createdBy = null)
+    public function setCreatedBy(User $createdBy = null)
     {
         $this->createdBy = $createdBy;
     
@@ -36,7 +36,7 @@ class Base extends \Devart\CommonBundle\Entity\Base
     /**
      * Get createdBy
      *
-     * @return \Cta\AisheBundle\Entity\User 
+     * @return User 
      */
     public function getCreatedBy()
     {
@@ -46,10 +46,10 @@ class Base extends \Devart\CommonBundle\Entity\Base
     /**
      * Set modifiedBy
      *
-     * @param \Cta\AisheBundle\Entity\User $modifiedBy
+     * @param User $modifiedBy
      * @return Base
      */
-    public function setModifiedBy(\Cta\AisheBundle\Entity\User $modifiedBy = null)
+    public function setModifiedBy(User $modifiedBy = null)
     {
         $this->modifiedBy = $modifiedBy;
     
@@ -59,7 +59,7 @@ class Base extends \Devart\CommonBundle\Entity\Base
     /**
      * Get modifiedBy
      *
-     * @return \Cta\AisheBundle\Entity\User 
+     * @return User 
      */
     public function getModifiedBy()
     {

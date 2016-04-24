@@ -1,0 +1,43 @@
+{% extends 'CtaAdminAisheBundle::base.html.twig' %}
+
+{% block bodyAdmin %}
+    <h1>{{ 'base.pending'|trans() }}</h1>
+
+    <ul name="users-pending">
+        <li class="top">
+            <span class="title">{{ 'user.name'|trans() }}</span>
+            <span class="create-author">{{ 'user.email'|trans() }}</span>
+            {#<span class="date-time">{{ 'user.loggedIn'|trans() }}</span>#}
+            {#<span class="groups">{{ 'user.groups'|trans() }}</span>#}
+            <span class="institution">{{ 'user.institution'|trans() }}</span>
+            <span class="manage">{{ 'user.manage'|trans() }}</span>
+        </li>
+
+        {% for user in users %}
+            <li>
+                <span class="title">{{ user.getUsername() }}</span>
+                <span class="create-author">{{ user.getEmail() }}</span>
+                {#<span class="date-time">{% if user.getLastLogin() is not null %}{{ user.getLastLogin()|date("Y-m-d H:i:s") }}{% else %}&nbsp;{% endif %}</span>#}
+                {#<span class="groups">#}
+                    {#{% spaceless %}#}
+                        {#{% for group in user.getGroups() %}#}
+                            {#<span class="group">{{ group.getName() }}</span>#}
+                        {#{% endfor %}#}
+                    {#{% endspaceless %}#}
+                {#</span>#}
+                <span class="institution">
+                    {% spaceless %}
+                        {% if user.getInstitution() is not null %}
+                            {{ user.getInstitution().getName() }}
+                        {% else %}
+                            &nbsp;
+                        {% endif %}
+                    {% endspaceless %}
+                </span>
+                <a href="{{ path('cta_admin_aishe_security_user_pending_activate', {'id': user.getId(), 'action': 'accept'}) }}" onclick="javascript:showConfirm(this,event,'{{ 'user.pending.dialog.title'|trans() }}','{{ 'user.pending.dialog.text.accept'|trans() }}');"><img src="{{ asset('bundles/ctaaishe/css/img/icon-enabled.png') }}"/></a>
+
+                <a href="{{ path('cta_admin_aishe_security_user_pending_activate', {'id': user.getId(), 'action': 'decline'}) }}" onclick="javascript:showConfirm(this,event,'{{ 'user.pending.dialog.title'|trans() }}','{{ 'user.pending.dialog.text.decline'|trans() }}');"><img src="{{ asset('bundles/ctaaishe/css/img/icon-disabled.png') }}"/></a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -160,6 +160,6 @@ Cta\AisheBundle\Entity\OfflineTool:
     properties:
         fileName:
             - Regex:
-                pattern: "/^[\w\-. ]+$/"
+                pattern: '/^[\w\-. ]+$/'
                 match:   true
                 message: invalid filename

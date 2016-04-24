@@ -9,12 +9,12 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
     devart.twig.security.extension:
         class:      Devart\CommonBundle\Twig\SecurityExtension
-        arguments:  [@security.context]
+        arguments:  ['@security.context']
         tags:
             - { name: twig.extension }
     devart.mail:
         class:      Devart\CommonBundle\Service\Mail
         arguments:
-            - @twig
-            - %app_url%
-            - %app_email%
+            - '@twig'
+            - '%app_url%'
+            - '%app_email%'

@@ -13,25 +13,35 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
     cta.fos.userbundle.usermanager:
         class: Cta\AisheBundle\Model\UserManager
-        arguments: [@security.encoder_factory,@fos_user.util.username_canonicalizer,@fos_user.util.email_canonicalizer,@fos_user.entity_manager,%fos_user.model.user.class%]
+        arguments: ['@security.encoder_factory','@fos_user.util.username_canonicalizer','@fos_user.util.email_canonicalizer','@fos_user.entity_manager','%fos_user.model.user.class%']
     cta.fos.subscriber:
         class: Cta\AisheBundle\EventListener\FosSubscriber
-        arguments: [@fos_user.group_manager]
+        arguments:
+            - '@fos_user.group_manager'
+            - '@fos_user.user_manager'
+            - '@devart.mail'
+            - '@mailer'
         tags:
             - { name: kernel.event_subscriber }
-    cta.fos.requestAuditor:
-        class: Cta\AisheBundle\EventListener\FosRequestAuditor
-        arguments: [@service_container]
-        tags:
-            - { name: kernel.event_subscriber }
-    cta.aishe.service.registration:
-        class: Cta\AisheBundle\Form\Registration
-        arguments: [%fos_user.model.user.class%]
-        tags:
-            - { name: form.type, alias: cta_user_registration }
+#    cta.fos.requestAuditor:
+#        class: Cta\AisheBundle\EventListener\FosRequestAuditor
+#        arguments: ['@service_container']
+#        tags:
+#            - { name: kernel.event_subscriber }
+
+    cta.aishe.service.chart:
+        class:      Cta\AisheBundle\Service\Chart
+        arguments:  ['@doctrine.orm.entity_manager']
     cta.aishe.service.report:
         class:      Cta\AisheBundle\Service\Report
-        arguments:  [@doctrine.orm.entity_manager, @security.context]
+        arguments:  ['@doctrine.orm.entity_manager', '@security.context']
+
+
+    cta.aishe.form.registration:
+        class: Cta\AisheBundle\Form\Registration
+        arguments: ['%fos_user.model.user.class%']
+        tags:
+            - { name: form.type, alias: cta_user_registration }
     cta.aishe.form.Institution:
         class: Cta\AisheBundle\Form\Institution
         tags:
@@ -44,6 +54,3 @@ services:
         class: Cta\AisheBundle\Form\ReportItem
         tags:
             - { name: form.type, alias: reportItem }
-    cta.aishe.service.chart:
-        class:      Cta\AisheBundle\Service\Chart
-        arguments:  [@doctrine.orm.entity_manager]

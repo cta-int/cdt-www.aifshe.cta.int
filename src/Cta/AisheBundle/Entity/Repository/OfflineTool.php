@@ -3,8 +3,6 @@
 namespace Cta\AisheBundle\Entity\Repository;
 
 use Devart\CommonBundle\Entity\Repository\Base;
-use Doctrine\ORM\NoResultException;
-use Doctrine\ORM\ORMInvalidArgumentException;
 use Doctrine\ORM\Query;
 
 /**
@@ -17,6 +15,7 @@ class OfflineTool extends Base
 {
     /**
      * @param array $params
+     *
      * @return array
      */
     public function findOverview(array $params = array())
@@ -29,9 +28,9 @@ class OfflineTool extends Base
         $qb = $this->getEntityManager()->createQueryBuilder();
 
         $query = $qb->select('ot', 'user_cr', 'user_mo')
-            ->from('CtaAisheBundle:OfflineTool'  , 'ot')
-            ->leftJoin('ot.createdBy'        , 'user_cr')
-            ->leftJoin('ot.modifiedBy'       , 'user_mo')
+            ->from('CtaAisheBundle:OfflineTool', 'ot')
+            ->leftJoin('ot.createdBy', 'user_cr')
+            ->leftJoin('ot.modifiedBy', 'user_mo')
             ->andWhere('ot.status != :status')
             ->setParameter('status', \Cta\AisheBundle\Entity\OfflineTool::ST_DELETED)
             ->orderBy('ot.createdAt', 'DESC');
@@ -47,20 +46,22 @@ class OfflineTool extends Base
         }
 
         $result['items'] = $query->getQuery()->getArrayResult();
+
         return $result;
     }
 
     /**
      * @return array
      */
-    public function findActiveVersion(){
+    public function findActiveVersion()
+    {
         $qb = $this->getEntityManager()->createQueryBuilder();
 
         $query = $qb->select('ot', 'user_cr', 'user_mo')
             ->setMaxResults(1)
-            ->from('CtaAisheBundle:OfflineTool'  , 'ot')
-            ->leftJoin('ot.createdBy'        , 'user_cr')
-            ->leftJoin('ot.modifiedBy'       , 'user_mo')
+            ->from('CtaAisheBundle:OfflineTool', 'ot')
+            ->leftJoin('ot.createdBy', 'user_cr')
+            ->leftJoin('ot.modifiedBy', 'user_mo')
             ->orderBy('ot.createdAt', 'DESC');
 
         $result = $query->getQuery()->getSingleResult();

@@ -3,7 +3,7 @@ imports:
 
 framework:
     router:
-        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        resource: '%kernel.root_dir%/config/routing_dev.yml'
         strict_requirements: true
     profiler: { only_exceptions: false }
 
@@ -22,12 +22,12 @@ monolog:
             members: [nested, swift]
         nested:
             type:  stream
-            path:  %kernel.logs_dir%/%kernel.environment%.log
+            path:  '%kernel.logs_dir%/%kernel.environment%.log'
             level: error
         swift:
             type:       swift_mailer
-            from_email: %mailer_error_from%
-            to_email:   %mailer_error_to%
+            from_email: '%mailer_error_from%'
+            to_email:   '%mailer_error_to%'
             subject:    "[AIFSHE][EXCEPTION][%kernel.environment%]: An Error Occurred!"
             level:      error
 

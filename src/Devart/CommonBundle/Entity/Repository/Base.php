@@ -2,6 +2,8 @@
 
 namespace Devart\CommonBundle\Entity\Repository;
 
+use Devart\CommonBundle\Entity\Base as BaseEntity;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\EntityRepository;
 
@@ -20,7 +22,7 @@ class Base extends EntityRepository
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
     {
         if (!array_key_exists('status', $criteria)) {
-            $criteria['status'] = \Devart\CommonBundle\Entity\BASE::ST_ACTIVE;
+            $criteria['status'] = BaseEntity::ST_ACTIVE;
         }
 
         return parent::findBy($criteria, $orderBy, $limit, $offset);
@@ -33,7 +35,7 @@ class Base extends EntityRepository
     public function findOneBy(array $criteria, array $orderBy = null)
     {
         if (!array_key_exists('status', $criteria)) {
-            $criteria['status'] = \Devart\CommonBundle\Entity\BASE::ST_ACTIVE;
+            $criteria['status'] = BaseEntity::ST_ACTIVE;
         }
 
         return parent::findOneBy($criteria, $orderBy);
@@ -51,7 +53,7 @@ class Base extends EntityRepository
         }
 
         // flag entity as deleted
-        $entity->setStatus(\Devart\CommonBundle\Entity\Base::ST_DELETED);
+        $entity->setStatus(BaseEntity::ST_DELETED);
 
         // save changes
         $this->_em->flush();
@@ -62,7 +64,7 @@ class Base extends EntityRepository
      * @param $countName
      * @return int
      */
-    public function count($query, $countName)
+    public function count(QueryBuilder $query, $countName)
     {
         $queryClone = clone $query;
         $queryClone->select('COUNT(' . $countName . ')');
