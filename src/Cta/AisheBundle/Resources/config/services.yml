@@ -34,7 +34,7 @@ services:
         arguments:  ['@doctrine.orm.entity_manager']
     cta.aishe.service.report:
         class:      Cta\AisheBundle\Service\Report
-        arguments:  ['@doctrine.orm.entity_manager', '@security.context']
+        arguments:  ['@doctrine.orm.entity_manager', '@security.authorization_checker', '@security.token_storage']
 
 
     cta.aishe.form.registration:

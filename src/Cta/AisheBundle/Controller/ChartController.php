@@ -4,13 +4,15 @@ namespace Cta\AisheBundle\Controller;
 
 use Cta\AisheBundle\Entity\Chart;
 use Cta\AisheBundle\Model\Data;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ChartController extends Controller
 {
-    public function indexAction($id)
+    public function indexAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
@@ -19,26 +21,26 @@ class ChartController extends Controller
             throw new EntityNotFoundException();
         }
 
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            if (!in_array($this->get('security.context')->getToken()->getUser(), $report->getUsers()->toArray())
-                && $report->getCreatedBy() != $this->get('security.context')->getToken()->getUser()
+        if (false === $this->isGranted('ROLE_ADMIN')) {
+            if (!in_array($this->getUser(), $report->getUsers()->toArray())
+                && $report->getCreatedBy() != $this->getUser()
             ) {
                 throw new AccessDeniedException('User is not allowed to view this report');
             }
         }
 
         $certifications = $em->getRepository('CtaAisheBundle:Certification')->findForShow(
-            Data::getLanguageCodes($this->getRequest()->getLocale())
+            Data::getLanguageCodes($request->getLocale())
         );
         $chartRepository = $em->getRepository('CtaAisheBundle:Chart')->findOneByReport($id);
 
-        $chart = $this->container->get('cta.aishe.service.Chart');
+        $chart = $this->get('cta.aishe.service.Chart');
 
-        $chart->setSpiderChart($id, Data::getLanguageCodes($this->getRequest()->getLocale()), $this->get('translator'));
+        $chart->setSpiderChart($id, Data::getLanguageCodes($request->getLocale()), $this->get('translator'));
         $charts['spider'] = json_encode($chart->getChart());
 
         $chart->setInvertedAxisChart(
-            $id, Data::getLanguageCodes($this->getRequest()->getLocale()), $this->get('translator')
+            $id, Data::getLanguageCodes($request), $this->get('translator')
         );
         $charts['invertedAxis'] = json_encode($chart->getChart());
 
@@ -81,9 +83,9 @@ class ChartController extends Controller
             throw new EntityNotFoundException();
         }
 
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            if (!in_array($this->get('security.context')->getToken()->getUser(), $report->getUsers()->toArray())
-                && $report->getCreatedBy() != $this->get('security.context')->getToken()->getUser()
+        if (false === $this->isGranted('ROLE_ADMIN')) {
+            if (!in_array($this->getUser(), $report->getUsers()->toArray())
+                && $report->getCreatedBy() != $this->getUser()
             ) {
                 throw new AccessDeniedException('User is not allowed to view this report');
             }
@@ -116,9 +118,9 @@ class ChartController extends Controller
             throw new EntityNotFoundException();
         }
 
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            if (!in_array($this->get('security.context')->getToken()->getUser(), $report->getUsers()->toArray())
-                && $report->getCreatedBy() != $this->get('security.context')->getToken()->getUser()
+        if (false === $this->isGranted('ROLE_ADMIN')) {
+            if (!in_array($this->getUser(), $report->getUsers()->toArray())
+                && $report->getCreatedBy() != $this->getUser()
             ) {
                 throw new AccessDeniedException('User is not allowed to view this report');
             }
@@ -132,7 +134,7 @@ class ChartController extends Controller
 
         $em->persist($chartRepository);
         $chartRepository->setModifiedAt(new \DateTime());
-        $chartRepository->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+        $chartRepository->setModifiedBy($this->getUser());
         $em->flush();
 
         $response = json_encode(array());
@@ -140,7 +142,7 @@ class ChartController extends Controller
         return new Response($response, 200, array('Content-Type' => 'application/json'));
     }
 
-    public function toggleLegendItemAction($id)
+    public function toggleLegendItemAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
@@ -149,16 +151,16 @@ class ChartController extends Controller
             throw new EntityNotFoundException();
         }
 
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            if (!in_array($this->get('security.context')->getToken()->getUser(), $report->getUsers()->toArray())
-                && $report->getCreatedBy() != $this->get('security.context')->getToken()->getUser()
+        if (false === $this->isGranted('ROLE_ADMIN')) {
+            if (!in_array($this->getUser(), $report->getUsers()->toArray())
+                && $report->getCreatedBy() != $this->getUser()
             ) {
                 throw new AccessDeniedException('User is not allowed to view this report');
             }
         }
 
         $certifications = $em->getRepository('CtaAisheBundle:Certification')->findForShow(
-            Data::getLanguageCodes($this->getRequest()->getLocale())
+            Data::getLanguageCodes($request)
         );
         $chartRepository = $em->getRepository('CtaAisheBundle:Chart')->findOneByReport($id);
 
@@ -226,7 +228,7 @@ class ChartController extends Controller
 
         $em->persist($chartRepository);
         $chartRepository->setModifiedAt(new \DateTime());
-        $chartRepository->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+        $chartRepository->setModifiedBy($this->getUser());
         $em->flush();
     }
 }

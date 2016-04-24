@@ -33,13 +33,13 @@ class ImportController extends Controller
 
         if ($form->isValid()) {
             $data = $form->getData();
-            $import = new Import($this->container->get('cta.aishe.service.report'));
+            $import = new Import($this->get('cta.aishe.service.report'));
 
             /**
              * if import succeeded
              */
             if ($import->aisheToReport($data['name'], $data['file'])) {
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'notice',
                     $this->get('translator')->trans(
                         'report.flash.notice',
@@ -47,13 +47,13 @@ class ImportController extends Controller
                     )
                 );
 
-                if($this->get('security.context')->isGranted('ROLE_AUDITOR')){
+                if($this->isGranted('ROLE_AUDITOR')){
                     $message = $this->get('devart.mail')->getMessage('CtaAisheBundle:Mails:Report/imported.html.twig', array(
-                        'user'     => $this->get('security.context')->getToken()->getUser(),
+                        'user'     => $this->getUser(),
                         'reportId' => $import->getReportId(),
                     ));
 
-                    $userManager = $this->container->get('fos_user.user_manager');
+                    $userManager = $this->get('fos_user.user_manager');
                     $adminsGroup = $userManager->findOverviewByGroup('ADMIN');
 
                     foreach($adminsGroup['items'] as $admin){
@@ -69,7 +69,7 @@ class ImportController extends Controller
              * else show errors
              */
             foreach ($import->getErrors() as $e) {
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'error',
                     $this->get('translator')->trans(
                         'form.flash.error',
@@ -94,12 +94,12 @@ class ImportController extends Controller
         }
 
         /* handle security */
-        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (false === $this->isGranted('IS_AUTHENTICATED_FULLY')) {
             // redirect to login
             $session->set('_security.main.target_path', $this->generateUrl('cta_aishe_report_import_offline'));
             return $this->redirect($this->generateUrl('fos_user_security_login'));
-        } else if (true === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            $this->get('session')->getFlashBag()->add(
+        } else if (true === $this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
                 'error',
                 $this->get('translator')->trans(
                     'form.flash.error',
@@ -116,7 +116,7 @@ class ImportController extends Controller
         }
 
         /* Everything looks fine so far, lets start importing */
-        $import = new Import($this->container->get('cta.aishe.service.report'));
+        $import = new Import($this->get('cta.aishe.service.report'));
 
         $importSucceeded = $import->jsonToReport($session->get(self::SESSION_REPORT));
         $session->remove(self::SESSION_REPORT);
@@ -125,7 +125,7 @@ class ImportController extends Controller
             return $this->redirect($this->generateUrl('cta_aishe_report_data', array('id' => $import->getReportId())));
         } else {
             foreach ($import->getErrors() as $e) {
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'error',
                     $this->get('translator')->trans(
                         'form.flash.error',

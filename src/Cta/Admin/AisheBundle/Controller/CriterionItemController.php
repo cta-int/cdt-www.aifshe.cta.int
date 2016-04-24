@@ -19,14 +19,16 @@ use Symfony\Component\HttpFoundation\Request;
 class CriterionItemController extends Controller
 {
     /**
-     * @param $criterionId
+     * @param Request $request
+     * @param         $criterionId
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function overviewAction($criterionId)
+    public function overviewAction(Request $request, $criterionId)
     {
         $em = $this->getDoctrine()->getManager();
         return $this->render('CtaAdminAisheBundle:CriterionItem:overview.html.twig', array(
-            'criterion' => $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($this->getRequest()->getLocale()), $criterionId),
+            'criterion' => $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($request->getLocale()), $criterionId),
         ));
     }
 
@@ -54,11 +56,11 @@ class CriterionItemController extends Controller
             $em->persist($criterionItemTranslation);
 
             $criterionItem->setModifiedAt(new \DateTime());
-            $criterionItem->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+            $criterionItem->setModifiedBy($this->getUser());
 
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -106,7 +108,7 @@ class CriterionItemController extends Controller
             $em->persist($criterionItem);
 
             $criterionItem->setModifiedAt(new \DateTime());
-            $criterionItem->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+            $criterionItem->setModifiedBy($this->getUser());
 
             $certs = $em->getRepository('CtaAisheBundle:Certification')->findAll();
             foreach ($certs as $cert) {
@@ -134,7 +136,7 @@ class CriterionItemController extends Controller
 
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -160,7 +162,7 @@ class CriterionItemController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('CtaAisheBundle:CriterionItem')->delete($id);
 
-        $this->get('session')->getFlashBag()->add(
+        $this->addFlash(
             'notice',
             $this->get('translator')->trans('criterion.item.deleted')
         );

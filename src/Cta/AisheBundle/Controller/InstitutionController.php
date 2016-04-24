@@ -61,7 +61,7 @@ class InstitutionController extends Controller
             $em->persist($institution);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -86,7 +86,7 @@ class InstitutionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('CtaAisheBundle:Institution')->delete($id);
 
-        $this->get('session')->getFlashBag()->add(
+        $this->addFlash(
             'notice',
             $this->get('translator')->trans('institution.deleted')
         );

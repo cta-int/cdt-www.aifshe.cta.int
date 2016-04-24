@@ -20,7 +20,7 @@ class GroupController extends Controller
      */
     public function overviewAction()
     {
-        $groupManager = $this->container->get('fos_user.group_manager');
+        $groupManager = $this->get('fos_user.group_manager');
         return $this->render('CtaAdminAisheBundle:Group:overview.html.twig', array(
             'groups' => $groupManager->findGroups(),
         ));
@@ -33,7 +33,7 @@ class GroupController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $groupManager    = $this->container->get('fos_user.group_manager');
+        $groupManager    = $this->get('fos_user.group_manager');
         $group           = $groupManager->findGroupBy(array('id' => $id));
 
         if (!$group) {
@@ -45,7 +45,7 @@ class GroupController extends Controller
         if ($form->isValid()) {
             $groupManager->updateGroup($group);
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -67,13 +67,13 @@ class GroupController extends Controller
      */
     public function deleteAction($id)
     {
-        $groupManager    = $this->container->get('fos_user.group_manager');
+        $groupManager    = $this->get('fos_user.group_manager');
         $group = $groupManager->findGroupBy(array('id' => $id));
 
         if ($group) {
             $groupManager->deleteGroup($group);
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 'Group [' . $group->getName() . '] deleted.'
             );
