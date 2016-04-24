@@ -10,13 +10,14 @@
 namespace Cta\AisheBundle\Controller;
 
 use Cta\AisheBundle\Entity\Chart;
+use Cta\AisheBundle\Model\Criteria;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Cta\AisheBundle\Entity\Report;
+use Cta\AisheBundle\Entity\Report as ReportEntity;
 use Cta\AisheBundle\Entity\ReportItem;
 use Cta\AisheBundle\Model\Data;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -35,15 +36,15 @@ class ReportController extends Controller
     public function changeStatusAction($id, $action)
     {
         $actions = array(
-            'request'  => Report::ST_APPROVAL_REQUESTED,
-            'approve'  => Report::ST_APPROVED,
-            'deny'     => Report::ST_APPROVAL_DENIED,
+            'request'  => ReportEntity::ST_APPROVAL_REQUESTED,
+            'approve'  => ReportEntity::ST_APPROVED,
+            'deny'     => ReportEntity::ST_APPROVAL_DENIED,
         );
 
         if (array_key_exists($action, $actions)) {
             $em = $this->getDoctrine()->getManager();
 
-            $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
+            $report = $em->getRepository(ReportEntity::class)->findNotDeletedById($id);
 
             if (!$report) {
                 throw new EntityNotFoundException();
@@ -84,10 +85,10 @@ class ReportController extends Controller
     public function dataAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
+        $report = $em->getRepository(ReportEntity::class)->findNotDeletedById($id);
         $newReport = false;
         if (!$report) {
-            $report = new Report();
+            $report = new ReportEntity();
             $newReport = true;
         } else {
             if (false === $this->isGranted('ROLE_ADMIN')) {
@@ -105,7 +106,7 @@ class ReportController extends Controller
                 $report->setInstitution($this->getUser()->getInstitution());
             }
             if (is_null($report->getIsOfficial())) {
-                if (false !== $this->isGranted('ROLE_AUDITOR')) {
+                if ($this->isGranted('ROLE_AUDITOR')) {
                     $report->setIsOfficial(true);
                 } else {
                     $report->setIsOfficial(false);
@@ -172,7 +173,7 @@ class ReportController extends Controller
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
+        $report = $em->getRepository(ReportEntity::class)->findNotDeletedById($id);
 
         if (!$report) {
             throw new EntityNotFoundException();
@@ -184,7 +185,7 @@ class ReportController extends Controller
             }
         }
 
-        $em->getRepository('CtaAisheBundle:Report')->delete($id);
+        $em->getRepository(ReportEntity::class)->delete($id);
 
         $this->addFlash(
             'notice',
@@ -208,7 +209,7 @@ class ReportController extends Controller
     public function editAction(Request $request, $id, $chapter, $paragraph)
     {
         $em = $this->getDoctrine()->getManager();
-        $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
+        $report = $em->getRepository(ReportEntity::class)->findNotDeletedById($id);
 
         if (!$report) {
             throw new EntityNotFoundException();
@@ -222,7 +223,7 @@ class ReportController extends Controller
         }
 
         $criteria = $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($request->getLocale()));
-        $criterion = \Cta\AisheBundle\Model\Criteria::getCurrentCriterion($criteria, $chapter, $paragraph);
+        $criterion = Criteria::getCurrentCriterion($criteria, $chapter, $paragraph);
 
         if (is_null($criterion)) {
             throw new Exception('Criterion not found.');
@@ -286,7 +287,7 @@ class ReportController extends Controller
                 );
 
                 if ($form->get('saveAndNext')->isClicked()) {
-                    $nextCriterion = \Cta\AisheBundle\Model\Criteria::getParamsForNextCriterion($criteria, $id, $chapter, $paragraph);
+                    $nextCriterion = Criteria::getParamsForNextCriterion($criteria, $id, $chapter, $paragraph);
                     return $this->redirect($this->generateUrl($nextCriterion['route'], $nextCriterion['params']));
                 }
             }
@@ -310,19 +311,15 @@ class ReportController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        if (false !== $this->isGranted('ROLE_ADMIN')) {
-            $params = array();
-        } else {
-            $params = array(
-                'user'      => $this->getUser(),
-                'isAuditor' => (false !== $this->get('security.authorization_checker')->isGranted('ROLE_AUDITOR')),
-            );
-        }
+        $params = array(
+            'user'      => $this->getUser(),
+            'isAuditor' => $this->isGranted('ROLE_AUDITOR'),
+            'isAdmin'   => $this->isGranted('ROLE_ADMIN'),
+            'start'     => ($page - 1) * self::ITEMS_PER_PAGE,
+            'limit'     => self::ITEMS_PER_PAGE,
+        );
 
-        $params['start']    = ($page - 1) * self::ITEMS_PER_PAGE;
-        $params['limit']    = self::ITEMS_PER_PAGE;
-
-        $reports = $em->getRepository('CtaAisheBundle:Report')->findOverview($params);
+        $reports = $em->getRepository(ReportEntity::class)->findOverview($params);
 
         if ($page > 1 && $reports['count'] < 1) {
             return $this->redirect($this->generateUrl('cta_aishe_report_overview'));
@@ -346,8 +343,7 @@ class ReportController extends Controller
     public function showAction(Request $request, $id, $print)
     {
         $em = $this->getDoctrine()->getManager();
-        $report = $em->getRepository('CtaAisheBundle:Report')->findForShow($id, Data::getLanguageCodes($request->getLocale()));
-        //$chartRepository = $em->getRepository('CtaAisheBundle:Chart')->findOneByReport($id);
+        $report = $em->getRepository(ReportEntity::class)->findForShow($id, Data::getLanguageCodes($request->getLocale()));
 
         if (!$report) {
             throw new EntityNotFoundException();
@@ -393,7 +389,7 @@ class ReportController extends Controller
     public function usersAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
+        $report = $em->getRepository(ReportEntity::class)->findNotDeletedById($id);
 
         if (!$report) {
             throw new EntityNotFoundException();
@@ -459,7 +455,7 @@ class ReportController extends Controller
     public function viewAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $report = $em->getRepository('CtaAisheBundle:Report')->findNotDeletedById($id);
+        $report = $em->getRepository(ReportEntity::class)->findNotDeletedById($id);
 
         if (!$report) {
             throw new EntityNotFoundException();

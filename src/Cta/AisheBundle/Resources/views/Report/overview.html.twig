@@ -24,6 +24,8 @@
         {% for report in reports %}
             <li>
                 <a href="{{ path('cta_aishe_report_view', {'id': report.id}) }}">
+                    <span class="institution-name">{% if report.institution %}{{ 'report.institution'|trans() }}:&nbsp;{{ report.institution.name }}{% else %}&nbsp;{% endif %}</span>
+                    <span class="institution-name">Author: {{ report.createdBy.username }}</span>
                     <span class="title">{{ report.name }}</span>
                     <span class="edit-author">{% if report.modifiedBy is not null %}{{ report.modifiedBy.username }}{% else %}{% if report.createdBy is not null %}{{ report.createdBy.username }}{% else %}&nbsp;{% endif %}{% endif %}</span>
                     <span class="edit-date">{% if report.modifiedAt is not null %}{{ report.modifiedAt|date("Y-m-d") }}{% else %}{% if report.createdAt is not null %}{{ report.createdAt|date("Y-m-d") }}{% else %}&nbsp;{% endif %}{% endif %}</span>
