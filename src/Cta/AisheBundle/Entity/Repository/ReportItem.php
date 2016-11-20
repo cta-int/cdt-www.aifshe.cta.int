@@ -2,6 +2,9 @@
 
 namespace Cta\AisheBundle\Entity\Repository;
 
+use Cta\AisheBundle\Entity\CriterionItem;
+use Cta\AisheBundle\Entity\Report;
+use Cta\AisheBundle\Entity\ReportItem as ReportItemEntity;
 use Devart\CommonBundle\Entity\Repository\Base;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\ORMInvalidArgumentException;
@@ -25,14 +28,14 @@ class ReportItem extends Base
 
         $query = $qb->select('ri')
             ->from('CtaAisheBundle:ReportItem'  , 'ri')
-            ->leftJoin('ri.report'              , 'r', Query\Expr\Join::WITH, $qb->expr()->neq('r.status', \Cta\AisheBundle\Entity\Report::ST_DELETED))
-            ->leftJoin('ri.criterionItem'       , 'ci', Query\Expr\Join::WITH, $qb->expr()->eq('ci.status', \Cta\AisheBundle\Entity\CriterionItem::ST_ACTIVE))
+            ->leftJoin('ri.report'              , 'r', Query\Expr\Join::WITH, $qb->expr()->neq('r.status', Report::ST_DELETED))
+            ->leftJoin('ri.criterionItem'       , 'ci', Query\Expr\Join::WITH, $qb->expr()->eq('ci.status', CriterionItem::ST_ACTIVE))
             ->andWhere('ri.status = :status')
             ->andWhere('r.id = :reportId')
             ->andWhere('ci.id = :criterionItemId')
             ->setParameter('reportId', $reportId)
             ->setParameter('criterionItemId', $criterionItemId)
-            ->setParameter('status', \Cta\AisheBundle\Entity\ReportItem::ST_ACTIVE)
+            ->setParameter('status', ReportItemEntity::ST_ACTIVE)
             ->getQuery();
 
         try {

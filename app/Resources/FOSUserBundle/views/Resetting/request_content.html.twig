@@ -1,6 +1,6 @@
 {% trans_default_domain 'messages' %}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request smallForm">
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_resetting_send_email'), 'attr': { 'class': 'fos_user_resetting_request smallForm' } }) }}
     <h2>{{ 'security.base.forgotPassword'|trans() }}</h2>
 
     <div class="formContent">
@@ -12,4 +12,4 @@
 
         <input type="submit" value="{{ 'security.base.submit'|trans }}" />
     </div>
-</form>
+{{ form_end(form) }}

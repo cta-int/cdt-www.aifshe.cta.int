@@ -6,13 +6,13 @@ cta_admin_aishe_homepage:
 # USER
 cta_admin_aishe_security_user_pending_activate:
     path:  /users/pending/activate/{action}/{id}
-    defaults: { _controller: CtaAdminAisheBundle:User:activatePendingAuditor }
+    defaults: { _controller: CtaAdminAisheBundle:User:activateUser }
     requirements:
         action: \w+
         id:     \d+
 cta_admin_aishe_security_user_pending:
     path:  /users/pending
-    defaults: { _controller: CtaAdminAisheBundle:User:pendingAuditors }
+    defaults: { _controller: CtaAdminAisheBundle:User:pendingActivation }
 cta_admin_aishe_security_user:
     path:  /users/{page}
     defaults: { _controller: CtaAdminAisheBundle:User:overview, page:1 }

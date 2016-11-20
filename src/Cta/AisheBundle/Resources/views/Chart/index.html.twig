@@ -33,10 +33,10 @@
                     series: {
                         animation: false
                     }
-                }
+                };
                 options['chart']['renderTo'] = 'chart';
                 return new Highcharts.Chart(options);
-            }
+            };
 
             renderInvertedAxisChart = function () {
                 var options = {{ charts.invertedAxis|raw }}, chart;
@@ -57,7 +57,7 @@
                     series: {
                         animation: false
                     }
-                }
+                };
                 options['chart']['renderTo'] = 'chart';
 //                options['xAxis']['labels'] = {
 //                    useHTML: true
@@ -84,7 +84,7 @@
                     }
                 });
                 return chart;
-            }
+            };
 
             function renderChart(type) {
                 var chart, hiddenSeries;

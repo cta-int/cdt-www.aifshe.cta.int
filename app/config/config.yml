@@ -3,17 +3,17 @@ imports:
     - { resource: security.yml }
 
 framework:
-    translator:      { fallback: %locale% }
-    secret:          %secret%
+    translator:      { fallback: '%locale%' }
+    secret:          '%secret%'
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: '%kernel.root_dir%/config/routing.yml'
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
     validation:      { enabled: true }
     templating:
         engines: ['twig']
-    default_locale:  "%locale%"
+    default_locale:  '%locale%'
     trusted_proxies: ~
     session:         ~
     fragments:       ~
@@ -24,36 +24,36 @@ twig:
     form:
         resources:
             - ':Form:fields.html.twig'
-    debug:            %kernel.debug%
-    strict_variables: %kernel.debug%
+    debug:            '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
 
 # Assetic Configuration
 assetic:
-    debug:          %kernel.debug%
+    debug:          '%kernel.debug%'
     use_controller: false
     bundles:        [ CtaAisheBundle, CtaAdminAisheBundle]
     filters:
         cssrewrite: ~
         uglifyjs2:
-            bin: "%kernel.root_dir%/Resources/node_modules/uglify-js/bin/uglifyjs"
-            apply_to: "\.js$"
+            bin: '%kernel.root_dir%/Resources/node_modules/uglify-js/bin/uglifyjs'
+            apply_to: '\.js$'
         uglifycss:
-            bin: "%kernel.root_dir%/Resources/node_modules/uglifycss/uglifycss"
-            apply_to: "\.css$"
+            bin: '%kernel.root_dir%/Resources/node_modules/uglifycss/uglifycss'
+            apply_to: '\.css$'
 
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
+        driver:   '%database_driver%'
+        host:     '%database_host%'
+        port:     '%database_port%'
+        dbname:   '%database_name%'
+        user:     '%database_user%'
+        password: '%database_password%'
         charset:  UTF8
 
     orm:
-        auto_generate_proxy_classes: %kernel.debug%
+        auto_generate_proxy_classes: '%kernel.debug%'
         auto_mapping: true
 
 # Swiftmailer Configuration
@@ -62,7 +62,7 @@ swiftmailer:
     host:      '%mailer_host%'
     username:  '%mailer_user%'
     password:  '%mailer_password%'
-    port:       587
+    port:      '%mailer_port%'
     encryption: tls
     spool:     { type: memory }
 
@@ -79,7 +79,7 @@ fos_user:
     use_username_form_type: false
     registration:
         form:
-            type: cta_user_registration
+            type: Cta\AisheBundle\Form\Registration
         confirmation:
             enabled:        true
             from_email:

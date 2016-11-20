@@ -10,10 +10,6 @@
 namespace Cta\AisheBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\SecurityContext;
-use Cta\AisheBundle\Model\Indicators;
-use Symfony\Component\HttpFoundation\Request;
-use Cta\AisheBundle\Model\Data;
 use Symfony\Component\Translation\Translator;
 
 class Chart
@@ -22,7 +18,6 @@ class Chart
 
     /**
      * @param EntityManager $em
-     * @param SecurityContext $securityContext
      */
     public function __construct(EntityManager $em)
     {
@@ -114,26 +109,6 @@ class Chart
             )
         );
 
-//        $i = count($chart['series']);
-//        foreach ($certifications as $certification) {
-//            $chart['series'][$i] = array(
-//                'name' => $translator->trans('base.' . $certification['name']),
-//                'data' => array(),
-//                'marker' => array(
-//                    'symbol' => sprintf('url(/bundles/ctaaishe/img/%s-90.png)', $certification['name']),
-//                ),
-//                'fillOpacity' => 0,
-//                'lineWidth' => 0,
-//                'pointPlacement' => 'on'
-//            );
-//            foreach ($certification['certificationRequirements'] as $certificationRequirement) {
-//                $chart['series'][$i]['data'][] = floatval($certificationRequirement['stage']);
-//            }
-//            $i++;
-//        }
-//
-//        unset($i);
-
         $this->chart = $chart;
     }
 
@@ -209,23 +184,6 @@ class Chart
                 )
             )
         );
-
-//        $i = count($chart['series']);
-//        foreach ($certifications as $certification) {
-//            $chart['series'][$i] = array(
-//                'name' => $translator->trans('base.'.$certification['name']),
-//                'data' => array(),
-//                'marker' => array(
-//                    'symbol' => sprintf('url(/bundles/ctaaishe/img/%s.png)', $certification['name']),
-//                ),
-//                'lineWidth' => 0,
-//                'pointPlacement' => 'on'
-//            );
-//            foreach ($certification['certificationRequirements'] as $certificationRequirement) {
-//                $chart['series'][$i]['data'][] = floatval($certificationRequirement['stage']);
-//            }
-//            $i++;
-//        }
 
         unset($i);
 

@@ -13,6 +13,7 @@ use \Doctrine\ORM\NoResultException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Cta\AisheBundle\Model\Data;
+use Symfony\Component\HttpFoundation\Response;
 
 class PageController extends Controller
 {
@@ -20,8 +21,7 @@ class PageController extends Controller
      * @param Request $request
      * @param $identifier
      *
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
+     * @return Response
      */
     public function viewAction(Request $request, $identifier)
     {
@@ -34,7 +34,7 @@ class PageController extends Controller
      * @param Request $request
      * @param $identifier
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function partAction(Request $request, $identifier)
     {

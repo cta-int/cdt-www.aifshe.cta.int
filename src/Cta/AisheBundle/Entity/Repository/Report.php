@@ -2,6 +2,7 @@
 
 namespace Cta\AisheBundle\Entity\Repository;
 
+use Cta\AisheBundle\Entity\Report as ReportEntity;
 use Devart\CommonBundle\Entity\Repository\Base;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\EntityNotFoundException;
@@ -29,31 +30,32 @@ class Report extends Base
 
         $qb = $this->getEntityManager()->createQueryBuilder();
 
-        $query = $qb->select('r', 'user_cr', 'user_mo')
-            ->from('CtaAisheBundle:Report'  , 'r')
-            ->leftJoin('r.createdBy'        , 'user_cr')
-            ->leftJoin('r.modifiedBy'       , 'user_mo')
+        $query = $qb->select('r', 'user_cr', 'user_mo', 'i')
+            ->from(ReportEntity::class  , 'r')
+            ->leftJoin('r.createdBy'    , 'user_cr')
+            ->leftJoin('r.modifiedBy'   , 'user_mo')
+            ->leftJoin('r.institution'  , 'i', Query\Expr\Join::WITH, $qb->expr()->eq('i.status', \Cta\AisheBundle\Entity\Institution::ST_ACTIVE))
             ->andWhere('r.status != :status')
-            ->setParameter('status', \Cta\AisheBundle\Entity\Report::ST_DELETED)
+            ->setParameter('status', ReportEntity::ST_DELETED)
             ->orderBy('r.createdAt', 'DESC');
 
-        $onlyShowOfficial = true;
-
         if (array_key_exists('user', $params)) {
-            if (array_key_exists('isAuditor', $params) && $params['isAuditor']) {
-                $query->andWhere('r.createdBy = :creator OR r.institution = :institution');
-                $query->setParameter('institution', $params['user']->getInstitution());
+            $user = $params['user'];
+            if (array_key_exists('isAdmin', $params) && $params['isAdmin']) {
+                // show everything from everyone
+            } else if (array_key_exists('isAuditor', $params) && $params['isAuditor']) {
+                // show all created by this user + those from the same institution that are official +
+                $query->andWhere('r.createdBy = :creator OR (r.institution = :institution AND (r.isOfficial=1 OR (r.status IN (:approveStatus))))');
+                $query->setParameter('creator', $user);
+                $query->setParameter('institution', $user->getInstitution());
+                $query->setParameter('approveStatus', [ReportEntity::ST_APPROVAL_REQUESTED, ReportEntity::ST_APPROVAL_DENIED, ReportEntity::ST_APPROVED]);
             } else {
-                $onlyShowOfficial = false;
+                // show only the reports from this user
                 $query->addSelect('users');
                 $query->leftJoin('r.users', 'users');
                 $query->andWhere('r.createdBy = :creator OR users = :creator');
+                $query->setParameter('creator', $user);
             }
-            $query->setParameter('creator', $params['user']);
-        }
-
-        if ($onlyShowOfficial) {
-            $query->andWhere('r.isOfficial = 1');
         }
 
         $result['count'] = $this->count($query, 'r.id');
@@ -79,11 +81,11 @@ class Report extends Base
         $qb = $this->getEntityManager()->createQueryBuilder();
 
         $query = $qb->select('r')
-            ->from('CtaAisheBundle:Report', 'r')
+            ->from(ReportEntity::class, 'r')
             ->andWhere('r.id = :id')
             ->andWhere('r.status != :status')
             ->setParameter('id', $id)
-            ->setParameter('status', \Cta\AisheBundle\Entity\Report::ST_DELETED)
+            ->setParameter('status', ReportEntity::ST_DELETED)
             ->getQuery();
 
         try {
@@ -108,7 +110,7 @@ class Report extends Base
         $qb = $this->getEntityManager()->createQueryBuilder();
 
         $query = $qb->select('r', 'ri', 'ci', 'c', 'crby', 'i', 'users')
-            ->from('CtaAisheBundle:Report',         'r')
+            ->from(ReportEntity::class,         'r')
             ->leftJoin('r.reportItems',             'ri', Query\Expr\Join::WITH, $qb->expr()->eq('ri.status', \Cta\AisheBundle\Entity\ReportItem::ST_ACTIVE))
             ->leftJoin('ri.criterionItem',          'ci', Query\Expr\Join::WITH, $qb->expr()->eq('ci.status', \Cta\AisheBundle\Entity\CriterionItem::ST_ACTIVE))
             ->leftJoin('ci.criterion',              'c', Query\Expr\Join::WITH, $qb->expr()->eq('c.status', \Cta\AisheBundle\Entity\Criterion::ST_ACTIVE))
@@ -117,7 +119,7 @@ class Report extends Base
             ->leftJoin('r.createdBy',               'crby')
             ->andWhere('r.id = :id')
             ->andWhere('r.status != :status')
-            ->setParameter('status', \Cta\AisheBundle\Entity\Report::ST_DELETED)
+            ->setParameter('status', ReportEntity::ST_DELETED)
             ->setParameter('id', $id)
             ->getQuery();
 
@@ -136,21 +138,21 @@ class Report extends Base
     {
         $em = $this->getEntityManager();
 
-        $report = $em->getRepository('CtaAisheBundle:Report')->find($id);
+        $report = $em->getRepository(ReportEntity::class)->find($id);
         if (!$report) {
             throw new EntityNotFoundException('Entity with id [' . $id . '] could not be found.');
         }
 
         // flag reportItems as deleted
         foreach ($report->getReportItems() as $reportItem) {
-            $reportItem->setStatus(\Cta\AisheBundle\Entity\Report::ST_DELETED);
+            $reportItem->setStatus(ReportEntity::ST_DELETED);
         }
 
         // flag chart settings as deleted
         $report->getChartSettings()->setStatus(\Cta\AisheBundle\Entity\Chart::ST_DELETED);
 
         // flag report as deleted
-        $report->setStatus(\Cta\AisheBundle\Entity\Report::ST_DELETED);
+        $report->setStatus(ReportEntity::ST_DELETED);
 
         // save changes
         $em->flush();

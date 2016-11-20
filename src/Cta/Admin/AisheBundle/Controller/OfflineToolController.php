@@ -45,7 +45,7 @@ class OfflineToolController extends Controller
         }
         $em = $this->getDoctrine()->getManager();
 
-        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+        if ($this->isGranted('ROLE_ADMIN')) {
             $params = array();
         }
         $params['start'] = ($page - 1) * self::ITEMS_PER_PAGE;
@@ -54,7 +54,7 @@ class OfflineToolController extends Controller
         $offlineTools = $em->getRepository('CtaAisheBundle:OfflineTool')->findOverview($params);
 
         if ($page > 1 && $offlineTools['count'] < 1) {
-            return $this->redirect($this->generateUrl('cta_admin_offline_tool_overview'));
+            return $this->redirect($this->generateUrl('cta_admin_aishe_offline_tool_overview'));
         }
 
         $path = $this->get('kernel')->getRootDir() . "/../shared/";
@@ -140,11 +140,11 @@ class OfflineToolController extends Controller
             $em->persist($offlineTool);
 
             $offlineTool->setModifiedAt(new \DateTime());
-            $offlineTool->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+            $offlineTool->setModifiedBy($this->getUser());
 
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -178,11 +178,11 @@ class OfflineToolController extends Controller
             $now = new \DateTime();
             $offlineTool->setFileName($formData->getFileName());
             $offlineTool->setModifiedAt(new \DateTime());
-            $offlineTool->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+            $offlineTool->setModifiedBy($this->getUser());
             $offlineTool->setFileToken(uniqid() . '_' . $now->format('d_m_Y_H_i'));
             $offlineTool->setLatestVersion(true);
             $offlineTool->setCreatedAt(new \DateTime());
-            $offlineTool->setCreatedBy($this->container->get('security.context')->getToken()->getUser());
+            $offlineTool->setCreatedBy($this->getUser());
             $offlineTool->setStatus(OfflineTool::ST_ACTIVE);
             $offlineTool->setOutdated(false);
             $em->flush();
@@ -191,7 +191,7 @@ class OfflineToolController extends Controller
 
             $this->_createZip($offlineTool);
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -208,6 +208,8 @@ class OfflineToolController extends Controller
     }
 
     /**
+     * @param $offlineTool
+     *
      * @return bool
      */
     private function _updateOfflineTool($offlineTool)
@@ -237,6 +239,8 @@ class OfflineToolController extends Controller
 
     /**
      * @param $criteria
+     * @param $lang
+     *
      * @return string
      */
     private function _generateCriteriaJsonString($criteria, $lang)
@@ -312,7 +316,7 @@ class OfflineToolController extends Controller
      * @param $zip
      * @param $toolDir
      */
-    private function _folderToZip($folder, &$zip, $toolDir)
+    private function _folderToZip($folder, ZipArchive &$zip, $toolDir)
     {
         $handle = opendir($folder);
         while (false !== $file = readdir($handle)) {

@@ -9,6 +9,7 @@
 
 namespace Cta\Admin\AisheBundle\Controller;
 
+use Cta\AisheBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,9 +18,6 @@ class UserController extends Controller
 {
     const ITEMS_PER_PAGE = 20;
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     /**
      * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
@@ -31,7 +29,7 @@ class UserController extends Controller
         $params['limit']        = self::ITEMS_PER_PAGE;
         $params['blockGroups']  = array('DEVART');
 
-        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findOverview($params);
 
         if ($page > 1 && $users['count'] < 1) {
@@ -52,7 +50,7 @@ class UserController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $userManager    = $this->container->get('fos_user.user_manager');
+        $userManager    = $this->get('fos_user.user_manager');
         $user           = $userManager->findUserBy(array('id' => $id));
 
         if (!$user) {
@@ -65,7 +63,7 @@ class UserController extends Controller
         if ($form->isValid()) {
             $userManager->updateUser($user);
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -87,7 +85,7 @@ class UserController extends Controller
      */
     public function pendingAuditorsAction(Request $request)
     {
-        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsersBy(array(
             'requestAuditor'  => true,
         ));
@@ -102,6 +100,28 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function pendingActivationAction(Request $request)
+    {
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsersBy(array(
+            'enabled' => true,
+            'locked'  => true,
+            'expired' => false,
+        ));
+
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse(count($users));
+        } else {
+            return $this->render('CtaAdminAisheBundle:User:pending.html.twig', array(
+                'users' => $users,
+            ));
+        }
+    }
+
+    /**
      * @param $action
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -109,7 +129,7 @@ class UserController extends Controller
     public function activatePendingAuditorAction($action, $id)
     {
         if ($action == 'accept' || $action == 'decline') {
-            $userManager = $this->container->get('fos_user.user_manager');
+            $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->findUserBy(array(
                 'id'    => $id,
             ));
@@ -117,7 +137,7 @@ class UserController extends Controller
             if ($user) {
                 if ($action == 'accept') {
                     // add auditing group to this user
-                    $groupManager = $this->container->get('fos_user.group_manager');
+                    $groupManager = $this->get('fos_user.group_manager');
                     $auditorGroup = $groupManager->findGroupByName('AUDITOR');
                     if ($auditorGroup) {
                         $user->addGroup($auditorGroup);
@@ -141,7 +161,7 @@ class UserController extends Controller
                 $userManager->updateUser($user);
 
 
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'notice',
                     $this->get('translator')->trans(
                         'form.flash.notice',
@@ -149,7 +169,7 @@ class UserController extends Controller
                     )
                 );
             } else {
-                $this->get('session')->getFlashBag()->add(
+                $this->addFlash(
                     'error',
                     $this->get('translator')->trans(
                         'form.flash.error',
@@ -158,6 +178,66 @@ class UserController extends Controller
                 );
             }
         }
+        return $this->redirect($this->generateUrl('cta_admin_aishe_security_user_pending'));
+    }
+
+    /**
+     * @param $action
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function activateUserAction($action, $id)
+    {
+        if ($action == 'accept' || $action == 'decline') {
+            $userManager = $this->get('fos_user.user_manager');
+            /** @var User $user */
+            $user = $userManager->findUserBy(array(
+                'id'    => $id,
+            ));
+
+            if ($user) {
+                if ($action == 'accept') {
+                    // unlock user
+                    $user->setLocked(false);
+                    $user->setExpired(false);
+                    $userManager->updateUser($user);
+
+                    $mailTemplate = 'CtaAdminAisheBundle:Mails:Fos/Registration/accept.html.twig';
+                } else {
+                    // unlock user, but expire the credentials
+                    $user->setLocked(false);
+                    $user->setExpired(true);
+                    $userManager->updateUser($user);
+
+                    $mailTemplate = 'CtaAdminAisheBundle:Mails:Fos/Registration/reject.html.twig';
+                }
+
+                // send user the email with the result of the review
+                $message = $this->get('devart.mail')
+                    ->getMessage($mailTemplate, ['user' => $user])
+                    ->addTo($user->getEmail());
+
+                $this->get('mailer')
+                    ->send($message);
+
+                $this->addFlash(
+                    'notice',
+                    $this->get('translator')->trans(
+                        'form.flash.notice',
+                        array('%subject%' => $user->getUsername())
+                    )
+                );
+            } else {
+                $this->addFlash(
+                    'error',
+                    $this->get('translator')->trans(
+                        'form.flash.error',
+                        array('%subject%' => 'loading id ' . $id)
+                    )
+                );
+            }
+        }
+
         return $this->redirect($this->generateUrl('cta_admin_aishe_security_user_pending'));
     }
 }

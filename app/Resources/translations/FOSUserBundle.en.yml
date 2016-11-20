@@ -1,0 +1,5 @@
+registration:
+    confirmed:          'Congratulations you have succesfully confirmed your email address.'
+    loginMeedsApproval: 'However, you can not log in until your registration has been reviewed.'
+    needsApproval:      'The administrators will review your registration as soon as possible and they will confirm or reject your application.'
+    emailAfterApproval: 'You will receive an email when your application has been reviewed.'

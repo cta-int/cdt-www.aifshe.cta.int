@@ -1,0 +1,12 @@
+{% extends '::mail.html.twig' %}
+
+{% block subject 'Your registration request has been approved, ' ~ user.getUsername() %}
+
+{% block content %}
+    Dear {{ user.getUserName() }}, <br/><br/>
+
+    Your access to the AIFSHE tool has been approved, you can now log in <a href="{{ appUrl }}" style="color: #e74739; text-decoration: underline;">here</a> with the username and password you have chosen.
+
+    <br/><br/>
+    <em>AIFSHE</em>
+{% endblock %}

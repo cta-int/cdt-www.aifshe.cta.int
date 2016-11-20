@@ -46,7 +46,7 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -82,11 +82,11 @@ class PageController extends Controller
             $em->persist($pageTranslation);
 
             $page->setModifiedAt(new \DateTime());
-            $page->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+            $page->setModifiedBy($this->getUser());
 
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',

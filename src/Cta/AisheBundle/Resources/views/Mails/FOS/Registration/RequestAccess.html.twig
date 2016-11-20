@@ -1,0 +1,13 @@
+{% extends '::mail.html.twig' %}
+
+{% block subject 'Access requested by ' ~ user.getUsername() %}
+
+{% block content %}
+    Dear ADMIN, <br/><br/>
+
+    A new user <strong>({{ user.getUsername() }})</strong> has just registered on the AIFSHE tool.<br/>
+    Click <a href="{{ appUrl }}{{ path('cta_admin_aishe_security_user_pending_activate', {'action': 'accept', 'id': user.getId()}) }}" style="color: #e74739; text-decoration: underline;">here</a> to approve the access.
+
+    <br/><br/>
+    <em>AIFSHE</em>
+{% endblock %}

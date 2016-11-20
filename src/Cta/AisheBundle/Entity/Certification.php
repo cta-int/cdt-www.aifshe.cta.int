@@ -2,6 +2,7 @@
 
 namespace Cta\AisheBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,7 +30,7 @@ class Certification extends Base
      */
     public function __construct()
     {
-        $this->certificationRequirements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->certificationRequirements = new ArrayCollection();
     }
     
     /**
@@ -68,10 +69,10 @@ class Certification extends Base
     /**
      * Add certificationRequirements
      *
-     * @param \Cta\AisheBundle\Entity\CertificationRequirement $certificationRequirements
+     * @param CertificationRequirement $certificationRequirements
      * @return Certification
      */
-    public function addCertificationRequirement(\Cta\AisheBundle\Entity\CertificationRequirement $certificationRequirements)
+    public function addCertificationRequirement(CertificationRequirement $certificationRequirements)
     {
         $this->certificationRequirements[] = $certificationRequirements;
     
@@ -81,9 +82,9 @@ class Certification extends Base
     /**
      * Remove certificationRequirements
      *
-     * @param \Cta\AisheBundle\Entity\CertificationRequirement $certificationRequirements
+     * @param CertificationRequirement $certificationRequirements
      */
-    public function removeCertificationRequirement(\Cta\AisheBundle\Entity\CertificationRequirement $certificationRequirements)
+    public function removeCertificationRequirement(CertificationRequirement $certificationRequirements)
     {
         $this->certificationRequirements->removeElement($certificationRequirements);
     }

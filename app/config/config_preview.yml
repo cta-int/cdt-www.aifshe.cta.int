@@ -12,12 +12,12 @@ monolog:
             members: [nested, swift]
         nested:
             type:  stream
-            path:  %kernel.logs_dir%/%kernel.environment%.log
+            path:  '%kernel.logs_dir%/%kernel.environment%.log'
             level: error
         swift:
             type:       swift_mailer
-            from_email: %mailer_error_from%
-            to_email:   %mailer_error_to%
+            from_email: '%mailer_error_from%'
+            to_email:   '%mailer_error_to%'
             subject:    "[AIFSHE][EXCEPTION][%kernel.environment%]: An Error Occurred!"
             level:      error
 

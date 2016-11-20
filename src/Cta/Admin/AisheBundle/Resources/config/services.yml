@@ -28,7 +28,7 @@ services:
             - { name: form.type, alias: offlineTool }
     cta.admin.aishe.form.criterion.item:
         class: Cta\Admin\AisheBundle\Form\CriterionItem
-        arguments:  [@doctrine.orm.entity_manager]
+        arguments:  ['@doctrine.orm.entity_manager']
         tags:
             - { name: form.type, alias: criterion_item }
     cta.admin.aishe.form.criterion.item.translation:

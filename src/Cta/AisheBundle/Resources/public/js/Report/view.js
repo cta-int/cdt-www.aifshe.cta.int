@@ -93,7 +93,7 @@ $(document).ready(function() {
                     });
 
                     // Do ajax save request
-                    updateReport(self, { startflag: null, endflag: null, priority: 0 })
+                    updateReport(self, { startflag: null, endflag: null, priority: 0 });
 
                     // close the window
                     $(this).dialog("close");

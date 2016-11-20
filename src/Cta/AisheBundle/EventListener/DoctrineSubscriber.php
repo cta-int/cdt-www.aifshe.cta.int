@@ -55,7 +55,7 @@ class DoctrineSubscriber implements EventSubscriber
         foreach ($uow->getScheduledEntityInsertions() as $entity) {
             if ($entity instanceof CtaBase) {
                 if (is_null($entity->getCreatedBy())) {
-                    $entity->setCreatedBy($this->_container->get('security.context')->getToken()->getUser());
+                    $entity->setCreatedBy($this->_container->get('security.token_storage')->getToken()->getUser());
                 }
             }
         }
@@ -73,7 +73,7 @@ class DoctrineSubscriber implements EventSubscriber
 
         foreach ($uow->getScheduledEntityUpdates() as $entity) {
             if ($entity instanceof CtaBase) {
-                $entity->setModifiedBy($this->_container->get('security.context')->getToken()->getUser());
+                $entity->setModifiedBy($this->_container->get('security.token_storage')->getToken()->getUser());
 
                 $meta = $em->getClassMetadata(get_class($entity));
                 $uow->recomputeSingleEntityChangeSet($meta, $entity);

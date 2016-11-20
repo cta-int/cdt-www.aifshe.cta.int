@@ -18,13 +18,15 @@ use Symfony\Component\HttpFoundation\Request;
 class CriterionController extends Controller
 {
     /**
+     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function overviewAction()
+    public function overviewAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         return $this->render('CtaAdminAisheBundle:Criterion:overview.html.twig', array(
-            'criteria'  => $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($this->getRequest()->getLocale())),
+            'criteria'  => $em->getRepository('CtaAisheBundle:Criterion')->findOverview(Data::getLanguageCodes($request->getLocale())),
         ));
     }
 
@@ -53,7 +55,7 @@ class CriterionController extends Controller
             $em->persist($criterion);
 
             $criterion->setModifiedAt(new \DateTime());
-            $criterion->setModifiedBy($this->container->get('security.context')->getToken()->getUser());
+            $criterion->setModifiedBy($this->getUser());
 
             foreach (Data::getLanguages() as $langKey => $langVal) {
                 $langFound = false;
@@ -77,7 +79,7 @@ class CriterionController extends Controller
 
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->addFlash(
                 'notice',
                 $this->get('translator')->trans(
                     'form.flash.notice',
@@ -102,7 +104,7 @@ class CriterionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('CtaAisheBundle:Criterion')->delete($id);
 
-        $this->get('session')->getFlashBag()->add(
+        $this->addFlash(
             'notice',
             $this->get('translator')->trans('criterion.deleted')
         );
